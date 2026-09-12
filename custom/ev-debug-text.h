@@ -11,7 +11,9 @@ ev_debug_draw_blocks (EvPageCache      *cache,
                       cairo_t          *cr,
                       gint              page,
                       GdkRectangle     *real_page_area,
-                      cairo_surface_t  *page_surface);
+                      cairo_surface_t  *page_surface,
+                   	  gdouble          document_width,
+                   	  gdouble          document_height);
 
 gboolean ev_debug_is_soft_return (EvPageCache  *cache,
                                   EvRectangle  *areas,

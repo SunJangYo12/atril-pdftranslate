@@ -5862,16 +5862,6 @@ draw_one_page (EvView       *view,
 		                           &doc_width,
 		                           &doc_height);
 
-		g_print ("PAGE %d SIZE DEBUG:\n", page);
-		g_print ("  document page size: %.2f x %.2f\n",
-		         doc_width,
-		         doc_height);
-
-		g_print ("  view page size: %d x %d\n",
-		         width,
-	         height);
-
-
 		draw_surface (cr, page_surface, overlap.x, overlap.y, offset_x, offset_y, width, height);
 
 		/*
@@ -5884,7 +5874,7 @@ draw_one_page (EvView       *view,
 		                      cr,
 		                      page,
 		                      &real_page_area,
-		                      page_surface);
+		                      page_surface, doc_width, doc_height);
 
 
 		/* Get the selection pixbuf iff we have something to draw */

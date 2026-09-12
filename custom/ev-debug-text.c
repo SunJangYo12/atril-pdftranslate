@@ -17,7 +17,9 @@ ev_debug_draw_blocks (EvPageCache  *cache,
                    cairo_t         *cr,
                    gint             page,
                    GdkRectangle    *real_page_area,
-                   cairo_surface_t *page_surface)
+                   cairo_surface_t *page_surface,
+				   gdouble		    document_width,
+				   gdouble		    document_height)
 {
     const gchar *text;
     EvRectangle *areas = NULL;
@@ -77,41 +79,10 @@ ev_debug_draw_blocks (EvPageCache  *cache,
      * selection region.
      */
     scale_x = (gdouble)real_page_area->width /
-              cairo_image_surface_get_width (page_surface);
+				document_width;
 
     scale_y = (gdouble)real_page_area->height /
-              cairo_image_surface_get_height (page_surface);
-
-	g_print ("\n=== DRAW BLOCK DEBUG page=%d ===\n", page);
-
-	g_print ("real_page_area: "
-	         "x=%d y=%d width=%d height=%d\n",
-	         real_page_area->x,
-	         real_page_area->y,
-	         real_page_area->width,
-	         real_page_area->height);
-
-	g_print ("page_surface: "
-	         "width=%d height=%d\n",
-	         cairo_image_surface_get_width (page_surface),
-	         cairo_image_surface_get_height (page_surface));
-
-	g_print ("scale: "
-	         "x=%.6f y=%.6f\n",
-	         scale_x,
-	         scale_y);
-
-	gdouble device_scale_x = 1.0;
-	gdouble device_scale_y = 1.0;
-
-	cairo_surface_get_device_scale (page_surface,
-	                                &device_scale_x,
-	                                &device_scale_y);
-
-	g_print ("page_surface device scale: "
-	         "x=%.6f y=%.6f\n",
-	         device_scale_x,
-	         device_scale_y);
+				document_height;
 
     /*
      * Warna sementara untuk debug.
@@ -193,22 +164,6 @@ ev_debug_draw_blocks (EvPageCache  *cache,
 
                 width = (rect.x2 - rect.x1) * scale_x;
                 height = (rect.y2 - rect.y1) * scale_y;
-
-				g_print ("B%d:\n", block_no);
-
-				g_print ("  PDF rect: "
-				         "%.2f %.2f %.2f %.2f\n",
-				         rect.x1,
-				         rect.y1,
-				         rect.x2,
-				         rect.y2);
-
-				g_print ("  Cairo rect: "
-				         "x=%.2f y=%.2f w=%.2f h=%.2f\n",
-				         x,
-				         y,
-				         width,
-				         height);
 
                 /*
                  * Rectangle block.
@@ -298,22 +253,6 @@ ev_debug_draw_blocks (EvPageCache  *cache,
 
             width = (rect.x2 - rect.x1) * scale_x;
             height = (rect.y2 - rect.y1) * scale_y;
-
-			g_print ("B%d:\n", block_no);
-
-			g_print ("  PDF rect: "
-			         "%.2f %.2f %.2f %.2f\n",
-			         rect.x1,
-			         rect.y1,
-			         rect.x2,
-			         rect.y2);
-
-			g_print ("  Cairo rect: "
-			         "x=%.2f y=%.2f w=%.2f h=%.2f\n",
-			         x,
-			         y,
-			         width,
-			         height);
 
             cairo_rectangle (cr,
                              x,
