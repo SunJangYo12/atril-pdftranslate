@@ -46,6 +46,8 @@
 #include "ev-view-private.h"
 #include "ev-view-type-builtins.h"
 
+#include "../custom/ev-debug-text.h"
+
 enum {
 	SIGNAL_SCROLL,
 	SIGNAL_HANDLE_LINK,
@@ -181,6 +183,7 @@ static void       highlight_forward_search_results           (EvView            
 							      cairo_t            *cr,
 							      int                 page);
 #endif
+
 static void       draw_one_page                              (EvView             *view,
 							      gint                page,
 							      cairo_t            *cr,
@@ -5852,6 +5855,19 @@ draw_one_page (EvView       *view,
 		offset_y = overlap.y - real_page_area.y;
 
 		draw_surface (cr, page_surface, overlap.x, overlap.y, offset_x, offset_y, width, height);
+
+		/*
+		 * DEBUG: draw text blocks.
+		 *
+		 * Harus dilakukan setelah draw_surface(), tetapi sebelum
+		 * selection handling karena bagian selection dapat return.
+		 */
+		ev_debug_draw_blocks (view->page_cache,
+		                      cr,
+		                      page,
+		                      &real_page_area,
+		                      page_surface);
+
 
 		/* Get the selection pixbuf iff we have something to draw */
 		if (!find_selection_for_page (view, page))
