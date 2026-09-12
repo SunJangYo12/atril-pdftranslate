@@ -6,4 +6,7 @@
 void ev_debug_dump_page_text (EvPageCache *cache,
                               gint          page);
 
+void ev_debug_dump_blocks (EvPageCache *cache,
+                              gint          page);
+
 #endif

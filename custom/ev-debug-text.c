@@ -235,6 +235,154 @@ debug_dump_newlines (EvPageCache  *cache,
 	g_print ("============================================================\n");
 }
 
+
+void
+ev_debug_dump_blocks (EvPageCache *cache, gint page)
+{
+    const gchar *text;
+    EvRectangle *areas = NULL;
+    PangoLogAttr *log_attrs = NULL;
+    guint n_areas = 0;
+    gulong n_log_attrs = 0;
+    gint i;
+    gint start = 0;
+    gint block_no = 0;
+
+    text = ev_page_cache_get_text (cache, page);
+
+    if (!text)
+        return;
+
+    if (!ev_page_cache_get_text_layout (cache, page,
+                                         &areas, &n_areas))
+        return;
+
+    if (!ev_page_cache_get_text_log_attrs (cache, page,
+                                           &log_attrs, &n_log_attrs))
+        return;
+
+    if (n_areas == 0 || n_log_attrs == 0)
+        return;
+
+    /*
+     * Cari jumlah karakter Unicode.
+     *
+     * areas[] dan log_attrs[] di Atril sejajar dengan logical
+     * text offset, bukan byte offset UTF-8.
+     */
+    gint n_chars = 0;
+    const gchar *p;
+
+    for (p = text; *p; p = g_utf8_next_char (p))
+        n_chars++;
+
+    if (n_chars > (gint)n_areas)
+        n_chars = n_areas;
+
+    if (n_chars > (gint)n_log_attrs)
+        n_chars = n_log_attrs;
+
+    g_print ("\n");
+    g_print ("========================================\n");
+    g_print ("BLOCK DEBUG: PAGE %d\n", page);
+    g_print ("CHARACTERS = %d\n", n_chars);
+    g_print ("========================================\n");
+
+    for (i = 0; i < n_chars; i++) {
+        gunichar c;
+
+        /*
+         * Ambil karakter Unicode ke-i.
+         */
+        p = g_utf8_offset_to_pointer (text, i);
+        c = g_utf8_get_char (p);
+
+        if (c != '\n')
+            continue;
+
+        /*
+         * Gunakan heuristic yang sama dengan
+         * treat_as_soft_return().
+         *
+         * Untuk sementara panggil fungsi debug yang sebelumnya
+         * kita buat.
+         */
+        gboolean soft = debug_is_soft_return (cache,
+                                               areas,
+                                               n_areas,
+                                               log_attrs, i);
+
+
+        if (soft)
+            continue;
+
+        /*
+         * HARD RETURN:
+         * teks start..i menjadi satu block.
+         */
+        {
+            const gchar *block_start;
+            const gchar *block_end;
+            gchar *block_text;
+
+            block_start = g_utf8_offset_to_pointer (text, start);
+            block_end   = g_utf8_offset_to_pointer (text, i);
+
+            block_text = g_strndup (block_start,
+                                    block_end - block_start);
+
+            /*
+             * Hilangkan newline / whitespace berlebihan di ujung.
+             */
+            g_strstrip (block_text);
+
+            g_print ("\n");
+            g_print ("BLOCK %d\n", block_no);
+            g_print ("  start = %d\n", start);
+            g_print ("  end   = %d\n", i);
+            g_print ("  text  = \"%s\"\n", block_text);
+
+            g_free (block_text);
+        }
+
+        block_no++;
+        start = i + 1;
+    }
+
+    /*
+     * Sisa teks setelah HARD RETURN terakhir.
+     */
+    if (start < n_chars) {
+        const gchar *block_start;
+        const gchar *block_end;
+        gchar *block_text;
+
+        block_start = g_utf8_offset_to_pointer (text, start);
+        block_end   = g_utf8_offset_to_pointer (text, n_chars);
+
+        block_text = g_strndup (block_start,
+                                block_end - block_start);
+
+        g_strstrip (block_text);
+
+        if (*block_text != '\0') {
+            g_print ("\n");
+            g_print ("BLOCK %d\n", block_no);
+            g_print ("  start = %d\n", start);
+            g_print ("  end   = %d\n", n_chars);
+            g_print ("  text  = \"%s\"\n", block_text);
+        }
+
+        g_free (block_text);
+    }
+
+    g_print ("\n");
+    g_print ("========================================\n");
+    g_print ("END BLOCK DEBUG\n");
+    g_print ("========================================\n");
+}
+
+
 void
 ev_debug_dump_page_text (EvPageCache *cache,
                          gint         page)
