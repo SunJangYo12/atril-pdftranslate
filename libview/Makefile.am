@@ -57,6 +57,11 @@ libatrilview_la_SOURCES = 			\
 	$(NOINST_H_FILES)		\
 	$(INST_H_FILES)
 
+libatrilview_la_SOURCES += \
+        $(top_srcdir)/custom/ev-debug-text.c \
+        $(top_srcdir)/custom/ev-debug-text.h
+
+
 libatrilview_la_CPPFLAGS = \
 	-DATRILDATADIR=\"$(pkgdatadir)\"	\
 	-DG_LOG_DOMAIN=\"AtrilView\"		\

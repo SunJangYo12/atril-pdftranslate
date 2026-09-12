@@ -31,6 +31,8 @@
 #include "ev-document-text.h"
 #include "ev-page-cache.h"
 
+#include "../custom/ev-debug-text.h"
+
 typedef struct _EvPageCacheData {
 	EvJob             *job;
 	gboolean           done : 1;
@@ -306,6 +308,10 @@ job_page_data_finished_cb (EvJob       *job,
 
 	data->done = TRUE;
 	data->dirty = FALSE;
+
+	if (job_data->page == 0)
+		ev_debug_dump_page_text (cache, job_data->page);
+
 
 	g_object_unref (data->job);
 	data->job = NULL;
