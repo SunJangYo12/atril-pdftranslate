@@ -6,6 +6,235 @@
 #include "ev-debug-text.h"
 #include "ev-page-cache.h"
 
+static gboolean
+debug_is_soft_return (EvPageCache  *cache,
+                      EvRectangle  *areas,
+                      guint         n_areas,
+                      PangoLogAttr *log_attrs,
+                      gint          offset)
+{
+	EvRectangle *this_line_start;
+	EvRectangle *this_line_end;
+	EvRectangle *next_line_start;
+	EvRectangle *next_line_end;
+	EvRectangle *next_word_end;
+
+	gdouble line_spacing;
+	gdouble this_line_height;
+	gdouble next_word_width;
+
+	gint prev_offset;
+	gint next_offset;
+
+	if (!log_attrs[offset].is_white)
+		return FALSE;
+
+	if (n_areas <= offset + 1)
+		return FALSE;
+
+	prev_offset = offset - 1;
+	next_offset = offset + 1;
+
+	/*
+	 * Same test as Atril's treat_as_soft_return().
+	 */
+	if (!log_attrs[next_offset].is_word_start &&
+	    (next_offset + 1 >= n_areas ||
+	     !log_attrs[next_offset + 1].is_word_start))
+		return FALSE;
+
+	this_line_end = areas + prev_offset;
+	next_line_start = areas + next_offset;
+
+	this_line_height =
+		this_line_end->y2 - this_line_end->y1;
+
+	if (ABS (this_line_height -
+		 (next_line_start->y2 - next_line_start->y1)) > 0.25)
+		return FALSE;
+
+	line_spacing =
+		next_line_start->y1 - this_line_end->y2;
+
+	if (line_spacing - this_line_height > 1)
+		return FALSE;
+
+	for (;
+	     prev_offset > 0 &&
+	     !log_attrs[prev_offset].is_mandatory_break;
+	     prev_offset--);
+
+	this_line_start = areas + prev_offset;
+
+	if (ABS (this_line_start->x1 -
+		 next_line_start->x1) > 20)
+		return FALSE;
+
+	for (;
+	     next_offset < n_areas &&
+	     !log_attrs[next_offset].is_word_end;
+	     next_offset++);
+
+	if (next_offset >= n_areas)
+		return FALSE;
+
+	next_word_end = areas + next_offset;
+
+	next_word_width =
+		next_word_end->x2 - next_line_start->x1;
+
+	for (;
+	     next_offset + 1 < n_areas &&
+	     !log_attrs[next_offset + 1].is_mandatory_break;
+	     next_offset++);
+
+	next_line_end = areas + next_offset;
+
+	if (next_line_end->x2 -
+	    (this_line_end->x2 + next_word_width) > 20)
+		return FALSE;
+
+	return TRUE;
+}
+
+static void
+debug_dump_newlines (EvPageCache  *cache,
+                     gint          page)
+{
+	const gchar *text;
+	EvRectangle *areas = NULL;
+	PangoLogAttr *log_attrs = NULL;
+	guint n_areas = 0;
+	gulong n_attrs = 0;
+
+	const gchar *p;
+	guint offset = 0;
+
+	text = ev_page_cache_get_text (cache, page);
+
+	if (!text)
+		return;
+
+	if (!ev_page_cache_get_text_layout (cache,
+					    page,
+					    &areas,
+					    &n_areas))
+		return;
+
+	if (!ev_page_cache_get_text_log_attrs (cache,
+					       page,
+					       &log_attrs,
+					       &n_attrs))
+		return;
+
+	g_print ("\n");
+	g_print ("============================================================\n");
+	g_print ("NEWLINE ANALYSIS: PAGE %d\n", page);
+	g_print ("============================================================\n");
+
+	p = text;
+
+	while (*p != '\0' &&
+	       offset < n_areas &&
+	       offset < n_attrs) {
+
+		gunichar ch;
+
+		ch = g_utf8_get_char (p);
+
+		if (ch == '\n') {
+			gboolean soft;
+			gint prev;
+			gint next;
+
+			prev = (offset > 0) ? offset - 1 : -1;
+			next = offset + 1;
+
+			soft = debug_is_soft_return (cache,
+						      areas,
+						      n_areas,
+						      log_attrs,
+						      offset);
+
+			g_print ("\n");
+			g_print ("NEWLINE @ %u  => %s\n",
+				 offset,
+				 soft ? "SOFT RETURN" :
+					"HARD RETURN");
+
+			g_print ("  newline:\n");
+			g_print ("    area = %.2f %.2f %.2f %.2f\n",
+				 areas[offset].x1,
+				 areas[offset].y1,
+				 areas[offset].x2,
+				 areas[offset].y2);
+
+			g_print ("    white=%d word_start=%d "
+				 "word_end=%d mandatory=%d\n",
+				 log_attrs[offset].is_white,
+				 log_attrs[offset].is_word_start,
+				 log_attrs[offset].is_word_end,
+				 log_attrs[offset].is_mandatory_break);
+
+			if (prev >= 0) {
+				gunichar prev_ch;
+
+				prev_ch = g_utf8_get_char (
+					g_utf8_prev_char (p));
+
+				g_print ("  previous @ %d: U+%04X '%c'\n",
+					 prev,
+					 prev_ch,
+					 g_unichar_isprint (prev_ch)
+					 ? (gchar) prev_ch : ' ');
+				g_print ("    area = %.2f %.2f %.2f %.2f\n",
+					 areas[prev].x1,
+					 areas[prev].y1,
+					 areas[prev].x2,
+					 areas[prev].y2);
+			}
+
+			if (next < (gint)n_areas &&
+			    next < (gint)n_attrs &&
+			    *(p + 1) != '\0') {
+
+				const gchar *next_p;
+				gunichar next_ch;
+
+				next_p = g_utf8_next_char (p);
+				next_ch = g_utf8_get_char (next_p);
+
+				g_print ("  next @ %d: U+%04X '%c'\n",
+					 next,
+					 next_ch,
+					 g_unichar_isprint (next_ch)
+					 ? (gchar) next_ch : ' ');
+
+				g_print ("    area = %.2f %.2f %.2f %.2f\n",
+					 areas[next].x1,
+					 areas[next].y1,
+					 areas[next].x2,
+					 areas[next].y2);
+
+				g_print ("    white=%d word_start=%d "
+					 "word_end=%d mandatory=%d\n",
+					 log_attrs[next].is_white,
+					 log_attrs[next].is_word_start,
+					 log_attrs[next].is_word_end,
+					 log_attrs[next].is_mandatory_break);
+			}
+		}
+
+		p = g_utf8_next_char (p);
+		offset++;
+	}
+
+	g_print ("\n");
+	g_print ("============================================================\n");
+	g_print ("END NEWLINE ANALYSIS\n");
+	g_print ("============================================================\n");
+}
+
 void
 ev_debug_dump_page_text (EvPageCache *cache,
                          gint         page)
@@ -118,6 +347,8 @@ ev_debug_dump_page_text (EvPageCache *cache,
 	g_print ("ITERATED = %u\n", offset);
 	g_print ("AREAS    = %u\n", n_areas);
 	g_print ("ATTRS    = %lu\n", n_attrs);
+
+	debug_dump_newlines (cache, page);
 
 	g_print ("============================================================\n");
 	g_print ("END TEXT DEBUG: PAGE %d\n", page);
