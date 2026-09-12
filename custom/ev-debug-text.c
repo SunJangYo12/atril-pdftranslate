@@ -235,9 +235,285 @@ debug_dump_newlines (EvPageCache  *cache,
 	g_print ("============================================================\n");
 }
 
-
 void
 ev_debug_dump_blocks (EvPageCache *cache, gint page)
+{
+    const gchar *text;
+    EvRectangle *areas = NULL;
+    PangoLogAttr *log_attrs = NULL;
+    guint n_areas = 0;
+    gulong n_log_attrs = 0;
+
+    gint i;
+    gint start = 0;
+    gint block_no = 0;
+    gint n_chars = 0;
+
+    const gchar *p;
+
+    text = ev_page_cache_get_text (cache, page);
+
+    if (!text)
+        return;
+
+    if (!ev_page_cache_get_text_layout (cache,
+                                        page,
+                                        &areas,
+                                        &n_areas))
+        return;
+
+    if (!ev_page_cache_get_text_log_attrs (cache,
+                                           page,
+                                           &log_attrs,
+                                           &n_log_attrs))
+        return;
+
+    if (n_areas == 0 || n_log_attrs == 0)
+        return;
+
+    /*
+     * Hitung jumlah karakter Unicode.
+     *
+     * Penting:
+     * text adalah UTF-8, sehingga jumlah byte tidak sama
+     * dengan jumlah character offset yang digunakan oleh
+     * areas[] dan log_attrs[].
+     */
+    for (p = text; *p; p = g_utf8_next_char (p))
+        n_chars++;
+
+    /*
+     * Pastikan kita tidak membaca melewati array Atril.
+     */
+    if (n_chars > (gint)n_areas)
+        n_chars = n_areas;
+
+    if (n_chars > (gint)n_log_attrs)
+        n_chars = n_log_attrs;
+
+    g_print ("\n");
+    g_print ("========================================\n");
+    g_print ("BLOCK DEBUG: PAGE %d\n", page);
+    g_print ("CHARACTERS = %d\n", n_chars);
+    g_print ("========================================\n");
+
+    /*
+     * Scan seluruh character.
+     *
+     * SOFT RETURN:
+     *     masih bagian dari block yang sama.
+     *
+     * HARD RETURN:
+     *     block ditutup dan block berikutnya dimulai.
+     */
+    for (i = 0; i < n_chars; i++) {
+        gunichar c;
+
+        p = g_utf8_offset_to_pointer (text, i);
+        c = g_utf8_get_char (p);
+
+        /*
+         * Kita hanya tertarik pada '\n'.
+         */
+        if (c != '\n')
+            continue;
+
+        /*
+         * Gunakan heuristic yang sama dengan
+         * Atril's treat_as_soft_return().
+         */
+        {
+            gboolean soft;
+
+            soft = debug_is_soft_return (cache,
+                                          areas,
+                                          n_areas,
+                                          log_attrs,
+                                          i);
+
+            /*
+             * Soft return bukan akhir block.
+             */
+            if (soft)
+                continue;
+        }
+
+        /*
+         * HARD RETURN.
+         *
+         * text[start .. i-1] menjadi satu block.
+         */
+        {
+            const gchar *block_start;
+            const gchar *block_end;
+            gchar *block_text;
+
+            EvRectangle rect;
+            gboolean have_rect = FALSE;
+
+            gint j;
+
+            block_start = g_utf8_offset_to_pointer (text, start);
+            block_end   = g_utf8_offset_to_pointer (text, i);
+
+            block_text = g_strndup (block_start,
+                                    block_end - block_start);
+
+            /*
+             * Hitung bounding rectangle block.
+             *
+             * Rectangle kosong biasanya berasal dari '\n'
+             * atau character tanpa geometry.
+             */
+            for (j = start;
+                 j < i && j < (gint)n_areas;
+                 j++) {
+
+                EvRectangle *a = &areas[j];
+
+                /*
+                 * Abaikan rectangle kosong.
+                 */
+                if (a->x1 == a->x2 &&
+                    a->y1 == a->y2)
+                    continue;
+
+                if (!have_rect) {
+                    rect = *a;
+                    have_rect = TRUE;
+                } else {
+                    if (a->x1 < rect.x1)
+                        rect.x1 = a->x1;
+
+                    if (a->y1 < rect.y1)
+                        rect.y1 = a->y1;
+
+                    if (a->x2 > rect.x2)
+                        rect.x2 = a->x2;
+
+                    if (a->y2 > rect.y2)
+                        rect.y2 = a->y2;
+                }
+            }
+
+            /*
+             * Buang whitespace di awal/akhir hanya untuk
+             * tampilan debug.
+             */
+            g_strstrip (block_text);
+
+            g_print ("\n");
+            g_print ("BLOCK %d\n", block_no);
+            g_print ("  start = %d\n", start);
+            g_print ("  end   = %d\n", i);
+
+            if (have_rect) {
+                g_print ("  rect  = %.2f %.2f %.2f %.2f\n",
+                         rect.x1,
+                         rect.y1,
+                         rect.x2,
+                         rect.y2);
+            } else {
+                g_print ("  rect  = NONE\n");
+            }
+
+            g_print ("  text  = \"%s\"\n", block_text);
+
+            g_free (block_text);
+        }
+
+        block_no++;
+
+        /*
+         * Character setelah '\n' menjadi awal block berikutnya.
+         */
+        start = i + 1;
+    }
+
+    /*
+     * Sisa text setelah HARD RETURN terakhir.
+     *
+     * Contohnya "Page 5" pada halaman yang Anda debug.
+     */
+    if (start < n_chars) {
+        const gchar *block_start;
+        const gchar *block_end;
+        gchar *block_text;
+
+        EvRectangle rect;
+        gboolean have_rect = FALSE;
+
+        gint j;
+
+        block_start = g_utf8_offset_to_pointer (text, start);
+        block_end   = g_utf8_offset_to_pointer (text, n_chars);
+
+        block_text = g_strndup (block_start,
+                                block_end - block_start);
+
+        /*
+         * Hitung bounding rectangle block terakhir.
+         */
+        for (j = start;
+             j < n_chars && j < (gint)n_areas;
+             j++) {
+
+            EvRectangle *a = &areas[j];
+
+            if (a->x1 == a->x2 &&
+                a->y1 == a->y2)
+                continue;
+
+            if (!have_rect) {
+                rect = *a;
+                have_rect = TRUE;
+            } else {
+                if (a->x1 < rect.x1)
+                    rect.x1 = a->x1;
+
+                if (a->y1 < rect.y1)
+                    rect.y1 = a->y1;
+
+                if (a->x2 > rect.x2)
+                    rect.x2 = a->x2;
+
+                if (a->y2 > rect.y2)
+                    rect.y2 = a->y2;
+            }
+        }
+
+        g_strstrip (block_text);
+
+        if (*block_text != '\0') {
+            g_print ("\n");
+            g_print ("BLOCK %d\n", block_no);
+            g_print ("  start = %d\n", start);
+            g_print ("  end   = %d\n", n_chars);
+
+            if (have_rect) {
+                g_print ("  rect  = %.2f %.2f %.2f %.2f\n",
+                         rect.x1,
+                         rect.y1,
+                         rect.x2,
+                         rect.y2);
+            } else {
+                g_print ("  rect  = NONE\n");
+            }
+
+            g_print ("  text  = \"%s\"\n", block_text);
+        }
+
+        g_free (block_text);
+    }
+
+    g_print ("\n");
+    g_print ("========================================\n");
+    g_print ("END BLOCK DEBUG\n");
+    g_print ("========================================\n");
+}
+
+void
+zev_debug_dump_blocks (EvPageCache *cache, gint page)
 {
     const gchar *text;
     EvRectangle *areas = NULL;
