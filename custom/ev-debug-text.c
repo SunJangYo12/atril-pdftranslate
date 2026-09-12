@@ -329,6 +329,22 @@ ev_debug_is_soft_return (EvPageCache  *cache,
 	this_line_height =
 		this_line_end->y2 - this_line_end->y1;
 
+
+g_print ("SOFT RETURN CHECK offset=%d\n", offset);
+
+g_print ("  this line height = %.4f\n",
+         this_line_height);
+
+g_print ("  next line height = %.4f\n",
+         next_line_start->y2 - next_line_start->y1);
+
+g_print ("  height diff      = %.4f\n",
+         ABS (this_line_height -
+              (next_line_start->y2 - next_line_start->y1)));
+
+g_print ("  line spacing     = %.4f\n",
+         line_spacing);
+
 	if (ABS (this_line_height -
 		 (next_line_start->y2 - next_line_start->y1)) > 0.25)
 		return FALSE;
