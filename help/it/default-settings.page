@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="default-settings" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#faq"/>
+    <desc>Salvare le impostazioni correnti come predefinite per i nouvi documenti.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Sindhu S</name>
+      <email>sindhus@live.in</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+  <title>Modificare le impostazioni predefinite</title>
+
+  <p>Quando si apre per la prima volta un documento, vengono applicate le impostazioni predefinite, come ad esempio il livello di ingrandimento e la visuale della pagina.</p>
+  <p>Si possono salvare le impostazioni correntemente utilizzate come predefinite per i nuovi documenti selezionando <gui style="menuitem">Modifica</gui> e successivamente <gui style="menuitem">Salva le impostazioni correnti come predefinite</gui>.</p>
+
+  <note style="important">
+    <p>I nuovi parametri predefiniti non sovrascrivono quelli impostati per i documenti aperti in precedenza; vengono applicati solo ai documenti aperti per la prima volta.</p>
+  </note>
+
+</page>

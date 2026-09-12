@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task" id="print-2sided" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="printing"/>
+
+    <desc>Штампање две странице и више страница по листу.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Фил Бул</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+
+  </info>
+
+<title>Две странице и више страница по страници распореда за штампање</title>
+
+<p>Можете да штампате са обе стране сваког листа папира:</p>
+
+<steps>
+ <item>
+  <p>Идите на „<guiseq><gui style="menuitem">Датотека</gui><gui style="menuitem">Штампај</gui></guiseq>“ и притисните дугме „<gui style="button">Штампај</gui>“.</p>
+ </item>
+ <item>
+  <p>Идите на језичак „<gui>Поставке странице</gui>“ у прозору „Штампање“ и изаберите опцију са падајућег списка „<gui>Двострано</gui>“.</p>
+ </item>
+ <item>
+  <p>Можете да одштампате више од једне странице документа по <em>страни</em> папира. Користите опцију „<gui>Страница по страни</gui>“ да ово урадите.</p>
+ </item>
+</steps>
+
+</page>

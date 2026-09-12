@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="opening" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#reading"/>
+    <link type="seealso" xref="formats"/>
+    <link type="seealso" xref="commandline"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email its:translate="no">tiffany@antopolski.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+    </credit>
+
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal-unported.xml"/>
+
+    <desc>Come aprire un documento.</desc>
+  </info>
+
+  <title>Aprire un documento</title>
+
+  <p>Per aprire un documento utilizzare uno dei modi seguenti:</p>
+
+  <list>
+    <item>
+      <p>Doppio cli sul file in <app>Caja</app> o sul vostro <em>file manager</em>.</p>
+      <note style="tip">
+        <p>Il doppio clic su documenti PDF, PostScript, .djvu, .dvi, e sui  Comic Book Archive li apre come default in <app>Atril</app>.</p>
+      </note>
+    </item>
+    <item>
+      <p>Clic destro sull'icona di un file in <app>Caja</app> selezionando <guiseq><gui>Apri con</gui> <gui>Atril</gui></guiseq>.</p>
+    </item>
+  </list>
+
+  <p>Se è già aperta una finestra vuota di Atril, si può:</p>
+
+  <list>
+    <item>
+      <p>Trascinare un file da <app>Caja</app> sulla finestra. Il nuovo file verrà aperto in una nuova finestra.</p>
+    </item>
+    <item>
+      <p>Premere il pulsante <gui>Apri</gui> sulla parte superiore sinistra della finestra. Nella finestra di dialogo <gui>Apri documento</gui>, selezionare il file che si desidera aprire e fare clic su <gui>Apri</gui>. Il file verrà aperto in una nuova finestra</p>
+    </item>
+  </list>
+
+  <p>Se in <app>Atril</app> è già aperto un documento, si può:</p>
+
+  <list>
+    <item>
+      <p>Trascinare un file da <app>Caja</app> sulla finestra. Il nuovo file verrà aperto in una nuova finestra.</p>
+    </item>
+    <item>
+      <p>Premere <keyseq><key>Ctrl</key> <key>O</key></keyseq>. Nella finestra di dialogo <gui>Apri documento</gui>, selezionare il file che si desidera aprire, e fare clic su <gui>Apri</gui>. Il file si aprirà in una nuova finestra.</p>
+    </item>
+  </list>
+
+</page>

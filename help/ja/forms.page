@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="forms" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#forms"/>
+    <desc>記入可能なフォームでの作業。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+
+  </info>
+
+<title>フォーム</title>
+<p>対話形式のフォームに入力するとき、マウスでフィールドをクリックすると、フィールドからフィールドへと移動できます。テキストのフィールドへの入力が完了したら、<key>Enter</key> キーを押します。</p>
+
+<p>スクロール可能なリストボックスでは、リストボックスをクリックし、マウスでスクロールすることで、選択することができます。</p>
+<note style="tip">
+ <p>フォームにはっきり記入した<em>後に</em>、手書きで記入しなければならない部分があるかもしれません。例えば、特定の項目に丸をつけたり、何ヶ所かにサインをしたりする必要があるかもしれません。こうした作業を電子的に行いたい場合は、<link href="http://www.g-loaded.eu/2008/05/03/how-to-annotate-pdf-files-in-linux-using-xournal/">Xournal</link> を利用してみると良いでしょう。</p>
+</note>
+
+
+</page>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="annotations-disabled" xml:lang="it">
+<info>
+  <link type="guide" xref="index#annotations"/>
+  <link type="seealso" xref="annotations"/>
+ <desc>Le annotazioni possono essere aggiunte solo a documenti PDF.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+</info>
+<title>Non riesci ad aggiungere una annotazione?</title>
+ <p>Le annotazioni possono essere aggiunte solo a documenti PDF. Se il vostro file è in un formato differente, l'opzione di aggiunta di una annotazione apparirà in grigio (sarà disabilitata).</p>
+</page>

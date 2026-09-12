@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="presentations" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#pres"/>
+    <desc>プレゼンテーションを行う方法です。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Anna Philips</name>
+      <email>anna.cs.au@gmail.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+
+  </info>
+
+<title>プレゼンテーション</title>
+<section id="start-presentation">
+<title>プレゼンテーションの開始</title>
+<p>プレゼンテーションを開始は、次のとおりです。</p>
+<steps>
+ <item>
+  <p><link xref="opening">ファイルを開く</link></p>
+ </item>
+ <item>
+   <p><gui style="menuitem">表示</gui>を押して<gui style="menuitem">プレゼンテーション</gui>を選択します（または <key>F5</key> を押します）。</p>
+  <p>プレゼンテーションが全画面で表示されます。</p>
+ </item>
+</steps>
+</section>
+<section id="present">
+ <title>プレゼンテーションの操作</title>
+ <p><key>スペースバー</key>、<key>→</key>、<key>↓</key>、またはマウスの左クリックで、次のスライドに進みます。</p>
+ <p><key>←</key>キー、<key>↑</key>キー、またはマウスの右クリックで、前のスライドに移動します。</p>
+ <note style="tip">
+  <p>また、スクロールホイールを使っても、プレゼンテーションを前後に移動することができます。</p>
+ </note>
+ <p><key>Esc</key> キーでプレゼンテーションを終了します。</p>
+</section>
+
+<section id="blank-screen">
+<title>空白の画面を表示</title>
+<p><key>B</key> または <key>.</key> を押すと、黒い画面を表示します。</p>
+<p><key>W</key> を押すと、白い画面を表示します。</p>
+<p><key>B</key> または <key>.</key>、<key>W</key> のどれかを再び押すと、スライドを表示します。</p>
+</section>
+
+<section id="file-formats">
+<title>対応するプレゼンテーションのファイル形式</title>
+<p>次のファイル形式が利用可能です。</p>
+<list>
+ <item><p>コミック・ブック・アーカイブ (.cbr と .cbz)</p></item>
+ <item><p>デバイス独立フォーマット (.dvi)</p></item>
+ <item><p>DjVu (.djvu, .djv)</p></item>
+ <item><p>Open Document Presentation (.odp)</p></item>
+ <item><p>ポータブル文書フォーマット (.pdf)</p></item>
+ <item><p>ポストスクリプト (.ps)</p></item>
+</list>
+</section>
+</page>

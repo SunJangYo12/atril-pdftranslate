@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="translate" xml:lang="ja">
+
+  <info>
+   <link type="guide" xref="index#getInvolved"/>
+    <desc><app>Atril</app> をローカライズします。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author copyright">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany.antopolski@gmail.com</email>
+      <years>2011</years>
+    </credit>
+     <credit type="editor">
+      <name>Michael Hill</name>
+      <email>mdhillca@gmail.com</email>
+    </credit>
+    <license>
+       <p>クリエイティブ・コモンズ表示継承 3.0</p>
+     </license>
+  </info>
+
+<title>翻訳のヘルプ</title>
+<p>Atril のユーザーインターフェースと文書は、世界中のボランティアのコミュニティによって翻訳されています。あなたの参加を歓迎します。</p>
+<p>翻訳が必要な言語はまだ多くあります。</p>
+<p>翻訳を始めるには、<link href="https://www.transifex.com/signin/">アカウントを作成</link>して、あなたの言語の<link href="https://www.transifex.com/mate/MATE/">翻訳チーム</link>に参加する必要があります。これによって、新しい翻訳をアップロードできるようになります。</p>
+
+</page>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="openerror" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#faq"/>
+    <desc>Errore nell'aprire un file</desc>
+   <link type="seealso" xref="formats"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+<title>Perché non posso aprire un file?</title>
+
+<p>Se si tenta di aprire un documento in un formato che Atril non riconosce, si otterrà ii messaggio di errore «Impossibile aprire il documento». Fare clic su <gui>Chiudi</gui> per tornare alla finestra di <app>Atril</app>.</p>
+
+</page>

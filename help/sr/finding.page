@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="finding" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#reading"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Фил Бул</name>
+      <email its:translate="no">philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ана Филипс</name>
+      <email its:translate="no">anna.cs.au@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Екатерина Герасимова</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+    </credit>
+
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal-unported.xml"/>
+
+    <desc>Тражите реч или реченицу у документу.</desc>
+  </info>
+
+  <title>Тражење текста у документу</title>
+
+  <steps>
+    <item>
+      <p>Кликните „<guiseq><gui style="menuitem">Уређивање</gui> <gui style="menuitem">Нађи</gui></guiseq>“ или <keyseq><key>Ктрл</key><key>F</key></keyseq> или <key>/</key> да прикажете поље за претрагу.</p>
+    </item>
+    <item>
+      <p>Почните да куцате у поље претраге и претрага ће сама започети.</p>
+    </item>
+    <item>
+      <p>Користите дугмад „<gui>Нађи претходно</gui>“ и „<gui>Нађи следеће</gui>“ да се пребаците на претходни или следећи резултат претраге.</p>
+    </item>
+    <item>
+      <p>Да сакријете траку претраге, поново кликните било где у прозору или притисните <key>Esc</key>.</p>
+    </item>
+  </steps>
+
+  <note style="tip">
+    <p>Да издвојите речи према величини слова, можете притиснути дугме „<gui>Разлукуј величину слова</gui>“.</p>
+
+  </note>
+  <p>Ако се реч или реченица коју тражите појави у документу барем једном, биће вам приказано колико се пута резултат претраге појављује на текућој страници.</p>
+
+  <note>
+    <p>Само ПДФ документа се могу претраживати. Нека ПДФ документа се не могу претраживати јер је њихов текст кодиран у документу као слика.</p>
+  </note>
+
+</page>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="forms" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#forms"/>
+    <desc>Lavorare con moduli compilabili.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+<title>Moduli</title>
+<p>Quando si compila un modulo interattivo, è possibile spostarsi tra i campi con il clic del mouse su un campo bianco. Quando si compila un campo di testo, premere il tasto <key>Invio</key>.</p>
+
+<p>Si può selezionare del testo da un campo a scorrimento facendo clic sul campo e scorrendo con il mouse fino alla vostra scelta.</p>
+<note style="tip">
+ <p>Ci sono parti del modulo che potrebbero dover essere compilate a mano dopo aver stampato il documento, come ad esempio firmare il modulo in una o più parti. Se si desidera firmare il documento in formato elettronico, si potrebbe provare <link href="http://www.g-loaded.eu/2008/05/03/how-to-annotate-pdf-files-in-linux-using-xournal/">Xournal</link>.</p>
+</note>
+
+
+</page>

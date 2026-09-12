@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="formats" xml:lang="et">
+
+  <info>
+    <link type="guide" xref="index#pres"/>
+    <link type="seealso" xref="convertpdf"/>
+    <link type="seealso" xref="convertPostScript"/>
+    <link type="seealso" xref="convertSVG"/>
+    <desc>PDF, PostScript and many others are.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <credit type="author">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Ilmar Kerm</mal:name>
+      <mal:email>ikerm hot ee</mal:email>
+      <mal:years>2001, 2002.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Tõivo Leedjärv</mal:name>
+      <mal:email>toivo linux ee</mal:email>
+      <mal:years>2002, 2003.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Priit Laes</mal:name>
+      <mal:email>plaes plaes org</mal:email>
+      <mal:years>2004–2006, 2008, 2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Ivar Smolin</mal:name>
+      <mal:email>okul linux ee</mal:email>
+      <mal:years>2005–2010, 2014–2015, 2018.</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Supported formats</title>
+
+<p>
+Atril supports the following formats:
+</p>
+<list>
+ <item><p>Comic Book Archive (.cbr and .cbz)</p></item>
+ <item><p>Device Independent file format (.dvi)</p></item>
+ <item><p>DjVu (.djvu, .djv)</p></item>
+ <item><p>Open XML Paper Specification (.oxps, .xps)</p></item>
+ <item><p>Portable Document Format (.pdf)</p></item>
+ <item><p>PostScript (.ps)</p></item>
+</list>
+<note>
+<p>
+In some Linux distributions, not all formats are supported by default, so you might not be able to view all the formats listed above.
+</p>
+<p>
+Support for a format is called a <em>backend</em>.  If you get the error "Unable to Open Document", you may wish to check whether the backend package for the format is installed.
+</p>
+</note>
+
+
+
+</page>

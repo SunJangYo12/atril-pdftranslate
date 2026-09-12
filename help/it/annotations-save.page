@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="annotations-save" xml:lang="it">
+<info>
+  <link type="guide" xref="index#annotations"/>
+ <desc>Come salvare le proprie annotazioni.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Shobha Tyagi</name>
+      <email its:translate="no">tyagishobha@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+</info>
+<title>Salvare una copia di un documento PDF con annotazioni.</title>
+ <p>Per salvare una copia dei vostri file PDF annotati per visualizzarli successivamente con Atril o con un qualsiasi altro visualizzatore PDF <em>che supporti le annotazioni</em>:</p>
+  <steps>
+   <item>
+     <p>Fare clic su<guiseq><gui>File</gui><gui>Salva come…</gui></guiseq></p>
+   </item>
+   <item>
+     <p>Scegliere un nome ed una cartella su cui salvare il file, quindi fare clic su <gui>Salva</gui>. Il file PDF verrà salvato nella cartella selezionata.</p>
+    </item>
+   </steps>
+   <p>Le annotazioni sono aggiunte secondo le specifiche PDF. Pertanto molti lettori PDF dovrebbero essere in grado di leggerle. In Adobe Reader funziona.</p>
+
+</page>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="duplex-npage" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="print-booklet#doubleSided"/>
+
+    <desc>複数ページのブックレットを印刷します。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+
+  </info>
+
+<title>複数ページのブックレット</title>
+ <note style="important">
+  <p><em>n</em> は4の倍数です。</p>
+ </note>
+
+ <p>PDF 文書のページ数が 4 の倍数でない場合、適切な数の空白ページ（ 1、2 または 3 ）を追加して、4 の倍数になるようにする必要があります。そのようにするには、次のとおり行います。</p>
+ <steps>
+ <item>
+  <p><app>LibreOffice のワープロ</app>を使って白紙の PDF を作成します。</p>
+ </item>
+ <item>
+  <p><app>PDF-Shuffler</app> を使って PDF 文書を統合し、白紙のページを最後に配置します。</p>
+ </item>
+</steps>
+
+
+<steps>
+ <item>
+  <p><guiseq><gui style="menuitem">ファイル</gui><gui style="menuitem">印刷</gui></guiseq>へ移動し、<gui style="button">印刷</gui>ボタンを押下してください。</p>
+ </item>
+ <item>
+  <p><gui>全般</gui>タブを選択します。</p>
+  <p><em>範囲</em>で<gui>ページ</gui>を選びます。</p>
+  <tree>
+   <item>次の順番でページの番号を入力してください：<item>n, 1, 2, n-1, n-2, 3, 4, n-3, n-4, 5, 6, n-5, n-6, 7, 8, n-7, n-8, 9, 10, n-9, n-10, 11, 12, n-11...</item> <item>...あなたが 4 の倍数のページ数を入力するまで。</item></item>
+  </tree>
+ </item>
+ <item>
+  <p><gui>ページの設定</gui>タブを選んでください。</p>
+  <p><em>レイアウト</em>の中の<gui>両面</gui>メニューで、<gui>短辺（折り返し）</gui>を選択します。</p>
+  <p><gui>段組み印刷</gui>の項目で、<gui>2</gui> を選択します。</p>
+  <p><gui>ページの順番</gui>の項目で、<gui>左から右へ</gui>を選択します。</p>
+ </item>
+ <item>
+  <p><gui>印刷</gui>をクリックします。</p>
+ </item>
+</steps>
+</page>

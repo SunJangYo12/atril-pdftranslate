@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="bookmarks" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#annotations"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email its:translate="no">tiffany@antopolski.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+    </credit>
+
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+    <desc>È possibile utilizzare le annotazioni come segnalibri.</desc>
+  </info>
+
+<title>Segnalibri</title>
+
+  <p>È possibile aggiungere, rinominare ed eliminare i segnalibri utilizzando il <app>Visualizzatore di documenti</app>.</p>
+
+  <p>Quando si apre un file, si dovrebbe avere un riquadro sul lato sinistro della finestra. Se non lo si vede, selezionare <guiseq><gui style="menuitem">Visualizza</gui> <gui style="menuitem">Pannello laterale</gui></guiseq> o premere il tasto <key>F9</key> sulla tastiera.</p>
+
+  <p>Selezionare <gui style="button">Segnalibri</gui> dall'elenco a comparsa nella parte bassa di questo pannello.</p>
+
+  <links type="section"/>
+
+<section id="create">
+  <title>Creare un segnaliro</title>
+
+  <steps>
+    <item>
+      <p>Nel documento PDF stesso, navigare fino alla pagina alla quale si vuole aggiungere il segnalibro.</p>
+    </item>
+    <item>
+      <p>Selezionare <gui style="button">Segnalibri</gui> dall'elenco a comparsa sul pannello laterale.</p>
+    </item>
+    <item>
+      <p>Premere il pulsante <gui style="button">+</gui> in basso sul riquadro laterale. Il nome predefinito del segnalibro appena creato sarà il numero di pagina del documento.</p>
+    </item>
+    <item>
+      <p>Il segnalibro verrà mostrato nell'elenco dei segnalibri.</p>
+    </item>
+  </steps>
+
+</section>
+
+<section id="rename">
+  <title>Rinominare un segnalibro</title>
+
+  <steps>
+    <item><p>Selezionare <gui style="button">Segnalibri</gui> dall'elenco a comparsa sul pannello laterale.</p></item>
+    <item><p>Selezionare il segnalibro nel riquadro laterale.</p></item>
+    <item><p>Fare clic sul nome del segnalibro.</p></item>
+    <item><p>Inserire il nuovo nome.</p></item>
+    <item><p>Premere il tasto <key>Invio</key>.</p></item>
+  </steps>
+
+</section>
+
+<section id="delete">
+  <title>Cancellare un segnalibro.</title>
+
+  <steps>
+   <item><p>Selezionare <gui style="button">Segnalibri</gui> dall'elenco a comparsa sul pannello laterale.</p></item>
+   <item><p>Premere il pulsante <gui style="button">-</gui> sul fondo del riquadro laterale.</p></item>
+  </steps>
+
+</section>
+
+</page>

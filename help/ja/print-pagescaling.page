@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" style="task" id="print-pagescaling" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="printing"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal-unported.xml"/>
+
+    <desc>用紙のサイズに合わせて、文書を縮小または拡大します。</desc>
+  </info>
+
+  <title>印刷時のページの拡大と縮小</title>
+
+  <p>文書の用紙サイズを変更したい場合（例えば、US レターサイズの PDF を A4 用紙に印刷するとき）は、文書の印刷様式を変更します。</p>
+
+  <steps>
+    <item>
+      <p>ウィンドウの右上にあるメニューを開いて、<gui style="menuitem">印刷....</gui>を選択します。</p>
+    </item>
+    <item>
+      <p><gui style="tab">ページの取り扱い</gui>タブを選択します。</p>
+    </item>
+    <item>
+      <p>ドロップダウンリストから、<em>ページの拡大・縮小</em>を選択します。</p>
+      <list>
+        <item>
+          <p><em>なし</em>：ページの拡大／縮小は行われません。</p>
+        </item>
+        <item>
+          <p><em>印刷可能な領域に合わせて縮小</em>：印刷可能領域より大きい文書ページは、プリンタページの印刷可能領域に合わせて縮小されます。</p>
+        </item>
+        <item>
+          <p><em>印刷可能な領域に合わせる</em>：文書ページは、必要に応じてプリンタページの印刷可能領域に合わせて拡大または縮小されます。</p>
+        </item>
+      </list>
+    </item>
+    <item>
+      <p><gui>印刷</gui>をクリックして文書を印刷します。</p>
+    </item>
+  </steps>
+
+</page>

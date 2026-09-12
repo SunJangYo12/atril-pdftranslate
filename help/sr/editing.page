@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="editing" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#faq"/>
+    <desc>Можете користити Атрил за уређивање датотека.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Фил Бул</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+
+  </info>
+
+<title>Да ли се могу уређивати документа у прегледнику докумената?</title>
+
+
+ <p>Атрил се не може користити за уношење измена у документа. Морате да користите одговарајући програм за уређивање за врсту датотеке коју желите да измените.</p>
+
+
+<note>
+ <p>ПДФ и Постскрипт (.ps) датотеке нису замишљене за уређивање, али је софтвер за уређивање ПДФ-а доступан. Пробајте <app>Либреофис Цртеж</app> или <app>Окулар</app>, на пример. Међутим, „<app>pdfarranger</app>“ омогућава прераспоређивање или уклањање страница и стапање датотека.</p>
+</note>
+</page>

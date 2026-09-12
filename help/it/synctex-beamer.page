@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="synctex-beamer" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#synctex" group="sixth"/>
+    <desc>Utilizzare SyncTeX con la classe Beamer di LaTeX.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+  </info>
+
+<title>Beamer con SyncTeX</title>
+<p>Beamer è una classe di LaTeX per la creazione di slides e presentazioni.</p>
+<p>Si possono effettuare ricerche in avanti e all'indietro in una presentazione <em>Beamer-LaTeX</em> in modo simile a quello offerto dalla <link xref="synctex-search">ricerca</link> in altri documenti TeX compilati con SyncTeX. Tuttavia la ricerca porta al corrispondente fotogramma (slide), non associato necessariamente ad una linea di testo. Questa differenza è spiegata sommariamente più avanti.</p>
+<section id="forward-search">
+    <title>Ricerca in avanti: da sorgente Beamer-LaTeX a PDF (da <app>pluma</app> ad Atril)</title>
+    <p>Con <link xref="synctex-search#forward-search">ricerca in avanti</link>, è possibile fare clic su una specifica linea di codice sorgente Beamer-LaTeX. La <em>parte alta</em> della slide corrispondente nel PDF verrà evidenziata in rosso. Questa solitamente è il <em>titolo della cornice</em>.</p>
+</section>
+
+<section id="backward-search">
+
+    <title>Ricerca all'indietro da PDF a sorgente Beamer-LaTeX (da Atril a<app>pluma</app>)</title>
+     <p>Con la <link xref="synctex-search#backward-search">ricerca all'indietro</link>, si può fare clic su una linea di testo di una cornice, e la linea di codice sorgente LaTeX corrispondente che conclude quella particolare cornice verrà evidenziata. Questo solitamente è la linea:</p>
+ <code>\end{frame}</code>
+<p>corrispondente alla cornice su cui si è fatto clic.</p>
+
+
+</section>
+
+
+</page>

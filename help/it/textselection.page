@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="textselection" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#faq"/>
+    <desc>Quando si copia del testo, il testo incollato potrebbe essere differente da quello che si è selezionato.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+<title>Perché il testo che ho selezionato non si copia correttamente?</title>
+
+
+<p>Se si evidenzia e si copia del testo da un documento utilizzando Atril e lo si incolla in un'altra applicazione, la formattazione potrebbe alterarsi. Essa potrebbe addirittura contenere caratteri differenti dalla selezione originale. Questo capita spesso quando si copia del testo da documenti PDF che contengono più colonne.</p>
+
+
+ <p>Ciò si verifica a causa di come i formati di documento diversi gestiscono il testo. L'effettivo testo di un documento è memorizzato in modo differente da come viene visualizzato. Questo potrebbe risultare in una copia che non appare come ci si aspetterebbe.</p>
+
+ <p>Sfortunatamente non c'è alcun modo di risolvere il problema. Copiare meno testo per volta, o copiarlo in un editor di testi (come <app>pluma</app>) potrebbe minimizzare il fenomeno.</p>
+
+</page>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="commandline" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#advanced"/>
+    <title type="sort">Наредба</title>
+    <desc>Наредба „<cmd>atril</cmd>“ може да отвори било који број датотека, на одређеним страницама и у разним режимима.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Фил Бул</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+    <name>Тифани Антополоски</name>
+    <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+  </info>
+
+<title>Линија наредби</title>
+<p>Да покренете <app>Атрил</app> са линије наредби, упишите „<cmd>atril</cmd>“. Можете да отворите одређену датотеку уписујући њен назив након наредбе атрила:</p>
+
+<screen>atril датотека.pdf</screen>
+<p>Можете да отворите више датотека уписивањем њихових назива након наредбе атрила, раздвајајући њихове називе размаком:</p>
+<screen>atril датотека1.pdf датотека2.pdf</screen>
+<p>Атрил такође подржава рад са датотекама на вебу. На пример, након наредбе атрила можете да дате место датотеке на веду:</p>
+<section id="open">
+    <title>Отварање документа на одређеној страници</title>
+    <p>Можете да користите преклопник „<cmd>--page-label</cmd>“ да отворите документ на одређеној страници. На пример, да отворите документ на страници 3, треба да упишете:</p>
+    <screen>atril --page-label=3 датотека.pdf</screen>
+    <p>Натпис странице треба бити у истом формату као број странице приказан на траци заглавља <app>Атрила</app>.</p>
+</section>
+<section id="fullsreen">
+    <title>Отварање документа преко целог екрана</title>
+    <screen>atril --fullscreen датотека.pdf</screen>
+</section>
+<section id="presentation">
+    <title>Отварање документа у режиму презентације</title>
+    <screen>atril --presentation датотека.pdf</screen>
+</section>
+<section id="preview">
+    <title>Отварање документа у режиму претпрегледа</title>
+    <screen>atril --preview датотека.pdf</screen>
+</section>
+</page>

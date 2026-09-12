@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="synctex-support" xml:lang="fr">
+
+  <info>
+    <link type="guide" xref="index#synctex" group="second"/>
+    <desc>How to add support for SyncTeX.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Germán Poo-Caamaño</name>
+      <email>gpoo@mate.org</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Vincent Renardias</mal:name>
+      <mal:email>vincent@ldsol.com</mal:email>
+      <mal:years>1998-2000.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Joaquim Fellmann</mal:name>
+      <mal:email>joaquim@hrnet.fr</mal:email>
+      <mal:years>2000.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Christophe Merlet</mal:name>
+      <mal:email>redfox@redfoxcenter.org</mal:email>
+      <mal:years>2000-2006.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Christophe Fergeau</mal:name>
+      <mal:email>teuf@users.sourceforge.net</mal:email>
+      <mal:years>2002-2003.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Sun G11n</mal:name>
+      <mal:email>gnome_int_l10n@ireland.sun.com</mal:email>
+      <mal:years>2002.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Robert-André Mauchin</mal:name>
+      <mal:email>zebob.m@pengzone.org</mal:email>
+      <mal:years>2006-2008.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Stéphane Raimbault</mal:name>
+      <mal:email>stephane.raimbault@gmail.com</mal:email>
+      <mal:years>2007.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Yannick Tailliez</mal:name>
+      <mal:email>ytdispatch-libre@yahoo.com</mal:email>
+      <mal:years>2008.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Claude Paroz</mal:name>
+      <mal:email>claude@2xlibre.net</mal:email>
+      <mal:years>2008-2010.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Gérard Baylard</mal:name>
+      <mal:email>gerard dot b at bbox dot fr</mal:email>
+      <mal:years>2010</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Set-up SyncTeX</title>
+<p>
+The following packages need to be installed in order to add support for SyncTeX:
+</p>
+<list>
+  <item>
+    <p>
+      A LaTeX engine with SyncTeX support, such as <app>pdflatex</app>.
+    </p>
+  </item>
+  <item>
+    <p>
+      A text editor with SyncTeX support, such as <app>pluma</app> with pluma-plugins installed.
+    </p>
+  </item>
+</list>
+
+<p>
+  In <app>pluma</app>, enable the SyncTeX Plugin:
+</p>
+<steps>
+   <item>
+    <p>
+     Click <guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</gui></guiseq> tab.
+    </p>
+   </item>
+   <item>
+    <p>
+     Check <gui>SyncTeX</gui>.
+    </p>
+   </item>
+</steps>
+</page>

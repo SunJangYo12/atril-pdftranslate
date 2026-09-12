@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="annotations-save" xml:lang="ja">
+<info>
+  <link type="guide" xref="index#annotations"/>
+ <desc>注釈を保存する方法。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Shobha Tyagi</name>
+      <email its:translate="no">tyagishobha@gmail.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+</info>
+<title>注釈が付いた PDF のコピーを保存する</title>
+ <p>注釈が付いた PDF のコピーを保存して、今後も <app>Atril</app> やその他の<em>注釈表示可能な</em> PDFビューアで閲覧するには：</p>
+  <steps>
+   <item>
+     <p><guiseq><gui>ファイル</gui><gui>別名で保存…</gui></guiseq>をクリックします</p>
+   </item>
+   <item>
+     <p>保存先の名前とフォルダーを選択し、<gui>保存</gui>をクリックします。選択したフォルダーに PDF が保存されます。</p>
+    </item>
+   </steps>
+   <p>注釈は、PDF の仕様に従って追加されます。そのため、ほとんどの PDF リーダーで読むことができるはずです。Adobe Reader では動作することが確認されています。</p>
+
+</page>

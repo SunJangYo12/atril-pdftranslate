@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="convertPostScript" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#tips"/>
+    <desc>Можете претворити документ у Постскрипт.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Фил Бул</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ана Филипс</name>
+      <email>anna.cs.au@gmail.com</email>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+
+  </info>
+
+<title>Претварање документа у Постскрипт</title>
+
+<p>Можете да претворите документа следећих врста формата у Постскрипт датотеке:</p>
+<list>
+ <item><p>DjVu (.djvu, .djv)</p></item>
+ <item><p>Преносиви формат докумената (.pdf)</p></item>
+ <item><p>Формат датотеке означне слике (.tiff, .tif)</p></item>
+</list>
+<p>Ово ради отварање датотеке у <app>Атрилу</app> и „штампање“ документа у Постскрипт датотеку.</p>
+<steps>
+    <item>
+     <p>Идите на „<guiseq><gui style="menuitem">Датотека</gui> <gui style="menuitem">Штампај</gui></guiseq>“ и изаберите „<gui>Штампај</gui>“ или притисните <keyseq><key>Ктрл</key><key>P</key></keyseq> и идите на језичак „<gui>Опште</gui>“.</p>
+    </item>
+    <item>
+      <p>Изаберите „<gui>Штампај у датотеку</gui>“ и изаберите Постскрипт као „<gui>Излазни формат</gui>“.</p>
+    </item>
+    <item>
+      <p>Изаберите назив и фасциклу у којој ћете сачувати датотеку, затим кликните „<gui>Штампај</gui>“. Постскрипт ће бити сачуван у фасцикли коју изаберете.</p>
+    </item>
+</steps>
+</page>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="duplex-npage" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="print-booklet#doubleSided"/>
+
+    <desc>Stampare un libretto di n pagine.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+<title>Libretto di n pagine</title>
+ <note style="important">
+  <p><em>n</em> è un multiplo di 4.</p>
+ </note>
+
+ <p>Se il numero delle pagine del vostro documento PDF non è multiplo di quattro dovreste aggiungere il numero appropriato di pagine bianche (1, 2 o 3) per renderlo multiplo di 4. Per fare ciò potete:</p>
+ <steps>
+ <item>
+  <p>Creare un PDF vuoto utilizzando <app>Writer di LibreOffice</app></p>
+ </item>
+ <item>
+  <p>Giuntare le pagine bianche appena create con il vostro documento utilizzando <app>PDF-Shuffler</app>, avendo cura di posizionare le pagine bianche alla fine.</p>
+ </item>
+</steps>
+
+
+<steps>
+ <item>
+  <p>Andare su <guiseq><gui style="menuitem">File</gui> <gui style="menuitem">Stampa</gui></guiseq> e premere il pulsante <gui style="button">stampa</gui>.</p>
+ </item>
+ <item>
+  <p>Aprire la scheda <gui>Generale</gui>.</p>
+  <p>Sotto la voce <em>Intervallo</em> selezionare <gui>Pagine</gui>.</p>
+  <tree>
+   <item>Scrivere i numeri di pagine in questo ordine: <item>n, 1, 2, n-1, n-2, 3, 4, n-3, n-4, 5, 6, n-5, n-6, 7, 8, n-7, n-8, 9, 10, n-9, n-10, 11, 12, n-11...</item><item>...fino ad aver digitato un numero n di pagine.</item></item>
+  </tree>
+ </item>
+ <item>
+  <p>Selezionare la scheda <gui>Impostazioni pagina</gui></p>
+  <p>Sotto <em>Layout</em>, nel menù <gui>Doppia-facciata</gui>, selezionare <gui>Lato corto (flip)</gui>.</p>
+  <p>Nell'opzione pagine per foglio selezionare <gui>2</gui>.</p>
+  <p>Nel menù <gui>Ordinamentodi pagina</gui>, selezionare <gui>da sinistra a destra</gui>.</p>
+ </item>
+ <item>
+  <p>Fare clic su <gui>Stampa</gui>.</p>
+ </item>
+</steps>
+</page>

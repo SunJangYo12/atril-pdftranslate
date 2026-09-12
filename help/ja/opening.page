@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="opening" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#reading"/>
+    <link type="seealso" xref="formats"/>
+    <link type="seealso" xref="commandline"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email its:translate="no">tiffany@antopolski.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+    </credit>
+
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal-unported.xml"/>
+
+    <desc>文書を開く方法です。</desc>
+  </info>
+
+  <title>文書を開く</title>
+
+  <p>次のいずれかの方法で文書を開くことができます。</p>
+
+  <list>
+    <item>
+      <p><app>Caja</app> または<em>ファイル・マネージャ</em>で、ファイルをダブルクリックします。</p>
+      <note style="tip">
+        <p>PDF、PostScript、.djvu、.dvi、Comic Book Archive のファイルをダブルクリックすると、標準で Atril で開きます。</p>
+      </note>
+    </item>
+    <item>
+      <p><app>Caja</app> でファイルのアイコンを右クリックし、<guiseq><gui>Atril</gui> <gui>で開く</gui></guiseq>をクリックします。</p>
+    </item>
+  </list>
+
+  <p>空の <app>Atril</app> ウィンドウがすでに開いている場合は、次のことができます。</p>
+
+  <list>
+    <item>
+      <p><app>Caja</app> からウィンドウへファイルをドラッグします。そのファイルが新しいウィンドウで表示されます。</p>
+    </item>
+    <item>
+      <p>ウィンドウの左上の角にある<gui>開く...</gui>ボタンを押してください。<gui>文書を開く</gui>ダイアログで、開きたいファイルを選択し、<gui>開く</gui>をクリックします。新しいウィンドウで表示されます。</p>
+    </item>
+  </list>
+
+  <p>別の文書がすでに <app>Atril</app> で開いている場合は、次のようにすることができます。</p>
+
+  <list>
+    <item>
+      <p><app>Caja</app> からウィンドウへファイルをドラッグします。そのファイルが新しいウィンドウで表示されます。</p>
+    </item>
+    <item>
+      <p><keyseq><key>Ctrl</key><key>O</key></keyseq>を押します。<gui>文書を開く</gui>ダイアログで、開きたいファイルを選択し、<gui>開く</gui>をクリックします。ファイルが新しいウィンドウで開きます。</p>
+    </item>
+  </list>
+
+</page>

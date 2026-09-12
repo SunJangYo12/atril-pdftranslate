@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="finding" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#reading"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email its:translate="no">philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Anna Philips</name>
+      <email its:translate="no">anna.cs.au@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+    </credit>
+
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal-unported.xml"/>
+
+    <desc>文書内の単語や語句を検索します。</desc>
+  </info>
+
+  <title>文書内のテキストを検索する</title>
+
+  <steps>
+    <item>
+      <p><guiseq><gui style="menuitem">ファイル</gui><gui style="menuitem">検索</gui></guiseq>するか、<keyseq><key>Ctrl</key><key>F</key></keyseq>を押下、あるいは <key>/</key> を選択するかして、検索ボックスを表示してください。</p>
+    </item>
+    <item>
+      <p>検索ボックスに入力を開始すると、検索が自動的に開始します。</p>
+    </item>
+    <item>
+      <p><gui>前を探す</gui>・<gui>次を探す</gui>ボタンで、前の検索結果や次の検索結果に移動できます。</p>
+    </item>
+    <item>
+      <p>検索バーを隠すには、ウィンドウ内のどこかをもう一度クリックするか、<key>Esc</key>キーを押してください。</p>
+    </item>
+  </steps>
+
+  <note style="tip">
+    <p>大文字と小文字を区別して検索するには、<gui>大文字と小文字を区別する</gui>ボタンを押します。</p>
+
+  </note>
+  <p>検索した単語や語句が文書内に一度でも表示された場合は、現在ページに検索結果の回数が表示されます。</p>
+
+  <note>
+    <p>PDF 文書のみが検索可能です。PDF 文書の中には、検索できないものがあります。それは、テキストが画像として文書中にエンコードされているからです。</p>
+  </note>
+
+</page>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="forms-saving" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#forms"/>
+    <desc>必ずフォームを保存をしてください。そうしないと入力した情報がすべて失われてしまいます。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Anna Philips</name>
+      <email>anna.cs.au@gmail.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+  </info>
+
+<title>フォームの保存</title>
+
+<p>フォームを埋めた後、2 つの方法の内のいずれかで保存するとよいでしょう。</p>
+
+<list type="numbered">
+<item><p>あとでも編集可能なようにコピーを保存する（フォームを編集可能な状態のままにする）方法は次のとおりです。</p>
+   <steps>
+      <item>
+        <p><guiseq><gui style="menuitem">ファイル</gui><gui style="menuitem">プリント</gui></guiseq>へ移動し、<gui>名前を付けて保存...</gui>を選択するか、キーボードの<keyseq><key>Ctrl</key><key>S</key></keyseq>を押してください。</p>
+     </item>
+ <item>
+      <p>保存先の名前とフォルダーを選択し、<gui>保存</gui>をクリックします。選択したフォルダーに PDF が保存されます。</p>
+    </item>
+   </steps>
+</item>
+<item><p>編集不可の状態でコピーを保存する（たとえば、フォームを電子メールで送信したり、オンラインで投稿したりする場合など）には、次のとおり行ってください。</p>
+   <steps>
+    <item>
+        <p><guiseq><gui style="menuitem">ファイル</gui><gui style="menuitem">印刷</gui></guiseq>で<gui>印刷</gui>を選択するか、キーボードの<keyseq><key>Ctrl</key><key>P</key></keyseq>を押してください。</p>
+    </item>
+
+
+    <item>
+      <p><gui>ファイルへ印刷</gui>を選択し、<gui>出力形式</gui>として PDF を選択します。</p>
+    </item>
+    <item>
+      <p>保存先の名前とフォルダーを選択し、<gui>保存</gui>をクリックします。選択したフォルダーに PDF が保存されます。</p>
+    </item>
+   </steps>
+</item>
+</list>
+
+<note style="bug">
+<p>暗号化されたファイルのコピーは、保存も出力もできません。</p>
+</note>
+
+</page>

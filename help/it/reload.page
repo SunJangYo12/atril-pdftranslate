@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="reload" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#faq"/>
+
+    <desc>Il documento verrà ricaricato automaticamente se un altro programma lo modifica mentre lo si visualizza.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+<title>Perché il documento viene ricaricato?</title>
+
+<p>Se <app>Atril</app> rileva che il documento aperto sia cambiato (magari perché un altro programma lo ha modificato), esso lo ricaricherà automaticamente per mostrarvi la versione più aggiornata.</p>
+
+<p>Se il documento venisse cancellato mentre lo si sta ancora visualizzando, esso rimarrà comunque aperto.</p>
+
+</page>

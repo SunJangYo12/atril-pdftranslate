@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" id="license" xml:lang="fr">
+
+  <info>
+    <link type="seealso" xref="index"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <desc>Legal information.</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Vincent Renardias</mal:name>
+      <mal:email>vincent@ldsol.com</mal:email>
+      <mal:years>1998-2000.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Joaquim Fellmann</mal:name>
+      <mal:email>joaquim@hrnet.fr</mal:email>
+      <mal:years>2000.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Christophe Merlet</mal:name>
+      <mal:email>redfox@redfoxcenter.org</mal:email>
+      <mal:years>2000-2006.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Christophe Fergeau</mal:name>
+      <mal:email>teuf@users.sourceforge.net</mal:email>
+      <mal:years>2002-2003.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Sun G11n</mal:name>
+      <mal:email>gnome_int_l10n@ireland.sun.com</mal:email>
+      <mal:years>2002.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Robert-André Mauchin</mal:name>
+      <mal:email>zebob.m@pengzone.org</mal:email>
+      <mal:years>2006-2008.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Stéphane Raimbault</mal:name>
+      <mal:email>stephane.raimbault@gmail.com</mal:email>
+      <mal:years>2007.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Yannick Tailliez</mal:name>
+      <mal:email>ytdispatch-libre@yahoo.com</mal:email>
+      <mal:years>2008.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Claude Paroz</mal:name>
+      <mal:email>claude@2xlibre.net</mal:email>
+      <mal:years>2008-2010.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Gérard Baylard</mal:name>
+      <mal:email>gerard dot b at bbox dot fr</mal:email>
+      <mal:years>2010</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Licence</title>
+  <p>
+    <!--
+    Translators: try to use the same translation as the one provided by the CreativeCommons website.
+    If there is no translation for your language, consider providing one to CreativeCommons.
+    -->
+    This work is distributed under a CreativeCommons Attribution-Share Alike
+    3.0 Unported license.
+  </p>
+  <p>
+    You are free:
+  </p>
+  <terms>
+    <item>
+      <title><em>To share</em></title>
+      <p>To copy, distribute and transmit the work.</p>
+    </item>
+    <item>
+      <title><em>To remix</em></title>
+      <p>To adapt the work.</p>
+    </item>
+  </terms>
+  <p>
+    Under the following conditions:
+  </p>
+  <terms>
+    <item>
+      <title><em>Attribution</em></title>
+      <p>
+        You must attribute the work in the manner specified by the author or
+        licensor (but not in any way that suggests that they endorse you or
+        your use of the work).
+      </p>
+    </item>
+    <item>
+      <title><em>Share Alike</em></title>
+      <p>
+        If you alter, transform, or build upon this work, you may distribute the
+        resulting work only under the same, similar or a compatible license.
+      </p>
+    </item>
+  </terms>
+  <p>
+    <!-- Translators: there are no official localized versions of the legal code, only the deed is localized. -->
+    For the full text of the license, see the
+    <link href="http://creativecommons.org/licenses/by-sa/3.0/legalcode">CreativeCommons website</link>,
+    or read the full <link href="http://creativecommons.org/licenses/by-sa/3.0/">Commons Deed</link>.
+  </p>
+</page>

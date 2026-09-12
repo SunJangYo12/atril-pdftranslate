@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" style="task" id="print-differentsize" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="printing"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email its:translate="no">philbull@gmail.com</email>
+    </credit>
+    <credit type="author">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+
+    <desc>Stampare un documento su carta di formato e orientazione differente.</desc>
+  </info>
+
+  <title>Cambiare la dimensione della carta durante la stampa</title>
+
+  <p>Se si vuole modificare la dimensione del proprio documento (ad esempio utilizzando il formato US Letter PDF su un foglio A4), si può cambiare il formato di stampa per il documento.</p>
+
+  <steps>
+    <item>
+      <p>Andare su <guiseq><gui style="menuitem">File</gui> <gui style="menuitem">Stampa</gui></guiseq> e premere il pulsante <gui style="button">stampa</gui>.</p>
+    </item>
+    <item>
+      <p>Selezionare la scheda <gui>Imposta pagina</gui>.</p>
+    </item>
+    <item>
+      <p>Sotto la colonna <em>Carta</em>, selezionare la <em>Dimensione del foglio</em> desiderata dall'elenco a comparsa.</p>
+    </item>
+    <item>
+      <p>Fare clic su <gui>Stampa</gui> e dovrebbe iniziare la stampa del documento.</p>
+    </item>
+  </steps>
+
+  <p>Si può utilizzare anche il menù <em>Orientazione</em> per scegliere un diverso orientamento.</p>
+
+  <list>
+    <item>
+      <p><gui>Orizzontale</gui></p>
+    </item>
+    <item>
+      <p><gui>Verticale</gui></p>
+    </item>
+    <item>
+      <p><gui>Orizzontale invertito</gui></p>
+    </item>
+    <item>
+      <p><gui>Verticale invertito</gui></p>
+    </item>
+  </list>
+
+</page>

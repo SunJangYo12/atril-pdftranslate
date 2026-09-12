@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="convertSVG" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#tips"/>
+    <desc>È possibile convertire un documento in SVG "stampandolo" come file.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Anna Philips</name>
+      <email>anna.cs.au@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+<title>Convertire un documento in formato SVG</title>
+<p>Si possono convertire in SVG i file nei seguenti formati:</p>
+<list>
+ <item><p>Portable Document Format (.pdf)</p></item>
+</list>
+<p>Basta aprire il file in <app>Atril</app> e "stampare" il documento come file SVG.</p>
+<steps>
+    <item>
+      <p>Andare su <guiseq><gui style="menuitem">File</gui> <gui style="menuitem">Stampa</gui></guiseq> e selezionare <gui>Stampa</gui> o premere <keyseq><key>Ctrl</key><key>P</key></keyseq> sulla tastiera.</p>
+    </item>
+    <item>
+      <p>Selezionare <gui>Stampa su file</gui> e scegliere SVG come <gui>formato di output</gui>.</p>
+    </item>
+    <item>
+      <p>Specificare un nome ed una cartella in cui salvare il documento e fare clic su <gui>Stampa</gui>. Il file SVG verrà salvato nella cartella scelta.</p>
+    </item>
+</steps>
+</page>

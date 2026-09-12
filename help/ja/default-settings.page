@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="default-settings" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#faq"/>
+    <desc>現在の設定を既定値として保存します。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Sindhu S</name>
+      <email>sindhus@live.in</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+
+  </info>
+
+  <title>既定の設定を変更する</title>
+
+  <p>文書を初めて開いたとき、拡大率やページ表示の設定などは初期設定が適用されます。この設定を変更すれば、それが文書に適用されます。</p>
+  <p><gui style="menuitem">編集</gui>を押して<gui style="menuitem">現在の設定をデフォルトとして保存</gui>を選択すると、現在使用している設定を、すべての新規文書の既定値として保存することができます。</p>
+
+  <note style="important">
+    <p>新しいデフォルト設定は、以前に開いた文書の設定を上書きするものではなく、初めて開いた文書にのみ適用されます。</p>
+  </note>
+
+</page>

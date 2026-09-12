@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" style="task" id="index" xml:lang="it">
+
+  <info>
+    <title type="link" role="trail"><media type="image" its:translate="no" src="figures/atril-trail.png"/></title>
+    <title type="link">Atril</title>
+    <title type="text">Atril</title>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email its:translate="no">philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Tiffany Antopolski</name>
+      <email its:translate="no">tiffany@antopolski.com</email>
+    </credit>
+
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal-unported.xml"/>
+
+    <desc><app>Atril</app> è concepito per visualizzare documenti PDF. Impara come utilizzare <app>Atril</app> e le sue caratteristiche.</desc>
+
+  </info>
+
+  <title><media type="image" its:translate="no" src="figures/atril.png"/> Aiuto di Atril</title>
+
+<section id="reading" style="2column">
+    <title>Leggere documenti</title>
+</section>
+
+<section id="pres" style="2column">
+    <title>Presentazioni ed altri formati supportati</title>
+</section>
+
+<section id="printing" style="2column">
+    <title>Stampa</title>
+</section>
+
+<section id="annotations" style="2column">
+    <title>Annotazioni e segnalibri</title>
+</section>
+
+<section id="forms" style="2column">
+    <title>Moduli interattivi</title>
+</section>
+
+<section id="faq" style="2column">
+    <title>Domande frequenti</title>
+</section>
+
+<section id="advanced" style="2column">
+   <title>Avanzate</title>
+</section>
+
+<section id="tips" style="2column">
+    <title>Suggerimenti e consigli</title>
+</section>
+
+<section id="synctex">
+    <title>SyncTeX</title>
+    <links type="topic" style="2column" groups="first second third fourth fifth sixth"/>
+</section>
+
+<section id="getInvolved" style="2column">
+    <title>Partecipa</title>
+</section>
+</page>

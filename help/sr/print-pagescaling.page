@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" style="task" id="print-pagescaling" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="printing"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Екатерина Герасимова</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal-unported.xml"/>
+
+    <desc>Скупите или раширите документ да испуни величину папира.</desc>
+  </info>
+
+  <title>Промените величину странице за штампање</title>
+
+  <p>Ако желите да измените величину папира вашег документа (на пример, да одштампате ПДФ величине америчког писма на А4 папиру), можете да измените формат штампања документа.</p>
+
+  <steps>
+    <item>
+      <p>Отворите изборник на десној страни прозора, затим изаберите „<gui style="menuitem">Штампај…</gui>“.</p>
+    </item>
+    <item>
+      <p>Изаберите језичак „<gui style="tab">Рад са страницом</gui>“.</p>
+    </item>
+    <item>
+      <p>Изаберите „<em>Промените величину странице</em>“ са падајућег списка.</p>
+      <list>
+        <item>
+          <p><em>Ништа</em>: не обавља промену величине странице.</p>
+        </item>
+        <item>
+          <p><em>Скупи на област штампања</em>: странице документа веће од области штампања се смањују да испуне област штампања странице штампача.</p>
+        </item>
+        <item>
+          <p><em>Испуни област штампања</em>: странице документа се повећавају или умањују да испуне област штампања странице штампача.</p>
+        </item>
+      </list>
+    </item>
+    <item>
+      <p>Кликните „<gui>Штампај</gui>“ да штампате ваш документ.</p>
+    </item>
+  </steps>
+
+</page>

@@ -1,0 +1,1587 @@
+commit 268ed59da718f619acc4b85573b892b0fe7ffd1d
+Author: raveit65 <mate@raveit.de>
+Date:   Fri Aug 6 12:19:42 2021 +0200
+
+    release 1.26.0
+
+ NEWS         | 11 +++++++++++
+ configure.ac |  4 ++--
+ 2 files changed, 13 insertions(+), 2 deletions(-)
+
+commit e47829c063eee38eec4c9eba398350b44152ebce
+Author: raveit65 <mate@raveit.de>
+Date:   Fri Aug 6 11:38:48 2021 +0200
+
+    tx: sync with transifex
+
+ help/ca/ca.po       | 4144 +++++++++++++++++++++++++++++++--------------
+ help/da/da.po       | 4154 +++++++++++++++++++++++++++++++--------------
+ help/de/de.po       | 3881 ++++++++++++++++++++++++++++++------------
+ help/es/es.po       | 3862 ++++++++++++++++++++++++++++++------------
+ help/fr/fr.po       | 4212 ++++++++++++++++++++++++++++++---------------
+ help/gl/gl.po       | 3758 +++++++++++++++++++++++++++++-----------
+ help/it/it.po       | 4708 +++++++++++++++++++++++++++++++++++++--------------
+ help/ja/ja.po       | 3965 ++++++++++++++++++++++++++++++++-----------
+ help/ko/ko.po       | 3521 ++++++++++++++++++++++++++++----------
+ help/ms/ms.po       | 4140 ++++++++++++++++++++++++++++++--------------
+ help/nb/nb.po       | 3482 +++++++++++++++++++++++++++----------
+ help/nl/nl.po       | 3864 ++++++++++++++++++++++++++++++------------
+ help/oc/oc.po       | 3704 +++++++++++++++++++++++++++++-----------
+ help/pl/pl.po       | 3581 +++++++++++++++++++++++++++++----------
+ help/pt_BR/pt_BR.po | 4039 ++++++++++++++++++++++++++++++-------------
+ help/ru/ru.po       | 4153 +++++++++++++++++++++++++++++++--------------
+ help/sr/sr.po       | 4119 +++++++++++++++++++++++++++++++++-----------
+ help/sv/sv.po       | 3674 +++++++++++++++++++++++++++++-----------
+ help/tr/tr.po       | 3815 +++++++++++++++++++++++++++++------------
+ help/uk/uk.po       | 4149 +++++++++++++++++++++++++++++++--------------
+ help/zh_CN/zh_CN.po | 4164 +++++++++++++++++++++++++++++++--------------
+ po/bg.po            |   10 +-
+ po/ca.po            |    4 +-
+ po/cs.po            |   12 +-
+ po/da.po            |  191 ++-
+ po/de.po            |    2 +-
+ po/el.po            |    4 +-
+ po/es.po            |    2 +-
+ po/fr.po            |   16 +-
+ po/he.po            |   34 +-
+ po/hr.po            |    2 +-
+ po/id.po            |  196 ++-
+ po/it.po            |   32 +-
+ po/ja.po            |  431 ++---
+ po/ko.po            |   59 +-
+ po/nb.po            |    4 +-
+ po/oc.po            |   55 +-
+ po/pt.po            |    2 +-
+ po/sr.po            |  193 ++-
+ po/sv.po            |   10 +-
+ po/zh_CN.po         |  201 +--
+ 41 files changed, 60281 insertions(+), 24268 deletions(-)
+
+commit e85824b1f7da4dc142a25a9eef500014d3f0609f
+Author: raveit65 <mate@raveit.de>
+Date:   Fri Aug 6 11:29:56 2021 +0200
+
+    tx: update resource
+
+ atril.pot | 364 +++++++++++++++++++++++++++++++-------------------------------
+ 1 file changed, 182 insertions(+), 182 deletions(-)
+
+commit e04d77232cf433d9340e83c0761ee102a6710f97
+Author: raveit65 <mate@raveit.de>
+Date:   Fri Aug 6 11:27:07 2021 +0200
+
+    travis-Ci: use libera.chat as notification server
+
+ .travis.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 88e8547e92c3694326c25417ea813942a7b24862
+Author: mbkma <johannes.unruh@fau.de>
+Date:   Fri Jun 4 13:49:26 2021 +0200
+
+    ev-window.c: only create a EvWebView if needed
+    
+    A WebKit processes should only be created when the user actually requests to open a file type requiring WebKit to be processed.
+
+ shell/ev-window.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+commit 50d0b23c608020dd1da3fb3e13883941182ec89e
+Author: Christoph Fritz <chf.fritz@googlemail.com>
+Date:   Mon Mar 8 13:54:39 2021 +0100
+
+    ev-sidebar-links: Optimize reverse link lookup for a page
+    
+    Commit adapted for atril, picked up from:
+    https://gitlab.gnome.org/GNOME/evince/-/commit/c3de8e75d6d0920478af210ba19a2d94b0734917
+    
+    Credits to Benjamin Berg <bberg@redhat.com>
+    
+      | For large documents the linear search for the first link that is on a
+      | certain page is really slow. Because of this scrolling becomes slow
+      | whenever the page changes.
+      |
+      | Replace the linear search with a search in a binary tree populated with
+      | the first link on each page and the corresponding GtkTreePath. This way
+      | a specialized binary tree lookup can be used to find the closest
+      | matching link and select that in the treeview.
+      |
+      | https://bugzilla.gnome.org/show_bug.cgi?id=779614
+
+ shell/ev-sidebar-links.c | 139 +++++++++++++++++++++++++++--------------------
+ 1 file changed, 80 insertions(+), 59 deletions(-)
+
+commit ae1c8e7e9e881022bbad8da68b3efcee10268ed0
+Author: raveit65 <mate@raveit.de>
+Date:   Sat May 29 15:16:16 2021 +0200
+
+    travis-ci: use ubuntu focal as host system
+    
+    fixes build issues with fedora:latest (f34) tag.
+
+ .travis.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit d0e6b3690ab24e34dc73c56a3ad30e7c6f55bd3b
+Author: raveit65 <mate@raveit.de>
+Date:   Thu Apr 22 18:57:05 2021 +0200
+
+    travis: disable travis builds for ubuntu
+    
+    Sadly, there is a limit for free builds at docker.com
+    See discussion
+    https://github.com/orgs/mate-desktop/teams/core-team/discussions/25
+
+ .travis.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 31f65910114d11671cb042ee240b95e78a933ebb
+Author: orbea <orbea@riseup.net>
+Date:   Sun Apr 4 07:07:18 2021 -0700
+
+    introspection: Fix bogus --library arguments.
+
+ libdocument/Makefile.am | 2 +-
+ libview/Makefile.am     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit b8f1d0c2d0ebb7adaecc9fcaceef111a3737ebff
+Author: Jason Crain <jcrain@src.gnome.org>
+Date:   Fri Jan 10 15:35:05 2020 -0700
+
+    libdocument: remove _ev_g_mkdtemp function
+    
+    The g_mkdtemp function was added to glib 2.30. Remove our local copy and
+    use the glib one instead.
+
+ libdocument/ev-file-helpers.c | 87 +------------------------------------------
+ 1 file changed, 1 insertion(+), 86 deletions(-)
+
+commit 87b2266515ecd6685fd0e3a6402788bfb11ebfb9
+Author: rbuj <robert.buj@gmail.com>
+Date:   Wed Mar 17 10:26:58 2021 +0100
+
+    epub: declaration of ‘uL’ shadows a previous local [-Wshadow]
+
+ backend/epub/minizip/unzip.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+commit 88244cd89a31268242610316c0fd51a405a91d02
+Author: rbuj <robert.buj@gmail.com>
+Date:   Wed Mar 17 08:23:44 2021 +0100
+
+    ev-window: missing initializer for a field of ‘GtkActionEntry’
+
+ shell/ev-window.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+commit f14a3157184d0496c77f62731d0a17c6b87d9d1f
+Author: rbuj <robert.buj@gmail.com>
+Date:   Wed Mar 17 10:04:04 2021 +0100
+
+    epub: fix typo
+
+ backend/epub/minizip/unzip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 8674cf0ae61ec293d4585c2cfc74f58d1da2e3d6
+Author: raveit65 <mate@raveit.de>
+Date:   Mon Mar 29 21:07:57 2021 +0200
+
+    release 1.25.1
+
+ NEWS         | 36 ++++++++++++++++++++++++++++++++++++
+ configure.ac |  2 +-
+ 2 files changed, 37 insertions(+), 1 deletion(-)
+
+commit acf610802b5bc85a6cdfd1aba5084df6b49b971c
+Author: raveit65 <mate@raveit.de>
+Date:   Mon Mar 29 21:02:49 2021 +0200
+
+    tx: sync with transifex
+
+ help/af/af.po                   |    4 +-
+ help/am/am.po                   |    4 +-
+ help/ar/ar.po                   |    4 +-
+ help/as/as.po                   |    4 +-
+ help/ast/ast.po                 |    4 +-
+ help/az/az.po                   |    4 +-
+ help/be/be.po                   |    4 +-
+ help/bg/bg.po                   |    4 +-
+ help/bn/bn.po                   |    4 +-
+ help/bn_IN/bn_IN.po             |    4 +-
+ help/br/br.po                   |    4 +-
+ help/bs/bs.po                   |    4 +-
+ help/ca/ca.po                   |   10 +-
+ help/ca@valencia/ca@valencia.po |    4 +-
+ help/cmn/cmn.po                 |    4 +-
+ help/crh/crh.po                 |    4 +-
+ help/cs/cs.po                   |    4 +-
+ help/cy/cy.po                   |    4 +-
+ help/da/da.po                   |   10 +-
+ help/de/de.po                   |   17 +-
+ help/dz/dz.po                   |    4 +-
+ help/el/el.po                   |    8 +-
+ help/en_AU/en_AU.po             |    4 +-
+ help/en_CA/en_CA.po             |    4 +-
+ help/en_GB/en_GB.po             |   42 +-
+ help/eo/eo.po                   |    4 +-
+ help/es/es.po                   |   83 ++-
+ help/es_AR/es_AR.po             |    4 +-
+ help/es_CL/es_CL.po             |    4 +-
+ help/es_CO/es_CO.po             |    4 +-
+ help/et/et.po                   |    4 +-
+ help/eu/eu.po                   |    4 +-
+ help/fa/fa.po                   |    4 +-
+ help/fi/fi.po                   |    4 +-
+ help/fr/fr.po                   |  363 ++++++++----
+ help/fy/fy.po                   |    4 +-
+ help/ga/ga.po                   |    4 +-
+ help/gl/gl.po                   |    4 +-
+ help/gu/gu.po                   |    4 +-
+ help/he/he.po                   |   11 +-
+ help/hi/hi.po                   |    4 +-
+ help/hr/hr.po                   |    4 +-
+ help/hu/hu.po                   |    4 +-
+ help/hy/hy.po                   |    4 +-
+ help/ia/ia.po                   |    4 +-
+ help/id/id.po                   |   13 +-
+ help/ie/ie.po                   |    4 +-
+ help/is/is.po                   |    4 +-
+ help/it/it.po                   |   10 +-
+ help/ja/ja.po                   |    6 +-
+ help/ka/ka.po                   |    4 +-
+ help/kab/kab.po                 |   11 +-
+ help/kk/kk.po                   |    4 +-
+ help/kn/kn.po                   |    4 +-
+ help/ko/ko.po                   |    4 +-
+ help/ks/ks.po                   |    4 +-
+ help/ku/ku.po                   |    4 +-
+ help/ku_IQ/ku_IQ.po             |    4 +-
+ help/ky/ky.po                   |    4 +-
+ help/lt/lt.po                   |    8 +-
+ help/lv/lv.po                   |    4 +-
+ help/mai/mai.po                 |    4 +-
+ help/mg/mg.po                   |    4 +-
+ help/mk/mk.po                   |    4 +-
+ help/ml/ml.po                   |    4 +-
+ help/mn/mn.po                   |    4 +-
+ help/mr/mr.po                   |    4 +-
+ help/ms/ms.po                   |   10 +-
+ help/nb/nb.po                   |   15 +-
+ help/nds/nds.po                 |    4 +-
+ help/ne/ne.po                   |    4 +-
+ help/nl/nl.po                   |   29 +-
+ help/nn/nn.po                   |   15 +-
+ help/nso/nso.po                 |    4 +-
+ help/oc/oc.po                   |   82 ++-
+ help/or/or.po                   |    4 +-
+ help/pa/pa.po                   |    4 +-
+ help/pl/pl.po                   |   11 +-
+ help/ps/ps.po                   |    4 +-
+ help/pt/pt.po                   |   79 +--
+ help/pt_BR/pt_BR.po             |   70 ++-
+ help/ro/ro.po                   |    4 +-
+ help/ru/ru.po                   |   10 +-
+ help/si/si.po                   |    4 +-
+ help/sk/sk.po                   |    4 +-
+ help/sl/sl.po                   |    4 +-
+ help/sq/sq.po                   |   21 +-
+ help/sr/sr.po                   |   68 ++-
+ help/sr@latin/sr@latin.po       |    4 +-
+ help/sv/sv.po                   |  103 ++--
+ help/ta/ta.po                   |    4 +-
+ help/te/te.po                   |    4 +-
+ help/th/th.po                   |    4 +-
+ help/tr/tr.po                   |   48 +-
+ help/ug/ug.po                   |    4 +-
+ help/uk/uk.po                   |    4 +-
+ help/ur/ur.po                   |    4 +-
+ help/uz/uz.po                   |    8 +-
+ help/vi/vi.po                   |    4 +-
+ help/wa/wa.po                   |    4 +-
+ help/xh/xh.po                   |    4 +-
+ help/zh_CN/zh_CN.po             |   31 +-
+ help/zh_HK/zh_HK.po             |    4 +-
+ help/zh_TW/zh_TW.po             |    4 +-
+ help/zu/zu.po                   |    4 +-
+ po/af.po                        |  985 +++++++++++++++++++++++---------
+ po/am.po                        |  985 +++++++++++++++++++++++---------
+ po/ar.po                        |  985 +++++++++++++++++++++++---------
+ po/as.po                        |  985 +++++++++++++++++++++++---------
+ po/ast.po                       |  989 +++++++++++++++++++++++---------
+ po/az.po                        |  985 +++++++++++++++++++++++---------
+ po/be.po                        |  985 +++++++++++++++++++++++---------
+ po/bg.po                        |  987 +++++++++++++++++++++++---------
+ po/bn.po                        |  985 +++++++++++++++++++++++---------
+ po/bn_IN.po                     |  985 +++++++++++++++++++++++---------
+ po/br.po                        |  985 +++++++++++++++++++++++---------
+ po/bs.po                        |  985 +++++++++++++++++++++++---------
+ po/ca.po                        | 1005 +++++++++++++++++++++++---------
+ po/ca@valencia.po               |  985 +++++++++++++++++++++++---------
+ po/cmn.po                       |  985 +++++++++++++++++++++++---------
+ po/crh.po                       |  985 +++++++++++++++++++++++---------
+ po/cs.po                        | 1013 ++++++++++++++++++++++++---------
+ po/cy.po                        |  985 +++++++++++++++++++++++---------
+ po/da.po                        |  996 +++++++++++++++++++++++---------
+ po/de.po                        | 1003 +++++++++++++++++++++++---------
+ po/de_CH.po                     |  981 +++++++++++++++++++++++---------
+ po/dz.po                        |  985 +++++++++++++++++++++++---------
+ po/el.po                        |  991 +++++++++++++++++++++++---------
+ po/en_AU.po                     |  985 +++++++++++++++++++++++---------
+ po/en_CA.po                     |  985 +++++++++++++++++++++++---------
+ po/en_GB.po                     |  989 +++++++++++++++++++++++---------
+ po/eo.po                        |  985 +++++++++++++++++++++++---------
+ po/es.po                        | 1009 +++++++++++++++++++++++---------
+ po/es_AR.po                     |  981 +++++++++++++++++++++++---------
+ po/es_CL.po                     |  981 +++++++++++++++++++++++---------
+ po/es_CO.po                     |  988 +++++++++++++++++++++++---------
+ po/es_MX.po                     |  981 +++++++++++++++++++++++---------
+ po/es_PR.po                     |  981 +++++++++++++++++++++++---------
+ po/es_VE.po                     |  981 +++++++++++++++++++++++---------
+ po/et.po                        |  985 +++++++++++++++++++++++---------
+ po/eu.po                        |  988 +++++++++++++++++++++++---------
+ po/fa.po                        |  985 +++++++++++++++++++++++---------
+ po/fi.po                        |  989 +++++++++++++++++++++++---------
+ po/fr.po                        | 1006 +++++++++++++++++++++++---------
+ po/frp.po                       |  981 +++++++++++++++++++++++---------
+ po/fur.po                       |  985 +++++++++++++++++++++++---------
+ po/fy.po                        |  985 +++++++++++++++++++++++---------
+ po/ga.po                        |  985 +++++++++++++++++++++++---------
+ po/gl.po                        | 1014 ++++++++++++++++++++++++---------
+ po/gu.po                        |  985 +++++++++++++++++++++++---------
+ po/ha.po                        |  981 +++++++++++++++++++++++---------
+ po/he.po                        |  988 +++++++++++++++++++++++---------
+ po/hi.po                        |  985 +++++++++++++++++++++++---------
+ po/hr.po                        |  995 +++++++++++++++++++++++---------
+ po/hu.po                        | 1031 +++++++++++++++++++++++----------
+ po/hy.po                        |  985 +++++++++++++++++++++++---------
+ po/ia.po                        |  981 +++++++++++++++++++++++---------
+ po/id.po                        |  994 +++++++++++++++++++++++---------
+ po/ie.po                        | 1019 ++++++++++++++++++++++++---------
+ po/ig.po                        |  981 +++++++++++++++++++++++---------
+ po/is.po                        |  985 +++++++++++++++++++++++---------
+ po/it.po                        | 1017 ++++++++++++++++++++++++---------
+ po/ja.po                        | 1002 +++++++++++++++++++++++---------
+ po/ka.po                        |  985 +++++++++++++++++++++++---------
+ po/kab.po                       |  991 +++++++++++++++++++++++---------
+ po/kk.po                        |  985 +++++++++++++++++++++++---------
+ po/kn.po                        |  985 +++++++++++++++++++++++---------
+ po/ko.po                        |  987 +++++++++++++++++++++++---------
+ po/ks.po                        |  981 +++++++++++++++++++++++---------
+ po/ku.po                        |  985 +++++++++++++++++++++++---------
+ po/ku_IQ.po                     |  985 +++++++++++++++++++++++---------
+ po/ky.po                        |  985 +++++++++++++++++++++++---------
+ po/li.po                        |  985 +++++++++++++++++++++++---------
+ po/lt.po                        | 1000 +++++++++++++++++++++++---------
+ po/lv.po                        |  985 +++++++++++++++++++++++---------
+ po/mai.po                       |  985 +++++++++++++++++++++++---------
+ po/mg.po                        |  985 +++++++++++++++++++++++---------
+ po/mi.po                        |  985 +++++++++++++++++++++++---------
+ po/mk.po                        |  985 +++++++++++++++++++++++---------
+ po/ml.po                        |  985 +++++++++++++++++++++++---------
+ po/mn.po                        |  985 +++++++++++++++++++++++---------
+ po/mr.po                        |  985 +++++++++++++++++++++++---------
+ po/ms.po                        |  994 +++++++++++++++++++++++---------
+ po/nb.po                        | 1006 +++++++++++++++++++++++---------
+ po/nds.po                       |  989 +++++++++++++++++++++++---------
+ po/ne.po                        |  985 +++++++++++++++++++++++---------
+ po/nl.po                        | 1006 +++++++++++++++++++++++---------
+ po/nn.po                        |  990 +++++++++++++++++++++++---------
+ po/nso.po                       |  985 +++++++++++++++++++++++---------
+ po/oc.po                        | 1200 +++++++++++++++++++++++++++------------
+ po/or.po                        |  985 +++++++++++++++++++++++---------
+ po/pa.po                        |  985 +++++++++++++++++++++++---------
+ po/pl.po                        | 1027 +++++++++++++++++++++++----------
+ po/pms.po                       |  985 +++++++++++++++++++++++---------
+ po/ps.po                        |  985 +++++++++++++++++++++++---------
+ po/pt.po                        | 1004 +++++++++++++++++++++++---------
+ po/pt_BR.po                     |  994 +++++++++++++++++++++++---------
+ po/ro.po                        |  985 +++++++++++++++++++++++---------
+ po/ru.po                        |  997 +++++++++++++++++++++++---------
+ po/rw.po                        |  985 +++++++++++++++++++++++---------
+ po/sc.po                        |  981 +++++++++++++++++++++++---------
+ po/si.po                        |  985 +++++++++++++++++++++++---------
+ po/sk.po                        | 1005 +++++++++++++++++++++++---------
+ po/sl.po                        | 1004 +++++++++++++++++++++++---------
+ po/sq.po                        |  985 +++++++++++++++++++++++---------
+ po/sr.po                        | 1004 +++++++++++++++++++++++---------
+ po/sr@latin.po                  |  985 +++++++++++++++++++++++---------
+ po/sv.po                        |  998 +++++++++++++++++++++++---------
+ po/ta.po                        |  985 +++++++++++++++++++++++---------
+ po/te.po                        |  985 +++++++++++++++++++++++---------
+ po/th.po                        |  985 +++++++++++++++++++++++---------
+ po/tk.po                        |  985 +++++++++++++++++++++++---------
+ po/tr.po                        | 1004 +++++++++++++++++++++++---------
+ po/tt.po                        |  985 +++++++++++++++++++++++---------
+ po/ug.po                        |  985 +++++++++++++++++++++++---------
+ po/uk.po                        | 1004 +++++++++++++++++++++++---------
+ po/ur.po                        |  985 +++++++++++++++++++++++---------
+ po/uz.po                        |  985 +++++++++++++++++++++++---------
+ po/vi.po                        |  985 +++++++++++++++++++++++---------
+ po/wa.po                        |  985 +++++++++++++++++++++++---------
+ po/xh.po                        |  985 +++++++++++++++++++++++---------
+ po/yi.po                        |  985 +++++++++++++++++++++++---------
+ po/yo.po                        |  981 +++++++++++++++++++++++---------
+ po/zh_CN.po                     |  993 +++++++++++++++++++++++---------
+ po/zh_HK.po                     |  985 +++++++++++++++++++++++---------
+ po/zh_TW.po                     |  999 +++++++++++++++++++++++---------
+ po/zu.po                        |  985 +++++++++++++++++++++++---------
+ 227 files changed, 88435 insertions(+), 34022 deletions(-)
+
+commit add00d636f0ba1ee3a49e9bba4f7c012f76df7d3
+Author: raveit65 <mate@raveit.de>
+Date:   Mon Mar 29 20:50:15 2021 +0200
+
+    tx: update resource
+
+ help/atril.pot | 3001 +++++++++++++++++++++++++++++++++++++++++++-------------
+ 1 file changed, 2318 insertions(+), 683 deletions(-)
+
+commit e82bd2c2b4d0a1556234e33bdfeafc43ff21d9ec
+Author: mbkma <johannes.unruh@fau.de>
+Date:   Fri Mar 12 11:24:53 2021 +0100
+
+    update help
+
+ help/C/annotation-properties.page     |  51 +++
+ help/C/annotations-delete.page        |  40 ++
+ help/C/annotations-disabled.page      |  21 +
+ help/C/annotations-navigate.page      |  23 +
+ help/C/annotations-save.page          |  45 ++
+ help/C/annotations.page               |  76 ++++
+ help/C/bookmarks.page                 |  89 ++++
+ help/C/bug-filing.page                |  37 ++
+ help/C/commandline.page               |  61 +++
+ help/C/convertPostScript.page         |  59 +++
+ help/C/convertSVG.page                |  55 +++
+ help/C/convertpdf.page                |  68 +++
+ help/C/default-settings.page          |  33 ++
+ help/C/develop.page                   |  27 ++
+ help/C/documentation.page             |  30 ++
+ help/C/duplex-npages.page             |  86 ++++
+ help/C/editing.page                   |  34 ++
+ help/C/figures/atril-trail.png        | Bin 0 -> 907 bytes
+ help/C/figures/atril.png              | Bin 0 -> 3267 bytes
+ help/C/figures/atril_start_window.png | Bin 23384 -> 0 bytes
+ help/C/finding.page                   |  64 +++
+ help/C/formats.page                   |  50 +++
+ help/C/forms-saving.page              |  86 ++++
+ help/C/forms.page                     |  34 ++
+ help/C/index.docbook                  | 794 ----------------------------------
+ help/C/index.page                     |  72 +++
+ help/C/introduction.page              |  24 +
+ help/C/invert-colors.page             |  36 ++
+ help/C/legal-unported.xml             |   8 +
+ help/C/legal.xml                      |  85 +---
+ help/C/license.page                   |  59 +++
+ help/C/movingaround.page              | 184 ++++++++
+ help/C/noprint.page                   |  76 ++++
+ help/C/openerror.page                 |  25 ++
+ help/C/opening.page                   |  73 ++++
+ help/C/password.page                  |  52 +++
+ help/C/presentations.page             |  82 ++++
+ help/C/print-2sided.page              |  44 ++
+ help/C/print-booklet.page             |  36 ++
+ help/C/print-differentsize.page       |  65 +++
+ help/C/print-pagescaling.page         |  57 +++
+ help/C/printing.page                  |  56 +++
+ help/C/reload.page                    |  32 ++
+ help/C/shortcuts.page                 | 265 ++++++++++++
+ help/C/singlesided-npages.page        | 113 +++++
+ help/C/synctex-beamer.page            |  45 ++
+ help/C/synctex-compile.page           |  34 ++
+ help/C/synctex-editors.page           |  57 +++
+ help/C/synctex-search.page            |  69 +++
+ help/C/synctex-support.page           |  55 +++
+ help/C/synctex.page                   |  23 +
+ help/C/textselection.page             |  39 ++
+ help/C/translate.page                 |  34 ++
+ help/Makefile.am                      |  59 ++-
+ 54 files changed, 2850 insertions(+), 872 deletions(-)
+
+commit 2651eeb6938177551676efc0a9ffde1e2c9ab9fc
+Author: raveit65 <mate@raveit.de>
+Date:   Mon Mar 8 15:05:41 2021 +0100
+
+    travis: build with mate-common-1.24.2 from repos
+
+ .build.yml | 11 -----------
+ 1 file changed, 11 deletions(-)
+
+commit 8e98803b9642dbb58822754a5eb6d415147233c9
+Author: raveit65 <mate@raveit.de>
+Date:   Mon Feb 22 10:06:00 2021 +0100
+
+    tx: temporarily disable build for ArchLinux
+
+ .travis.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 3c52e85e2a7d73bf15b5f403c346d2abb6441385
+Author: rbuj <robert.buj@gmail.com>
+Date:   Mon Feb 8 15:25:08 2021 +0100
+
+    update resource for transifex
+
+ atril.pot | 761 +++++++++++++++++++++++++++++++++++++++++++++++++-------------
+ 1 file changed, 601 insertions(+), 160 deletions(-)
+
+commit eccf87bbaa249967237630376057c889070b1ea3
+Author: rbuj <robert.buj@gmail.com>
+Date:   Mon Feb 8 15:28:45 2021 +0100
+
+    caja extension: Update copyright year
+
+ properties/libatril-properties-page.caja-extension.desktop.in.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 1d3eb340559c8a593bfc877aa4fef1198565bd1f
+Author: rbuj <robert.buj@gmail.com>
+Date:   Mon Feb 8 14:54:49 2021 +0100
+
+    dvi: use glib i18n macros
+
+ backend/dvi/mdvi-lib/Makefile.am |  4 +++-
+ backend/dvi/mdvi-lib/private.h   | 14 ++++----------
+ backend/dvi/mdvi-lib/util.c      | 20 +++++++++++---------
+ configure.ac                     |  4 ++++
+ po/POTFILES.in                   | 15 +++++++++++++++
+ 5 files changed, 37 insertions(+), 20 deletions(-)
+
+commit b9e8446945d36482f968f3356b7dcb14ae9104a5
+Author: rbuj <robert.buj@gmail.com>
+Date:   Mon Feb 8 13:50:02 2021 +0100
+
+    i18n: use g_dngettext instead of ngettext
+
+ shell/ev-window.c | 31 ++++++++++++++++++-------------
+ 1 file changed, 18 insertions(+), 13 deletions(-)
+
+commit 66de6ed56647df275f2844eb6106349932991579
+Author: rbuj <robert.buj@gmail.com>
+Date:   Mon Feb 8 13:36:28 2021 +0100
+
+    build: allow users to disable gettext support (--disable-nls)
+
+ Makefile.am                | 7 +++++--
+ backend/comics/Makefile.am | 4 ++++
+ backend/djvu/Makefile.am   | 4 ++++
+ backend/dvi/Makefile.am    | 4 ++++
+ backend/epub/Makefile.am   | 6 +++++-
+ backend/pdf/Makefile.am    | 4 ++++
+ backend/pixbuf/Makefile.am | 4 ++++
+ backend/ps/Makefile.am     | 4 ++++
+ backend/tiff/Makefile.am   | 4 ++++
+ backend/xps/Makefile.am    | 4 ++++
+ configure.ac               | 4 +++-
+ data/Makefile.am           | 8 ++++++++
+ help/Makefile.am           | 4 ++++
+ libdocument/ev-document.h  | 7 +++----
+ libdocument/ev-init.c      | 7 +------
+ po/Makevars                | 4 ++--
+ previewer/ev-previewer.c   | 4 +++-
+ properties/Makefile.am     | 6 +++++-
+ shell/main.c               | 4 +++-
+ 19 files changed, 74 insertions(+), 19 deletions(-)
+
+commit 6b159d0665c67c3c78c2968673e24bf45c2430d2
+Author: rbuj <robert.buj@gmail.com>
+Date:   Tue Jan 26 09:48:19 2021 +0100
+
+    build: Use PACKAGE_URL variable
+
+ configure.ac                                       |  9 +++++-
+ data/Makefile.am                                   | 36 ++++++++++++----------
+ ...tril.appdata.xml.in => atril.appdata.xml.in.in} |  2 +-
+ po/POTFILES.in                                     |  4 +--
+ properties/Makefile.am                             | 10 +++---
+ ...il-properties-page.caja-extension.desktop.in.in |  2 +-
+ shell/ev-window.c                                  |  2 +-
+ 7 files changed, 39 insertions(+), 26 deletions(-)
+
+commit fe6a858432d2657a2f004a2e40b1005e2142f7b2
+Author: rbuj <robert.buj@gmail.com>
+Date:   Wed Jan 27 11:57:44 2021 +0100
+
+    build: display package name and version in configure summary
+
+ configure.ac | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit 3c7cadfca5b53b3c554caa295b3352a91341346c
+Author: rbuj <robert.buj@gmail.com>
+Date:   Tue Jan 26 09:03:05 2021 +0100
+
+    build: set GETTEXT_PACKAGE=AC_PACKAGE_NAME
+
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit be674c1c351e4eac855a36a3b853083bf0175c25
+Author: rbuj <robert.buj@gmail.com>
+Date:   Mon Dec 28 12:12:01 2020 +0100
+
+    Remove warning -Wtype-limits
+
+ backend/dvi/mdvi-lib/dviread.c | 2 --
+ libview/ev-view-presentation.c | 2 +-
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+commit fe353851db14e9ce3d3de50ee44ff275508585fb
+Author: rbuj <robert.buj@gmail.com>
+Date:   Sat Jan 16 10:52:41 2021 +0100
+
+    update resource for transifex
+
+ atril.pot      | 439 +++++++++++++++++++++++++++++----------------------------
+ help/atril.pot |   4 +-
+ 2 files changed, 224 insertions(+), 219 deletions(-)
+
+commit 5dc0b8eeef7b576618b77b529540b4f58448c193
+Author: rbuj <robert.buj@gmail.com>
+Date:   Sat Jan 16 09:55:09 2021 +0100
+
+    Update copyright to 2021
+
+ help/C/index.docbook | 2 +-
+ shell/ev-window.c    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit 21dfebaac3f2edfb0805b61de950859e36b53289
+Author: rbuj <robert.buj@gmail.com>
+Date:   Wed Dec 30 20:24:44 2020 +0100
+
+    Check whether the document page failed to render
+
+ libview/ev-jobs.c         | 13 ++++++++++++-
+ libview/ev-pixbuf-cache.c |  6 ++++++
+ 2 files changed, 18 insertions(+), 1 deletion(-)
+
+commit a3173f89e2cbec52df8e17d158b4a9be4d88c8b3
+Author: rbuj <robert.buj@gmail.com>
+Date:   Wed Dec 30 18:08:20 2020 +0100
+
+    ps backend: do not silence the warnings when rendering the page
+
+ backend/ps/ev-spectre.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+commit a23d153102cfcba1079e68b43cf1abc607f65cb5
+Author: wb9688 <wb9688@users.noreply.github.com>
+Date:   Sat Dec 5 16:11:24 2020 +0100
+
+    Support non-X11 windowing systems
+
+ shell/ev-application.c | 16 ++++++++++------
+ shell/main.c           |  2 --
+ 2 files changed, 10 insertions(+), 8 deletions(-)
+
+commit 75762f3445644da1e803eebe77a7dff1abdc3103
+Author: rbuj <robert.buj@gmail.com>
+Date:   Wed Dec 2 14:03:50 2020 +0100
+
+    build: remove legacy variable MATEICONDIR
+
+ backend/djvu/Makefile.am         | 1 -
+ help/reference/shell/Makefile.am | 1 -
+ shell/Makefile.am                | 1 -
+ 3 files changed, 3 deletions(-)
+
+commit 57bebf7d28b17b46821e747f39f23a7e0adc7e78
+Author: raveit65 <mate@raveit.de>
+Date:   Tue Dec 8 13:27:58 2020 +0100
+
+    update issue template
+
+ .github/issue_template.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 18b84831b5c31a593fe6265c2dce93b1b71ba732
+Author: raveit65 <mate@raveit.de>
+Date:   Tue Dec 8 13:07:36 2020 +0100
+
+    update issue template
+
+ .github/issue_template.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit ee6b6575a8f62ccdb3efbf6a639fe3dbbe1e4ff6
+Author: rbuj <robert.buj@gmail.com>
+Date:   Thu Nov 26 10:19:39 2020 +0100
+
+    ev-document-factory: use g_list_free_full
+
+ libdocument/ev-document-factory.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit cfa0ac2e0ec0a4c9dd7476487898bbac403d7b19
+Author: rbuj <robert.buj@gmail.com>
+Date:   Mon Nov 16 08:17:28 2020 +0100
+
+    Remove USE_MATE2_MACROS from autogen.sh (legacy)
+
+ autogen.sh | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit a9dc63edf357f50bd70071cf6baa4ca6658d420e
+Author: raveit65 <mate@raveit.de>
+Date:   Sat Oct 24 22:00:08 2020 +0200
+
+    travis: fix make distcheck error on archlinux
+
+ help/reference/libdocument/Makefile.am | 2 ++
+ help/reference/libview/Makefile.am     | 2 ++
+ help/reference/shell/Makefile.am       | 2 ++
+ 3 files changed, 6 insertions(+)
+
+commit ee414faa0424f953e758a68a4b93732e0648ee71
+Author: rbuj <robert.buj@gmail.com>
+Date:   Thu Oct 15 14:23:48 2020 +0200
+
+    epub backend: Escape link text to display & in index content
+
+ backend/epub/epub-document.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit c71e8323088ef9326e655a21c269d71a62982459
+Author: rbuj <robert.buj@gmail.com>
+Date:   Sat Aug 1 19:05:48 2020 +0200
+
+    ev-poppler: 'POPPLER_ACTION_RESET_FORM' not handled in switch [-Wswitch]
+
+ backend/pdf/ev-poppler.cc | 21 +++++++++++++--------
+ 1 file changed, 13 insertions(+), 8 deletions(-)
+
+commit 69f1e80f5e1efe7d9229a6f8200d1107527975af
+Author: rbuj <robert.buj@gmail.com>
+Date:   Sat Aug 1 23:54:20 2020 +0200
+
+    ev-window: fix interval (guint milliseconds) in g_timeout_add_full
+
+ shell/ev-window.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 4aa550192c0484bb61223cb4fc0e8be830bc5fe0
+Author: raveit65 <mate@raveit.de>
+Date:   Fri Aug 28 18:53:56 2020 +0200
+
+    epub-document: improve code-style
+    
+    - tab to spaces
+    - fix some indents
+
+ backend/epub/epub-document.c | 1104 +++++++++++++++++++++---------------------
+ 1 file changed, 552 insertions(+), 552 deletions(-)
+
+commit d0487cfcd9231a02cc78f78e0dc06885cbedcf63
+Author: raveit65 <mate@raveit.de>
+Date:   Wed Aug 26 09:49:59 2020 +0200
+
+    ev-sidebar-attachments: do not add add a Gtk_Container
+    
+    Fixes a runtime warning caused by
+    https://github.com/mate-desktop/atril/commit/70f42da
+    See https://github.com/mate-desktop/atril/pull/476#issuecomment-667701035
+    for more info.
+
+ shell/ev-sidebar-attachments.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit 9f86b203c1a411dd24b3219c104db16b6ecedc95
+Author: lvtao-sec <lvtao@iie.ac.cn>
+Date:   Sat Aug 22 18:50:00 2020 +0800
+
+    check return value of xmlDocGetRootElement call if is NULL
+
+ backend/epub/epub-document.c                    | 14 ++++++++++++--
+ cut-n-paste/toolbar-editor/egg-toolbars-model.c | 17 ++++++++++++++++-
+ 2 files changed, 28 insertions(+), 3 deletions(-)
+
+commit 03693b12f9d76bc16c02d5ac6ff42ad51c7316fa
+Author: raveit65 <mate@raveit.de>
+Date:   Wed Aug 26 11:07:02 2020 +0200
+
+    travis: use ubuntu:rolling tag to fix building
+
+ .travis.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 009aef5586de021292fc365969e763a98be53a75
+Author: rbuj <robert.buj@gmail.com>
+Date:   Wed Jul 15 17:55:31 2020 +0200
+
+    ev-pixbuf-cache: Remove -Wtype-limits warnings
+
+ libview/ev-pixbuf-cache.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+commit 1558f84366a4ecc37d31ab75ca6ec363d86fa667
+Author: Pablo Barciela <scow@riseup.net>
+Date:   Sat Aug 8 16:19:27 2020 +0200
+
+    Remove unused macros
+
+ backend/dvi/mdvi-lib/dviread.c  | 5 -----
+ backend/dvi/mdvi-lib/fontsrch.c | 1 -
+ backend/dvi/mdvi-lib/gf.c       | 2 --
+ backend/dvi/mdvi-lib/pk.c       | 1 -
+ backend/dvi/mdvi-lib/sp-epsf.c  | 1 -
+ backend/dvi/mdvi-lib/special.c  | 2 --
+ backend/dvi/mdvi-lib/tfm.c      | 3 ---
+ libview/ev-print-operation.c    | 4 ----
+ libview/ev-view.c               | 4 ----
+ libview/ev-web-view.c           | 3 ---
+ shell/ev-daemon.c               | 5 -----
+ shell/ev-window.c               | 3 ---
+ 12 files changed, 34 deletions(-)
+
+commit 0d0c4aad2ed8ee9bcd8cd95a0e7ae57f4cd47e86
+Author: Pablo Barciela <scow@riseup.net>
+Date:   Sat Aug 8 15:35:29 2020 +0200
+
+    Travis CI: debian build: add -Wunused-macros to CFLAGS and CXXFLAGS
+
+ .build.yml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 8e981c6db08dc50125aff9356c0cfd5744e29dce
+Author: Scott Balneaves <sbalneav@beaconia.ca>
+Date:   Mon Jul 27 13:24:53 2020 -0500
+
+    Change spaces to tab
+
+ .build.yml                                         |  194 +
+ .github/FUNDING.yml                                |    9 +
+ .github/issue_template.md                          |   19 +
+ .gitmodules                                        |    5 +
+ .travis.yml                                        |   74 +
+ .tx/config                                         |   16 +
+ AUTHORS                                            |   14 +
+ COPYING                                            |  340 +
+ ChangeLog                                          |    2 +
+ Makefile.am                                        |   92 +
+ NEWS                                               |  639 ++
+ README.md                                          |   34 +
+ atril-document.h                                   |   63 +
+ atril-document.pc.in                               |   12 +
+ atril-view.h                                       |   35 +
+ atril-view.pc.in                                   |   11 +
+ atril.pot                                          | 1825 +++++
+ autogen.sh                                         |   30 +
+ backend/Makefile.am                                |   44 +
+ backend/backend.symbols                            |    1 +
+ backend/comics/Makefile.am                         |   32 +
+ backend/comics/comics-document.c                   | 1021 +++
+ backend/comics/comics-document.h                   |   38 +
+ .../comics/comicsdocument.atril-backend.desktop.in |    4 +
+ backend/djvu/Makefile.am                           |   38 +
+ backend/djvu/djvu-document-private.h               |   48 +
+ backend/djvu/djvu-document.c                       |  704 ++
+ backend/djvu/djvu-document.h                       |   38 +
+ backend/djvu/djvu-links.c                          |  456 ++
+ backend/djvu/djvu-links.h                          |   37 +
+ backend/djvu/djvu-text-page.c                      |  456 ++
+ backend/djvu/djvu-text-page.h                      |   60 +
+ backend/djvu/djvudocument.atril-backend.desktop.in |    4 +
+ backend/dvi/Makefile.am                            |   45 +
+ backend/dvi/cairo-device.c                         |  372 +
+ backend/dvi/cairo-device.h                         |   41 +
+ backend/dvi/dvi-document.c                         |  601 ++
+ backend/dvi/dvi-document.h                         |   38 +
+ backend/dvi/dvidocument.atril-backend.desktop.in   |    4 +
+ backend/dvi/fonts.c                                |   57 +
+ backend/dvi/fonts.h                                |    6 +
+ backend/dvi/mdvi-lib/Makefile.am                   |   43 +
+ backend/dvi/mdvi-lib/afmparse.c                    | 1303 +++
+ backend/dvi/mdvi-lib/afmparse.h                    |  307 +
+ backend/dvi/mdvi-lib/bitmap.c                      | 1035 +++
+ backend/dvi/mdvi-lib/bitmap.h                      |  145 +
+ backend/dvi/mdvi-lib/color.c                       |  136 +
+ backend/dvi/mdvi-lib/color.h                       |   34 +
+ backend/dvi/mdvi-lib/common.c                      |  168 +
+ backend/dvi/mdvi-lib/common.h                      |  285 +
+ backend/dvi/mdvi-lib/defaults.h                    |   71 +
+ backend/dvi/mdvi-lib/dviopcodes.h                  |   72 +
+ backend/dvi/mdvi-lib/dviread.c                     | 1559 ++++
+ backend/dvi/mdvi-lib/files.c                       |   80 +
+ backend/dvi/mdvi-lib/font.c                        |  519 ++
+ backend/dvi/mdvi-lib/fontmap.c                     | 1179 +++
+ backend/dvi/mdvi-lib/fontmap.h                     |   82 +
+ backend/dvi/mdvi-lib/fontsrch.c                    |  371 +
+ backend/dvi/mdvi-lib/gf.c                          |  395 +
+ backend/dvi/mdvi-lib/hash.c                        |  224 +
+ backend/dvi/mdvi-lib/hash.h                        |   49 +
+ backend/dvi/mdvi-lib/list.c                        |  120 +
+ backend/dvi/mdvi-lib/mdvi.h                        |  625 ++
+ backend/dvi/mdvi-lib/pagesel.c                     |  491 ++
+ backend/dvi/mdvi-lib/paper.c                       |  171 +
+ backend/dvi/mdvi-lib/paper.h                       |   32 +
+ backend/dvi/mdvi-lib/pk.c                          |  580 ++
+ backend/dvi/mdvi-lib/private.h                     |   65 +
+ backend/dvi/mdvi-lib/setup.c                       |   48 +
+ backend/dvi/mdvi-lib/sp-epsf.c                     |  309 +
+ backend/dvi/mdvi-lib/special.c                     |  249 +
+ backend/dvi/mdvi-lib/sysdeps.h                     |  116 +
+ backend/dvi/mdvi-lib/t1.c                          |  630 ++
+ backend/dvi/mdvi-lib/tfm.c                         |  214 +
+ backend/dvi/mdvi-lib/tfmfile.c                     |  747 ++
+ backend/dvi/mdvi-lib/tt.c                          |  495 ++
+ backend/dvi/mdvi-lib/util.c                        |  550 ++
+ backend/dvi/mdvi-lib/vf.c                          |  247 +
+ backend/epub/Makefile.am                           |   38 +
+ backend/epub/epub-document.c                       | 1818 +++++
+ backend/epub/epub-document.h                       |   21 +
+ backend/epub/epubdocument.atril-backend.desktop.in |    4 +
+ backend/epub/minizip/Makefile.am                   |   16 +
+ backend/epub/minizip/ioapi.c                       |  247 +
+ backend/epub/minizip/ioapi.h                       |  210 +
+ backend/epub/minizip/unzip.c                       | 2119 +++++
+ backend/epub/minizip/unzip.h                       |  437 ++
+ backend/pdf/Makefile.am                            |   35 +
+ backend/pdf/ev-poppler.cc                          | 3337 ++++++++
+ backend/pdf/ev-poppler.h                           |   40 +
+ backend/pdf/pdfdocument.atril-backend.desktop.in   |    5 +
+ backend/pixbuf/Makefile.am                         |   30 +
+ backend/pixbuf/pixbuf-document.c                   |  208 +
+ backend/pixbuf/pixbuf-document.h                   |   38 +
+ .../pixbuf/pixbufdocument.atril-backend.desktop.in |    4 +
+ backend/ps/Makefile.am                             |   33 +
+ backend/ps/ev-spectre.c                            |  487 ++
+ backend/ps/ev-spectre.h                            |   46 +
+ backend/ps/psdocument.atril-backend.desktop.in     |    5 +
+ backend/tiff/Makefile.am                           |   33 +
+ backend/tiff/tiff-document.c                       |  552 ++
+ backend/tiff/tiff-document.h                       |   38 +
+ backend/tiff/tiff2ps.c                             | 1871 +++++
+ backend/tiff/tiff2ps.h                             |   30 +
+ backend/tiff/tiffdocument.atril-backend.desktop.in |    4 +
+ backend/xps/Makefile.am                            |   31 +
+ backend/xps/xps-document.c                         |  559 ++
+ backend/xps/xps-document.h                         |   43 +
+ backend/xps/xpsdocument.atril-backend.desktop.in   |    5 +
+ configure.ac                                       |  801 ++
+ cut-n-paste/Makefile.am                            |    3 +
+ cut-n-paste/smclient                               |    1 +
+ cut-n-paste/toolbar-editor/Makefile.am             |  108 +
+ cut-n-paste/toolbar-editor/egg-editable-toolbar.c  | 1918 +++++
+ cut-n-paste/toolbar-editor/egg-editable-toolbar.h  |   94 +
+ cut-n-paste/toolbar-editor/egg-toolbar-editor.c    |  666 ++
+ cut-n-paste/toolbar-editor/egg-toolbar-editor.h    |   63 +
+ cut-n-paste/toolbar-editor/egg-toolbars-model.c    | 1060 +++
+ cut-n-paste/toolbar-editor/egg-toolbars-model.h    |  194 +
+ cut-n-paste/toolbar-editor/eggmarshalers.list      |    1 +
+ cut-n-paste/zoom-control/Makefile.am               |   16 +
+ cut-n-paste/zoom-control/ephy-zoom-action.c        |  335 +
+ cut-n-paste/zoom-control/ephy-zoom-action.h        |   68 +
+ cut-n-paste/zoom-control/ephy-zoom-control.c       |  339 +
+ cut-n-paste/zoom-control/ephy-zoom-control.h       |   63 +
+ cut-n-paste/zoom-control/ephy-zoom.c               |   70 +
+ cut-n-paste/zoom-control/ephy-zoom.h               |   83 +
+ data/Makefile.am                                   |  107 +
+ data/atril-toolbar.xml                             |   41 +
+ data/atril-ui.xml                                  |  149 +
+ data/atril.1                                       |   69 +
+ data/atril.appdata.xml.in                          |   44 +
+ data/atril.desktop.in.in                           |   20 +
+ data/hand-open.png                                 |  Bin 0 -> 1088 bytes
+ data/icons/16x16/Makefile.am                       |    3 +
+ data/icons/16x16/actions/Makefile.am               |   27 +
+ data/icons/16x16/actions/object-rotate-left.png    |  Bin 0 -> 607 bytes
+ data/icons/16x16/actions/object-rotate-right.png   |  Bin 0 -> 632 bytes
+ data/icons/16x16/actions/view-page-continuous.png  |  Bin 0 -> 446 bytes
+ data/icons/16x16/actions/view-page-continuous.xcf  |  Bin 0 -> 2190 bytes
+ data/icons/16x16/actions/view-page-facing.png      |  Bin 0 -> 471 bytes
+ data/icons/16x16/actions/view-page-facing.xcf      |  Bin 0 -> 2158 bytes
+ data/icons/16x16/actions/zoom-fit-height.png       |  Bin 0 -> 811 bytes
+ data/icons/16x16/actions/zoom-fit-page.svg         |  282 +
+ data/icons/16x16/actions/zoom-fit-width.png        |  Bin 0 -> 771 bytes
+ data/icons/16x16/actions/zoom-fit-width.svg        |  278 +
+ data/icons/16x16/actions/zoom.png                  |  Bin 0 -> 876 bytes
+ data/icons/16x16/actions/zoom.svg                  |  247 +
+ data/icons/16x16/apps/Makefile.am                  |   16 +
+ data/icons/16x16/apps/atril.png                    |  Bin 0 -> 907 bytes
+ data/icons/16x16/mimetypes/Makefile.am             |   16 +
+ .../16x16/mimetypes/x-office-presentation.png      |  Bin 0 -> 668 bytes
+ data/icons/22x22/Makefile.am                       |    3 +
+ data/icons/22x22/actions/Makefile.am               |   28 +
+ data/icons/22x22/actions/eye.png                   |  Bin 0 -> 617 bytes
+ data/icons/22x22/actions/object-rotate-left.png    |  Bin 0 -> 911 bytes
+ data/icons/22x22/actions/object-rotate-right.png   |  Bin 0 -> 939 bytes
+ data/icons/22x22/actions/view-page-continuous.png  |  Bin 0 -> 722 bytes
+ data/icons/22x22/actions/view-page-continuous.xcf  |  Bin 0 -> 4004 bytes
+ data/icons/22x22/actions/view-page-facing.png      |  Bin 0 -> 483 bytes
+ data/icons/22x22/actions/view-page-facing.xcf      |  Bin 0 -> 1871 bytes
+ data/icons/22x22/actions/zoom-fit-page.png         |  Bin 0 -> 1377 bytes
+ data/icons/22x22/actions/zoom-fit-page.svg         |  254 +
+ data/icons/22x22/actions/zoom-fit-width.png        |  Bin 0 -> 1405 bytes
+ data/icons/22x22/actions/zoom-fit-width.svg        |  252 +
+ data/icons/22x22/actions/zoom.png                  |  Bin 0 -> 1294 bytes
+ data/icons/22x22/actions/zoom.svg                  |  215 +
+ data/icons/22x22/apps/Makefile.am                  |   16 +
+ data/icons/22x22/apps/atril.png                    |  Bin 0 -> 1345 bytes
+ data/icons/22x22/mimetypes/Makefile.am             |   16 +
+ .../22x22/mimetypes/x-office-presentation.png      |  Bin 0 -> 1024 bytes
+ data/icons/24x24/Makefile.am                       |    3 +
+ data/icons/24x24/actions/Makefile.am               |   23 +
+ data/icons/24x24/actions/object-rotate-left.png    |  Bin 0 -> 924 bytes
+ data/icons/24x24/actions/object-rotate-right.png   |  Bin 0 -> 943 bytes
+ data/icons/24x24/actions/stock_filters-invert.png  |  Bin 0 -> 402 bytes
+ data/icons/24x24/actions/view-page-continuous.png  |  Bin 0 -> 724 bytes
+ data/icons/24x24/actions/view-page-facing.png      |  Bin 0 -> 471 bytes
+ data/icons/24x24/actions/zoom-fit-height.png       |  Bin 0 -> 1146 bytes
+ data/icons/24x24/actions/zoom-fit-width.png        |  Bin 0 -> 1170 bytes
+ data/icons/24x24/actions/zoom.png                  |  Bin 0 -> 1344 bytes
+ data/icons/24x24/apps/Makefile.am                  |   16 +
+ data/icons/24x24/apps/atril.png                    |  Bin 0 -> 1620 bytes
+ data/icons/24x24/mimetypes/Makefile.am             |   16 +
+ .../24x24/mimetypes/x-office-presentation.png      |  Bin 0 -> 1643 bytes
+ data/icons/32x32/Makefile.am                       |    3 +
+ data/icons/32x32/actions/Makefile.am               |   19 +
+ data/icons/32x32/actions/object-rotate-left.png    |  Bin 0 -> 1319 bytes
+ data/icons/32x32/actions/object-rotate-right.png   |  Bin 0 -> 1353 bytes
+ data/icons/32x32/actions/view-page-continuous.png  |  Bin 0 -> 849 bytes
+ data/icons/32x32/actions/view-page-facing.png      |  Bin 0 -> 943 bytes
+ data/icons/32x32/mimetypes/Makefile.am             |   16 +
+ .../32x32/mimetypes/x-office-presentation.png      |  Bin 0 -> 1618 bytes
+ data/icons/48x48/Makefile.am                       |    4 +
+ data/icons/48x48/actions/Makefile.am               |   20 +
+ data/icons/48x48/actions/close.png                 |  Bin 0 -> 363 bytes
+ data/icons/48x48/actions/resize-se.png             |  Bin 0 -> 312 bytes
+ data/icons/48x48/actions/resize-sw.png             |  Bin 0 -> 295 bytes
+ data/icons/48x48/actions/view-page-continuous.png  |  Bin 0 -> 1494 bytes
+ data/icons/48x48/actions/view-page-facing.png      |  Bin 0 -> 1485 bytes
+ data/icons/48x48/apps/Makefile.am                  |   16 +
+ data/icons/48x48/apps/atril.png                    |  Bin 0 -> 3267 bytes
+ data/icons/Makefile.am                             |    4 +
+ data/icons/scalable/Makefile.am                    |    3 +
+ data/icons/scalable/actions/Makefile.am            |   17 +
+ data/icons/scalable/actions/object-rotate-left.svg |  208 +
+ .../icons/scalable/actions/object-rotate-right.svg |  210 +
+ data/icons/scalable/apps/Makefile.am               |   16 +
+ data/icons/scalable/apps/atril.svg                 |  483 ++
+ data/icons/scalable/mimetypes/Makefile.am          |   16 +
+ .../scalable/mimetypes/x-office-presentation.svg   |  686 ++
+ data/org.mate.Atril.gschema.xml                    |   79 +
+ data/org.mate.atril.Daemon.service.in              |    3 +
+ git.mk                                             |  400 +
+ help/C/figures/atril_start_window.png              |  Bin 0 -> 23384 bytes
+ help/C/index.docbook                               |  794 ++
+ help/C/legal.xml                                   |   76 +
+ help/ChangeLog                                     |  362 +
+ help/Makefile.am                                   |   15 +
+ help/af/af.po                                      | 1351 ++++
+ help/am/am.po                                      | 1348 ++++
+ help/ar/ar.po                                      | 1353 ++++
+ help/as/as.po                                      | 1347 ++++
+ help/ast/ast.po                                    | 1349 ++++
+ help/atril.omf.in                                  |   11 +
+ help/atril.pot                                     | 1141 +++
+ help/az/az.po                                      | 1352 ++++
+ help/be/be.po                                      | 1350 ++++
+ help/bg/bg.po                                      | 1359 ++++
+ help/bg/figures/atril_start_window.png             |  Bin 0 -> 22691 bytes
+ help/bn/bn.po                                      | 1352 ++++
+ help/bn_IN/bn_IN.po                                | 1351 ++++
+ help/br/br.po                                      | 1348 ++++
+ help/bs/bs.po                                      | 1348 ++++
+ help/ca/ca.po                                      | 1600 ++++
+ help/ca/figures/atril_start_window.png             |  Bin 0 -> 16145 bytes
+ help/ca@valencia/ca@valencia.po                    | 1442 ++++
+ help/cmn/cmn.po                                    | 1350 ++++
+ help/crh/crh.po                                    | 1349 ++++
+ help/cs/cs.po                                      | 1389 ++++
+ help/cs/figures/atril_start_window.png             |  Bin 0 -> 16696 bytes
+ help/cy/cy.po                                      | 1350 ++++
+ help/da/da.po                                      | 1571 ++++
+ help/de/de.po                                      | 1448 ++++
+ help/de/figures/atril_start_window.png             |  Bin 0 -> 12327 bytes
+ help/dz/dz.po                                      | 1350 ++++
+ help/el/el.po                                      | 1610 ++++
+ help/el/figures/atril_start_window.png             |  Bin 0 -> 21766 bytes
+ help/en_AU/en_AU.po                                | 1347 ++++
+ help/en_CA/en_CA.po                                | 1347 ++++
+ help/en_GB/en_GB.po                                | 1364 ++++
+ help/eo/eo.po                                      | 1380 ++++
+ help/es/es.po                                      | 1479 ++++
+ help/es/figures/atril_start_window.png             |  Bin 0 -> 16965 bytes
+ help/es_AR/es_AR.po                                | 1353 ++++
+ help/es_CL/es_CL.po                                | 1349 ++++
+ help/es_CO/es_CO.po                                | 1350 ++++
+ help/et/et.po                                      | 1354 ++++
+ help/eu/eu.po                                      | 1393 ++++
+ help/eu/figures/atril_start_window.png             |  Bin 0 -> 18535 bytes
+ help/fa/fa.po                                      | 1349 ++++
+ help/fi/fi.po                                      | 1358 ++++
+ help/fi/figures/atril_start_window.png             |  Bin 0 -> 16351 bytes
+ help/fr/figures/atril_start_window.png             |  Bin 0 -> 15794 bytes
+ help/fr/fr.po                                      | 1465 ++++
+ help/fur/fur.po                                    | 1346 ++++
+ help/fy/fy.po                                      | 1351 ++++
+ help/ga/ga.po                                      | 1350 ++++
+ help/gl/gl.po                                      | 1422 ++++
+ help/gu/gu.po                                      | 1348 ++++
+ help/ha/ha.po                                      | 1346 ++++
+ help/he/he.po                                      | 1350 ++++
+ help/hi/hi.po                                      | 1353 ++++
+ help/hr/hr.po                                      | 1413 ++++
+ help/hu/hu.po                                      | 1410 ++++
+ help/hy/hy.po                                      | 1349 ++++
+ help/ia/ia.po                                      | 1348 ++++
+ help/id/id.po                                      | 1412 ++++
+ help/ie/ie.po                                      | 1347 ++++
+ help/ig/ig.po                                      | 1346 ++++
+ help/is/is.po                                      | 1351 ++++
+ help/it/figures/atril_start_window.png             |  Bin 0 -> 13779 bytes
+ help/it/it.po                                      | 1594 ++++
+ help/ja/figures/atril_start_window.png             |  Bin 0 -> 16465 bytes
+ help/ja/ja.po                                      | 1395 ++++
+ help/ka/ka.po                                      | 1347 ++++
+ help/kab/kab.po                                    | 1350 ++++
+ help/kk/kk.po                                      | 1348 ++++
+ help/kn/kn.po                                      | 1350 ++++
+ help/ko/ko.po                                      | 1372 ++++
+ help/ks/ks.po                                      | 1347 ++++
+ help/ku/ku.po                                      | 1347 ++++
+ help/ku_IQ/ku_IQ.po                                | 1347 ++++
+ help/ky/ky.po                                      | 1347 ++++
+ help/lt/lt.po                                      | 1400 ++++
+ help/lv/lv.po                                      | 1350 ++++
+ help/mai/mai.po                                    | 1347 ++++
+ help/mg/mg.po                                      | 1347 ++++
+ help/mk/mk.po                                      | 1348 ++++
+ help/ml/ml.po                                      | 1349 ++++
+ help/mn/mn.po                                      | 1349 ++++
+ help/mr/mr.po                                      | 1348 ++++
+ help/ms/ms.po                                      | 1568 ++++
+ help/nb/nb.po                                      | 1361 ++++
+ help/nds/nds.po                                    | 1350 ++++
+ help/ne/ne.po                                      | 1351 ++++
+ help/nl/figures/atril_start_window.png             |  Bin 0 -> 10973 bytes
+ help/nl/nl.po                                      | 1402 ++++
+ help/nn/nn.po                                      | 1350 ++++
+ help/nso/nso.po                                    | 1349 ++++
+ help/oc/oc.po                                      | 1368 ++++
+ help/or/or.po                                      | 1347 ++++
+ help/pa/pa.po                                      | 1387 ++++
+ help/pl/pl.po                                      | 1397 ++++
+ help/ps/ps.po                                      | 1349 ++++
+ help/pt/pt.po                                      | 1413 ++++
+ help/pt_BR/pt_BR.po                                | 1477 ++++
+ help/reference/Makefile.am                         |    2 +
+ help/reference/libdocument/Makefile.am             |  132 +
+ .../libdocument/libatrildocument-docs.xml          |  191 +
+ .../libdocument/libatrildocument-overrides.txt     |    0
+ .../libdocument/libatrildocument-sections.txt      |  803 ++
+ help/reference/libdocument/libatrildocument.types  |   55 +
+ help/reference/libdocument/version.xml.in          |    1 +
+ help/reference/libview/Makefile.am                 |  142 +
+ help/reference/libview/libatrilview-docs.xml       |  145 +
+ help/reference/libview/libatrilview-overrides.txt  |    0
+ help/reference/libview/libatrilview-sections.txt   |  346 +
+ help/reference/libview/libatrilview.types          |   28 +
+ help/reference/libview/version.xml.in              |    1 +
+ help/reference/shell/Makefile.am                   |  147 +
+ help/reference/shell/atril-docs.xml                |  162 +
+ help/reference/shell/atril-overrides.txt           |    0
+ help/reference/shell/atril-sections.txt            |  465 ++
+ help/reference/shell/atril.types                   |   24 +
+ help/reference/shell/version.xml.in                |    1 +
+ help/ro/ro.po                                      | 1348 ++++
+ help/ru/ru.po                                      | 1612 ++++
+ help/rw/rw.po                                      | 1346 ++++
+ help/si/si.po                                      | 1347 ++++
+ help/sk/sk.po                                      | 1445 ++++
+ help/sl/sl.po                                      | 1352 ++++
+ help/sq/sq.po                                      | 1353 ++++
+ help/sr/sr.po                                      | 1348 ++++
+ help/sr@latin/sr@latin.po                          | 1351 ++++
+ help/sv/figures/atril_start_window.png             |  Bin 0 -> 17118 bytes
+ help/sv/sv.po                                      | 1394 ++++
+ help/ta/ta.po                                      | 1351 ++++
+ help/te/te.po                                      | 1348 ++++
+ help/th/th.po                                      | 1389 ++++
+ help/tr/tr.po                                      | 1502 ++++
+ help/ug/ug.po                                      | 1356 ++++
+ help/uk/figures/atril_start_window.png             |  Bin 0 -> 14049 bytes
+ help/uk/uk.po                                      | 1580 ++++
+ help/ur/ur.po                                      | 1353 ++++
+ help/uz/uz.po                                      | 1348 ++++
+ help/vi/vi.po                                      | 1349 ++++
+ help/wa/wa.po                                      | 1347 ++++
+ help/xh/xh.po                                      | 1347 ++++
+ help/yo/yo.po                                      | 1346 ++++
+ help/zh_CN/zh_CN.po                                | 1448 ++++
+ help/zh_HK/zh_HK.po                                | 1351 ++++
+ help/zh_TW/zh_TW.po                                | 1359 ++++
+ help/zu/zu.po                                      | 1349 ++++
+ libdocument/Makefile.am                            |  201 +
+ libdocument/ev-annotation.c                        | 1220 +++
+ libdocument/ev-annotation.h                        |  169 +
+ libdocument/ev-async-renderer.c                    |   65 +
+ libdocument/ev-async-renderer.h                    |   65 +
+ libdocument/ev-attachment.c                        |  438 ++
+ libdocument/ev-attachment.h                        |   79 +
+ libdocument/ev-backends-manager.c                  |  330 +
+ libdocument/ev-backends-manager.h                  |   54 +
+ libdocument/ev-debug.c                             |  177 +
+ libdocument/ev-debug.h                             |  106 +
+ libdocument/ev-document-annotations.c              |   93 +
+ libdocument/ev-document-annotations.h              |  105 +
+ libdocument/ev-document-attachments.c              |   55 +
+ libdocument/ev-document-attachments.h              |   59 +
+ libdocument/ev-document-factory.c                  |  397 +
+ libdocument/ev-document-factory.h                  |   39 +
+ libdocument/ev-document-find.c                     |   60 +
+ libdocument/ev-document-find.h                     |   74 +
+ libdocument/ev-document-fonts.c                    |   59 +
+ libdocument/ev-document-fonts.h                    |   78 +
+ libdocument/ev-document-forms.c                    |  161 +
+ libdocument/ev-document-forms.h                    |  128 +
+ libdocument/ev-document-images.c                   |   54 +
+ libdocument/ev-document-images.h                   |   65 +
+ libdocument/ev-document-info.h                     |  154 +
+ libdocument/ev-document-layers.c                   |   80 +
+ libdocument/ev-document-layers.h                   |   85 +
+ libdocument/ev-document-links.c                    |  188 +
+ libdocument/ev-document-links.h                    |   95 +
+ libdocument/ev-document-misc.c                     |  407 +
+ libdocument/ev-document-misc.h                     |   74 +
+ libdocument/ev-document-print.c                    |   41 +
+ libdocument/ev-document-print.h                    |   59 +
+ libdocument/ev-document-security.c                 |   48 +
+ libdocument/ev-document-security.h                 |   66 +
+ libdocument/ev-document-text.c                     |   82 +
+ libdocument/ev-document-text.h                     |   78 +
+ libdocument/ev-document-thumbnails.c               |   62 +
+ libdocument/ev-document-thumbnails.h               |   68 +
+ libdocument/ev-document-transition.c               |   64 +
+ libdocument/ev-document-transition.h               |   64 +
+ libdocument/ev-document-type-builtins.c.template   |   44 +
+ libdocument/ev-document-type-builtins.h.template   |   29 +
+ libdocument/ev-document.c                          |  958 +++
+ libdocument/ev-document.h                          |  305 +
+ libdocument/ev-file-exporter.c                     |   84 +
+ libdocument/ev-file-exporter.h                     |  101 +
+ libdocument/ev-file-helpers.c                      |  682 ++
+ libdocument/ev-file-helpers.h                      |   72 +
+ libdocument/ev-form-field.c                        |  200 +
+ libdocument/ev-form-field.h                        |  216 +
+ libdocument/ev-image.c                             |  176 +
+ libdocument/ev-image.h                             |   68 +
+ libdocument/ev-init.c                              |   95 +
+ libdocument/ev-init.h                              |   41 +
+ libdocument/ev-layer.c                             |   69 +
+ libdocument/ev-layer.h                             |   60 +
+ libdocument/ev-link-action.c                       |  436 +
+ libdocument/ev-link-action.h                       |   80 +
+ libdocument/ev-link-dest.c                         |  516 ++
+ libdocument/ev-link-dest.h                         |   97 +
+ libdocument/ev-link.c                              |  176 +
+ libdocument/ev-link.h                              |   54 +
+ libdocument/ev-macros.h                            |   32 +
+ libdocument/ev-mapping-list.c                      |  249 +
+ libdocument/ev-mapping-list.h                      |   64 +
+ libdocument/ev-module.c                            |  193 +
+ libdocument/ev-module.h                            |   74 +
+ libdocument/ev-page.c                              |   62 +
+ libdocument/ev-page.h                              |   63 +
+ libdocument/ev-render-context.c                    |   97 +
+ libdocument/ev-render-context.h                    |   70 +
+ libdocument/ev-selection.c                         |   77 +
+ libdocument/ev-selection.h                         |   93 +
+ libdocument/ev-transition-effect.c                 |  220 +
+ libdocument/ev-transition-effect.h                 |   87 +
+ libdocument/ev-version.h.in                        |   69 +
+ libmisc/Makefile.am                                |   22 +
+ libmisc/ev-page-action-widget.c                    |  495 ++
+ libmisc/ev-page-action-widget.h                    |   46 +
+ libmisc/ev-page-action.c                           |  239 +
+ libmisc/ev-page-action.h                           |   68 +
+ libview/Makefile.am                                |  174 +
+ libview/ev-annotation-window.c                     |  685 ++
+ libview/ev-annotation-window.h                     |   57 +
+ libview/ev-document-model.c                        |  672 ++
+ libview/ev-document-model.h                        |  108 +
+ libview/ev-form-field-accessible.c                 |  240 +
+ libview/ev-form-field-accessible.h                 |   55 +
+ libview/ev-image-accessible.c                      |  207 +
+ libview/ev-image-accessible.h                      |   55 +
+ libview/ev-job-scheduler.c                         |  319 +
+ libview/ev-job-scheduler.h                         |   49 +
+ libview/ev-jobs.c                                  | 1774 +++++
+ libview/ev-jobs.h                                  |  516 ++
+ libview/ev-link-accessible.c                       |  437 ++
+ libview/ev-link-accessible.h                       |   56 +
+ libview/ev-page-accessible.c                       | 1227 +++
+ libview/ev-page-accessible.h                       |   56 +
+ libview/ev-page-cache.c                            |  680 ++
+ libview/ev-page-cache.h                            |   81 +
+ libview/ev-pixbuf-cache.c                          | 1353 ++++
+ libview/ev-pixbuf-cache.h                          |   91 +
+ libview/ev-print-operation.c                       | 2069 +++++
+ libview/ev-print-operation.h                       |   71 +
+ libview/ev-stock-icons.c                           |  137 +
+ libview/ev-stock-icons.h                           |   58 +
+ libview/ev-timeline.c                              |  442 ++
+ libview/ev-timeline.h                              |   90 +
+ libview/ev-transition-animation.c                  |  673 ++
+ libview/ev-transition-animation.h                  |   73 +
+ libview/ev-view-accessible.c                       |  592 ++
+ libview/ev-view-accessible.h                       |   70 +
+ libview/ev-view-cursor.c                           |   55 +
+ libview/ev-view-cursor.h                           |   47 +
+ libview/ev-view-marshal.list                       |    3 +
+ libview/ev-view-presentation.c                     | 1660 ++++
+ libview/ev-view-presentation.h                     |   56 +
+ libview/ev-view-private.h                          |  304 +
+ libview/ev-view-type-builtins.c.template           |   44 +
+ libview/ev-view-type-builtins.h.template           |   29 +
+ libview/ev-view.c                                  | 8169 +++++++++++++++++++
+ libview/ev-view.h                                  |  130 +
+ libview/ev-web-view.c                              |  722 ++
+ libview/ev-web-view.h                              |   93 +
+ makepot                                            |   11 +
+ po/ChangeLog                                       | 4424 +++++++++++
+ po/LINGUAS                                         |  136 +
+ po/Makevars                                        |   79 +
+ po/POTFILES.in                                     |   64 +
+ po/POTFILES.skip                                   |   16 +
+ po/af.po                                           | 1841 +++++
+ po/am.po                                           | 1842 +++++
+ po/ar.po                                           | 1866 +++++
+ po/as.po                                           | 1842 +++++
+ po/ast.po                                          | 1884 +++++
+ po/az.po                                           | 1838 +++++
+ po/be.po                                           | 1856 +++++
+ po/bg.po                                           | 1884 +++++
+ po/bn.po                                           | 1857 +++++
+ po/bn_IN.po                                        | 1849 +++++
+ po/br.po                                           | 1848 +++++
+ po/bs.po                                           | 1843 +++++
+ po/ca.po                                           | 1912 +++++
+ po/ca@valencia.po                                  | 1886 +++++
+ po/cmn.po                                          | 1840 +++++
+ po/crh.po                                          | 1835 +++++
+ po/cs.po                                           | 1920 +++++
+ po/cy.po                                           | 1846 +++++
+ po/da.po                                           | 1901 +++++
+ po/de.po                                           | 1905 +++++
+ po/de_CH.po                                        | 1843 +++++
+ po/dz.po                                           | 1840 +++++
+ po/el.po                                           | 1913 +++++
+ po/en_AU.po                                        | 1859 +++++
+ po/en_CA.po                                        | 1837 +++++
+ po/en_GB.po                                        | 1863 +++++
+ po/eo.po                                           | 1854 +++++
+ po/es.po                                           | 1927 +++++
+ po/es_AR.po                                        | 1842 +++++
+ po/es_CL.po                                        | 1842 +++++
+ po/es_CO.po                                        | 1844 +++++
+ po/es_CR.po                                        | 1860 +++++
+ po/es_DO.po                                        | 1861 +++++
+ po/es_EC.po                                        | 1860 +++++
+ po/es_ES.po                                        | 1836 +++++
+ po/es_MX.po                                        | 1849 +++++
+ po/es_NI.po                                        | 1860 +++++
+ po/es_PA.po                                        | 1860 +++++
+ po/es_PE.po                                        | 1860 +++++
+ po/es_PR.po                                        | 1839 +++++
+ po/es_SV.po                                        | 1860 +++++
+ po/es_UY.po                                        | 1860 +++++
+ po/es_VE.po                                        | 1836 +++++
+ po/et.po                                           | 1865 +++++
+ po/eu.po                                           | 1878 +++++
+ po/fa.po                                           | 1845 +++++
+ po/fi.po                                           | 1881 +++++
+ po/fr.po                                           | 1944 +++++
+ po/fr_CA.po                                        | 1815 +++++
+ po/frp.po                                          | 1835 +++++
+ po/fur.po                                          | 1833 +++++
+ po/fy.po                                           | 1837 +++++
+ po/ga.po                                           | 1845 +++++
+ po/gl.po                                           | 1915 +++++
+ po/gnome-copyrights.txt                            | 1061 +++
+ po/gu.po                                           | 1857 +++++
+ po/ha.po                                           | 1833 +++++
+ po/he.po                                           | 1856 +++++
+ po/hi.po                                           | 1840 +++++
+ po/hr.po                                           | 1885 +++++
+ po/hu.po                                           | 1899 +++++
+ po/hy.po                                           | 1866 +++++
+ po/ia.po                                           | 1835 +++++
+ po/id.po                                           | 1907 +++++
+ po/ie.po                                           | 1859 +++++
+ po/ig.po                                           | 1830 +++++
+ po/is.po                                           | 1837 +++++
+ po/it.po                                           | 1911 +++++
+ po/ja.po                                           | 1858 +++++
+ po/jv.po                                           | 1830 +++++
+ po/ka.po                                           | 1833 +++++
+ po/kab.po                                          | 1837 +++++
+ po/kk.po                                           | 1857 +++++
+ po/kn.po                                           | 1856 +++++
+ po/ko.po                                           | 1856 +++++
+ po/ks.po                                           | 1833 +++++
+ po/ku.po                                           | 1835 +++++
+ po/ku_IQ.po                                        | 1833 +++++
+ po/ky.po                                           | 1831 +++++
+ po/li.po                                           | 1833 +++++
+ po/lt.po                                           | 1921 +++++
+ po/lv.po                                           | 1860 +++++
+ po/mai.po                                          | 1834 +++++
+ po/mg.po                                           | 1839 +++++
+ po/mi.po                                           | 1833 +++++
+ po/mk.po                                           | 1841 +++++
+ po/ml.po                                           | 1859 +++++
+ po/mn.po                                           | 1855 +++++
+ po/mr.po                                           | 1856 +++++
+ po/ms.po                                           | 1893 +++++
+ po/nb.po                                           | 1912 +++++
+ po/nds.po                                          | 1837 +++++
+ po/ne.po                                           | 1848 +++++
+ po/nl.po                                           | 1925 +++++
+ po/nn.po                                           | 1857 +++++
+ po/nqo.po                                          | 1855 +++++
+ po/nso.po                                          | 1835 +++++
+ po/oc.po                                           | 1859 +++++
+ po/or.po                                           | 1841 +++++
+ po/pa.po                                           | 1855 +++++
+ po/pl.po                                           | 1935 +++++
+ po/pms.po                                          | 1833 +++++
+ po/ps.po                                           | 1835 +++++
+ po/pt.po                                           | 1921 +++++
+ po/pt_BR.po                                        | 1934 +++++
+ po/ro.po                                           | 1875 +++++
+ po/ru.po                                           | 1956 +++++
+ po/rw.po                                           | 1833 +++++
+ po/sc.po                                           | 1845 +++++
+ po/si.po                                           | 1834 +++++
+ po/sk.po                                           | 1892 +++++
+ po/sl.po                                           | 1910 +++++
+ po/sq.po                                           | 1850 +++++
+ po/sr.po                                           | 1896 +++++
+ po/sr@latin.po                                     | 1863 +++++
+ po/sv.po                                           | 1908 +++++
+ po/ta.po                                           | 1860 +++++
+ po/te.po                                           | 1847 +++++
+ po/th.po                                           | 1849 +++++
+ po/tk.po                                           | 1833 +++++
+ po/tr.po                                           | 1904 +++++
+ po/tt.po                                           | 1830 +++++
+ po/ug.po                                           | 1842 +++++
+ po/uk.po                                           | 1916 +++++
+ po/ur.po                                           | 1839 +++++
+ po/ur_PK.po                                        | 1837 +++++
+ po/uz.po                                           | 1837 +++++
+ po/vi.po                                           | 1838 +++++
+ po/wa.po                                           | 1835 +++++
+ po/xh.po                                           | 1833 +++++
+ po/yi.po                                           | 1833 +++++
+ po/yo.po                                           | 1830 +++++
+ po/zh_CN.po                                        | 1874 +++++
+ po/zh_HK.po                                        | 1842 +++++
+ po/zh_TW.po                                        | 1863 +++++
+ po/zu.po                                           | 1835 +++++
+ previewer/Makefile.am                              |   50 +
+ previewer/atril-previewer.1                        |   16 +
+ previewer/ev-previewer-window.c                    |  714 ++
+ previewer/ev-previewer-window.h                    |   51 +
+ previewer/ev-previewer.c                           |  168 +
+ previewer/previewer-ui.xml                         |   30 +
+ previewer/previewer.gresource.xml                  |   23 +
+ properties/Makefile.am                             |   45 +
+ properties/ev-properties-main.c                    |  159 +
+ properties/ev-properties-view.c                    |  403 +
+ properties/ev-properties-view.h                    |   50 +
+ ...il-properties-page.caja-extension.desktop.in.in |    9 +
+ shell/Makefile.am                                  |  185 +
+ shell/atril-toolbar.xml                            |   41 +
+ shell/atril-ui.xml                                 |  149 +
+ shell/atril.about                                  |    2 +
+ shell/atril.css                                    |   43 +
+ shell/atril.gresource.xml                          |   26 +
+ shell/eggfindbar.c                                 |  677 ++
+ shell/eggfindbar.h                                 |   80 +
+ shell/ev-annotation-properties-dialog.c            |  314 +
+ shell/ev-annotation-properties-dialog.h            |   54 +
+ shell/ev-application.c                             | 1062 +++
+ shell/ev-application.h                             |   77 +
+ shell/ev-bookmark-action.c                         |  109 +
+ shell/ev-bookmark-action.h                         |   45 +
+ shell/ev-bookmarks.c                               |  285 +
+ shell/ev-bookmarks.h                               |   57 +
+ shell/ev-daemon-gdbus.xml                          |   19 +
+ shell/ev-daemon.c                                  |  483 ++
+ shell/ev-file-monitor.c                            |  163 +
+ shell/ev-file-monitor.h                            |   57 +
+ shell/ev-gdbus.xml                                 |   33 +
+ shell/ev-history.c                                 |  137 +
+ shell/ev-history.h                                 |   65 +
+ shell/ev-keyring.c                                 |  100 +
+ shell/ev-keyring.h                                 |   37 +
+ shell/ev-loading-message.c                         |  177 +
+ shell/ev-loading-message.h                         |   45 +
+ shell/ev-media-player-keys.c                       |  233 +
+ shell/ev-media-player-keys.h                       |   49 +
+ shell/ev-message-area.c                            |  347 +
+ shell/ev-message-area.h                            |   74 +
+ shell/ev-metadata.c                                |  325 +
+ shell/ev-metadata.h                                |   72 +
+ shell/ev-navigation-action-widget.c                |  161 +
+ shell/ev-navigation-action-widget.h                |   46 +
+ shell/ev-navigation-action.c                       |  250 +
+ shell/ev-navigation-action.h                       |   64 +
+ shell/ev-open-recent-action.c                      |  102 +
+ shell/ev-open-recent-action.h                      |   52 +
+ shell/ev-password-view.c                           |  419 +
+ shell/ev-password-view.h                           |   59 +
+ shell/ev-progress-message-area.c                   |  193 +
+ shell/ev-progress-message-area.h                   |   64 +
+ shell/ev-properties-dialog.c                       |  201 +
+ shell/ev-properties-dialog.h                       |   47 +
+ shell/ev-properties-fonts.c                        |  225 +
+ shell/ev-properties-fonts.h                        |   48 +
+ shell/ev-properties-license.c                      |  167 +
+ shell/ev-properties-license.h                      |   50 +
+ shell/ev-sidebar-annotations.c                     |  524 ++
+ shell/ev-sidebar-annotations.h                     |   63 +
+ shell/ev-sidebar-attachments.c                     |  704 ++
+ shell/ev-sidebar-attachments.h                     |   62 +
+ shell/ev-sidebar-bookmarks.c                       |  615 ++
+ shell/ev-sidebar-bookmarks.h                       |   60 +
+ shell/ev-sidebar-layers.c                          |  451 ++
+ shell/ev-sidebar-layers.h                          |   59 +
+ shell/ev-sidebar-links.c                           |  723 ++
+ shell/ev-sidebar-links.h                           |   66 +
+ shell/ev-sidebar-page.c                            |   92 +
+ shell/ev-sidebar-page.h                            |   64 +
+ shell/ev-sidebar-thumbnails.c                      | 1037 +++
+ shell/ev-sidebar-thumbnails.h                      |   59 +
+ shell/ev-sidebar.c                                 |  515 ++
+ shell/ev-sidebar.h                                 |   67 +
+ shell/ev-utils.c                                   |  109 +
+ shell/ev-utils.h                                   |   34 +
+ shell/ev-window-title.c                            |  211 +
+ shell/ev-window-title.h                            |   47 +
+ shell/ev-window.c                                  | 8301 ++++++++++++++++++++
+ shell/ev-window.h                                  |   93 +
+ shell/main.c                                       |  292 +
+ test/Makefile.am                                   |   19 +
+ test/test-encrypt.pdf                              |  Bin 0 -> 26501 bytes
+ test/test-links.pdf                                |  Bin 0 -> 15151 bytes
+ test/test-mime.bin                                 |  Bin 0 -> 15151 bytes
+ test/test-page-labels.pdf                          |  Bin 0 -> 10150 bytes
+ test/test1.py                                      |   38 +
+ test/test2.py                                      |   30 +
+ test/test3.py                                      |   16 +
+ test/test4.py                                      |   22 +
+ test/test5.py                                      |   27 +
+ test/test6.py                                      |   47 +
+ test/test7.py                                      |   36 +
+ thumbnailer/Makefile.am                            |   43 +
+ thumbnailer/atril-thumbnailer.1                    |   18 +
+ thumbnailer/atril-thumbnailer.c                    |  320 +
+ thumbnailer/atril.thumbnailer.in                   |    6 +
+ update-authors.pl                                  |   77 +
+ 733 files changed, 519529 insertions(+)

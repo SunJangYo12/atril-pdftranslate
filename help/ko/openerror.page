@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="openerror" xml:lang="ko">
+
+  <info>
+    <link type="guide" xref="index#faq"/>
+    <desc>Error When Opening A File.</desc>
+   <link type="seealso" xref="formats"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+<title>파일을 열 수 없는 이유는 무엇입니까?</title>
+
+<p>Atril이 인식하지 못하는 형식의 문서를 열려고 하면 "문서를 열 수 없음" 오류 메시지가 나타납니다. <gui>닫기</gui>를 클릭하여 <app>Atril</app> 창으로 돌아갑니다.</p>
+
+</page>

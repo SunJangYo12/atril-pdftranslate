@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="invert-colors" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#tips"/>
+
+    <desc>Invertire i colori può agevolare la lettura di certi testi.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Anna Philips</name>
+      <email>anna.cs.au@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+<title>Invertire i colori di una pagina</title>
+
+
+ <p>Per scambiare il bianco con il nero, il nero con il bianco, e così via, andare sul menù <gui style="menuitem">Visualizza</gui> e selezionare <gui style="menuitem">Inverti colori</gui> (o digitare la combinazione <keyseq><key>Ctrl</key> <key>I</key></keyseq>).</p>
+
+<note style="tip">
+ <p>Fare così potrebbe rendere più semplice leggere i testi, specialmente in caso di certe difficoltà visive.</p>
+</note>
+</page>

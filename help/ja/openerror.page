@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="openerror" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#faq"/>
+    <desc>ファイルを読み込むときエラーが発生します。</desc>
+   <link type="seealso" xref="formats"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+
+  </info>
+
+<title>ファイルが開かないのはなぜですか？</title>
+
+<p>Atril が認識できない形式の文書を開こうとした場合、「文書を開けません」というエラーメッセージが表示されます。<gui>閉じる</gui>をクリックして、<app>Atril</app> のウィンドウに戻ってください。</p>
+
+</page>

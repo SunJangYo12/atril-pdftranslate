@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="shortcuts" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#advanced"/>
+    <desc>Si veda l'elenco di tutte le scorciatoie.</desc>
+
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <credit type="author">
+       <name>Tiffany Antopolski</name>
+       <email>tiffany.antopolski@gmail.com</email>
+    </credit>
+    <credit type="editor">
+       <name>Taufan Lubis</name>
+       <email>taufanlinux@gmail.com</email>
+    </credit>
+   <credit type="editor">
+       <name>Ronaldi Santosa</name>
+       <email>ronald.santosa@gmail.com</email>
+    </credit>
+   <credit type="editor">
+       <name>Ibnu Amansyah</name>
+       <email>javalander9@gmail.com</email>
+    </credit>
+   <credit type="editor">
+       <name>Andre Klapper</name>
+       <email>ak-47@gmx.net</email>
+    </credit>
+   <credit type="editor">
+       <name>Germán Poo-Caamaño</name>
+       <email>gpoo@gnome.org</email>
+    </credit>
+
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+
+<title>Scorciatoie da tastiera</title>
+
+<section id="default-shortcuts"><title>Scorciatoie predefinite</title>
+<section id="open-close-save-print">
+  <title>Aprire, chiudere, salvare e stampare</title>
+  <table frame="all" rules="cols" shade="rows">
+    <tr>
+        <td><p>Apre un documento.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Apre una copia del documento corrente.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Salva una copia del documento corrente con un nuovo nome.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>S</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Stampa il file corrente.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>P</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Chiude la finestra del documento corrente.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>W</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Ricarica il documento (in pratica chiude e riapre il documento).</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>R</key></keyseq></p></td>
+    </tr>
+  </table>
+</section>
+
+<section id="move-around">
+    <title>Spostarsi in un documento</title>
+<table frame="all" rules="cols" shade="rows">
+    <tr>
+        <td><p>Sposta la pagina in su/giù.</p></td>
+        <td><p>Tasti freccia</p></td>
+    </tr>
+    <tr>
+        <td><p>Sposta in su/giù la pagina di più linee alla volta.</p></td>
+        <td><p><key>Pagina su</key> / <key>Pagina giù</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Vai alla pagina precedente.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>Page Up</key></keyseq> / <key>P</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Vai alla pagina successiva.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>Page Down</key></keyseq> / <key>N</key></p></td>
+    </tr>
+<tr>
+        <td><p>Vai alla pagina numero...</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>L</key></keyseq> seguito dal numero di pagina e premere <key>Invio</key></p></td>
+</tr>
+    <tr>
+        <td><p>Vai all'inizio della pagina (all'inizio del documento se è selezionato <gui>Continuo</gui> dal menù principale nell'angolo superiore destro).</p></td>
+         <td><p><key>Home</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Vai alla fine della pagina (alla fine del documento se è selezionato <gui>Continuo</gui> dal menù principale nell'angolo superiore destro).</p></td>
+        <td><p><key>Fine</key></p></td>
+    </tr>
+    <tr>
+    	<td><p>Vai all'inizio del documento.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>Home</key></keyseq></p></td>
+    </tr>
+    <tr>
+    	<td><p>Vai alla fine del documento.</p></td>
+         <td><p><keyseq><key>Ctrl</key><key>End</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Aggiunge un segnalibro alla pagina corrente.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>D</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Cancella il segnalibro della pagina corrente se questo esiste.</p></td>
+        <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>D</key></keyseq></p></td>
+    </tr>
+    <tr>
+         <td><p>Mostra il pannello laterale con la tavola dei contenuti e i segnalibri.</p></td>
+         <td><p><key>F9</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Abilita la navigazione col cursore piazzando un cursore mobile nel testo della pagina, consentendo di muoversi nel documento e selezionare del testo con la tastiera.</p></td>
+        <td><p><key>F7</key></p></td>
+    </tr>
+  </table>
+</section>
+
+<section id="copy">
+    <title>Selezionare e copiare il testo</title>
+<table frame="all" rules="cols" shade="rows">
+    <tr>
+        <td><p>Copia il testo selezionato.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>C</key></keyseq> / <keyseq><key>Ctrl</key><key>Insert</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Seleziona tutto il testo di un documento.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>A</key></keyseq></p></td>
+    </tr>
+</table>
+</section>
+
+<section id="find">
+    <title>Trova testo</title>
+<table frame="all" rules="cols" shade="rows">
+    <tr>
+        <td><p>Mostra la barra degli strumenti che consente di cercare parole nel documento. La casella di ricerca viene automaticamente evidenziata se si preme questo pulsante e la ricerca inizia non appena si inizia a digitare nel campo. Se si seleziona del testo nel documento prima di effettuare la ricerca, La ricerca sarà effettuata su quel testo.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>F</key></keyseq> / <key>/</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Vai al risultato della ricerca successivo.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>G</key></keyseq> / <key>F3</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Vai al risultato della ricerca precedente.</p></td>
+        <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>G</key></keyseq> / <keyseq><key>Shift</key><key>F3</key></keyseq></p></td>
+    </tr>
+</table>
+</section>
+
+<section id="rotate-zoom">
+    <title>Ruotare e ingrandire</title>
+<table frame="all" rules="cols" shade="rows">
+    <tr>
+        <td><p>Ruota le pagine di 90 gradi in senso antiorario.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>Freccia sinistra</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Ruota le pagine di 90 gradi in senso orario.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>Freccia destra</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Il livello di ingrandimento predefinito.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>0</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Ingrandisce.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>+</key></keyseq> / <key>=</key> / <keyseq><key>Ctrl</key><key>=</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Riduce l'ingrandimento.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>-</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Adatta la pagina alla finestra.</p></td>
+        <td><p><key>F</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Adatta la larghezza del contenuto allo spazio disponibile.</p></td>
+        <td><p><key>W</key></p></td>
+    </tr>
+</table>
+</section>
+
+<section id="window">
+    <title>Finestra</title>
+<table frame="all" rules="cols" shade="rows">
+    <tr>
+        <td><p>Utilizza lo schermo intero per visualizzare il documento.</p></td>
+        <td><p><key>F11</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Avvia una presentazione</p></td>
+        <td><p><key>F5</key> / <keyseq><key>Shift</key><key>F5</key></keyseq></p></td>
+    </tr>
+</table>
+</section>
+
+<section id="document">
+    <title>Visualizzazione del documento</title>
+<table frame="all" rules="cols" shade="rows">
+    <tr>
+        <td><p>Inverte i colori dello sfondo e del documento.</p></td>
+        <td><p><keyseq><key>Ctrl</key><key>I</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Alterna tra la visualizzazione continua e quella pagina per pagina del documento.</p></td>
+        <td><p><key>C</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Mostra due pagine affiancate.</p></td>
+        <td><p><key>D</key></p></td>
+    </tr>
+</table>
+</section>
+
+<section id="presentation">
+    <title>Modalità presentazione</title>
+<table frame="all" rules="cols" shade="rows">
+    <tr>
+        <td><p>Commuta lo schermo nero.</p></td>
+        <td><p><key>B</key> / <key>.</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Commuta lo schermo bianco.</p></td>
+        <td><p><key>W</key></p></td>
+    </tr>
+</table>
+</section>
+
+</section>
+
+</page>

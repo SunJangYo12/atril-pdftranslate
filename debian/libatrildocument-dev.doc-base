@@ -1,0 +1,9 @@
+Document: libatrildocument-doc
+Title: libatrildocument API documentation
+Author: MATE Desktop Team
+Abstract: This document describes the API of the libatrildocument library.
+Section: Programming/C
+
+Format: HTML
+Index: /usr/share/doc/libatrildocument-dev/html/index.html
+Files: /usr/share/doc/libatrildocument-dev/html/*

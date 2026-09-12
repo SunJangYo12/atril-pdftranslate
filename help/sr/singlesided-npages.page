@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="singlesided-npage" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="print-booklet#singleSided"/>
+
+    <desc>Штампајте књижицу са n страница.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Тифани Антополоски</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+
+  </info>
+
+<title>Књижица са n страница</title>
+ <note style="important">
+  <p><em>n</em> је производ броја 4.</p>
+ </note>
+ <p>Ако број страница вашег ПДФ документа није дељив са 4, мораћете да додате одговарајући број празних страница (1, 2, или 3) да бисте га учинили дељивим са 4. Да урадите ово, можете:</p>
+ <steps>
+ <item>
+  <p>Направите празан ПДФ користећи <app>Либреофис Писца</app>.</p>
+ </item>
+ <item>
+  <p>Стопите празне странице са вашим ПДФ документом користећи <app>ПДФ-Шафлер</app> стављајући празне странице на крај.</p>
+ </item>
+</steps>
+
+ <p>Да штампате:</p>
+  <steps>
+ <item>
+  <p>Идите на „<guiseq><gui style="menuitem">Датотека</gui><gui style="menuitem">Штампај</gui></guiseq>“ и притисните дугме „<gui style="button">Штампај</gui>“.</p>
+ </item>
+ <item>
+  <p>Изаберите језичак „<gui>Опште</gui>“.</p>
+  <p>Под „<em>Опсег</em>“, изаберите „<gui>Странице</gui>“.</p>
+  <tree>
+   <item>Упишите бројеве страница овим редом: <item>n, 1, 2, n-1, n-2, 3, 4, n-3, n-4, 5, 6, n-5, n-6, 7, 8, n-7, n-8, 9, 10, n-9, n-10, 11, 12, n-11...</item> <item>...све док не упишете n број страница.</item></item>
+  </tree>
+ </item>
+ <item>
+  <p>Изаберите језичак „<gui>Поставке странице</gui>“.</p>
+  <p>Под одељком „<em>Распоред</em>“, у опцији „<gui>Двострано</gui>“, изаберите „<gui>Једнострано</gui>“.</p>
+  <p>У опцији „<gui>Страна на листу</gui>“, изаберите <gui>2</gui>.</p>
+  <p>У изборнику „<gui>Редослед страница</gui>“, изаберите „<gui>С лева на десно</gui>“.</p>
+  <p>У изборнику „<gui>Штампај само</gui>“, изаберите „<gui>Непарне листове</gui>“.</p>
+ </item>
+ <item>
+  <p>Кликните „<gui>Штампај</gui>“.</p>
+ </item>
+   <item>
+    <p>Када су одштампане све странице, окрените наопако странице и вратите их назад у штампач.</p>
+   </item>
+   <item>
+    <p>Идите на „<guiseq><gui style="menuitem">Датотека</gui><gui style="menuitem">Штампај</gui></guiseq>“ и притисните дугме „<gui style="button">Штампај</gui>“.</p>
+   </item>
+   <item>
+    <p>Изаберите језичак „<gui>Поставке странице</gui>“.</p>
+     <p>У изборнику „<gui>Штампај само</gui>“, изаберите „<gui>Парне листове</gui>“.</p>
+   </item>
+   <item>
+    <p>Кликните „<gui>Штампај</gui>“.</p>
+   </item>
+  </steps>
+</page>

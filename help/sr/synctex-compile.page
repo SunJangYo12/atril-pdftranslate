@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="synctex-compile" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#synctex" group="third"/>
+    <desc>Како да преведете ваш ТеКс документ помоћу СинкТеКс-а</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Тифани Антополоски</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+  </info>
+
+<title>Преведете ТеКс помоћу СинкТеКс-а</title>
+<p>Додавање реда „<em>\synctex=1</em>“ у уводу ваше ТеКс датотеке покренуће синхронизацију са СинкТеКс-ом.</p>
+<code>
+\documentclass{article}
+\synctex=1
+\usepackage{fullpage}
+\begin{document}
+...
+\end{document}
+</code>
+<p>Или можете да покренете наредбу „pdflatex“-а са опцијом „<em>-synctex=1</em>“:</p>
+<screen>pdflatex -synctex=1 ваша_датотека.tex</screen>
+</page>

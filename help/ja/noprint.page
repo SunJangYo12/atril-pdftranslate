@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:if="http://projectmallard.org/if/1.0/" type="topic" style="task" id="noprint" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#printing"/>
+    <desc>作者が印刷に制限をかけている可能性があります。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+
+  </info>
+
+<title>文書を印刷できません</title>
+<section id="why">
+ <title>印刷ができない場合の原因</title>
+<p>次の理由で文書が印刷できない場合があります。</p>
+ <list>
+  <item><p>プリンタ側の問題、あるいは</p></item>
+  <item><p>PDF に起因する印刷制限です。</p></item>
+ </list>
+</section>
+
+<section id="printer-problems">
+  <title>プリンタに問題ある場合</title>
+  <p>プリンターが動作しない理由はいろいろあります。例えば、紙やインクが切れていたり、コンセントが抜けていたり、故障している場合などです。</p>
+  <p>コントロールセンターで、プリンターの設定を確認すると良いかもしれません。</p>
+</section>
+
+<section id="pdf-restrictions">
+  <title>PDF に起因する印刷制限</title>
+  <p>PDF文書の中には、印刷できないように設定がされているものがあります。著者は文書作成時にこの印刷制限を設定することができます。Atril はデフォルトでこの制限を上書きしますが、無効化されていないかを次のようにして確認してください。</p>
+
+  <note style="important">
+    <p>この設定を変更するには、コンピュータに <app>dconf エディタ</app> がインストール済みであることが必要です。</p>
+  </note>
+
+  <steps>
+    <item>
+      <p><gui>dconf エディタ</gui>を開きます。</p>
+    </item>
+    <item>
+      <p><sys>/org/mate/atril</sys>をブラウズします。</p>
+    </item>
+    <item>
+      <p><gui>override-restrictions</gui> オプションがチェックされているか確認してください。</p>
+    </item>
+    <item>
+      <p><app>Atril</app> に戻って、もう一度文書の印刷を試してください。</p>
+    </item>
+  </steps>
+</section>
+
+</page>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="annotations-save" xml:lang="sr">
+<info>
+  <link type="guide" xref="index#annotations"/>
+ <desc>Како сачувати прибелешке.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Тифани Антополоски</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Шоба Тјаги</name>
+      <email its:translate="no">tyagishobha@gmail.com</email>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+</info>
+<title>Чување примерка прибележеног ПДФ-а</title>
+ <p>Да сачувате примерак ПДФ са прибелешкама за даље прегледање помоћу <app>Атрила</app> или било ког другог прегледника <em>који подржава прибелешке</em>:</p>
+  <steps>
+   <item>
+     <p>Кликните „<guiseq><gui>Датотека</gui><gui>Сачувај као…</gui></guiseq>“</p>
+   </item>
+   <item>
+     <p>Изаберите назив и фасциклу у којој ћете сачувати датотеку, затим кликните „<gui>Сачувај</gui>“. ПДФ ће бити сачуван у фасцикли коју изаберете.</p>
+    </item>
+   </steps>
+   <p>Прибелешке су додате у складу са ПДФ спецификацијом. Међутим, већина ПДФ читача би требало да може да их чита. Познато је да Адоб Ридер то може.</p>
+
+</page>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="synctex-beamer" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#synctex" group="sixth"/>
+    <desc>Коришћење СинкТеКс-а са класом ЛаТеКс Бимера.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Тифани Антополоски</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+  </info>
+
+<title>Бимер са СинкТеКс-ом</title>
+<p>Бимер је класа ЛаТеКс-а за стварање слајдова за презентације.</p>
+<p>Можете да извршите претрагу унапред и уназад у „<em>Бимер-ЛаТеКс</em>“ презентацији на сличан начин као <link xref="synctex-search">претраживање</link> у другим ТеКс датотекама преведеним СинкТеКс-ом. Међутим, претрага вас доводи до одговарајућег оквира (слајда), а не нужно и до повезаног реда текста. Ова разлика је детаљно наведена у наставку.</p>
+<section id="forward-search">
+    <title>Претрага унапред: из Бимер-ЛаТеКс извора у ПДФ (из <app>плуме</app> у Атрил)</title>
+    <p>Помоћу <link xref="synctex-search#forward-search">претраге унапред</link>, можете да кликнете на одређени ред изворног кôда Бимер-ЛаТеКс-а. <em>Врх</em> одговарајућег слајда у ПДФ-у биће означен црвеном бојом. Ово ће често бити <em>наслов оквира</em>.</p>
+</section>
+
+<section id="backward-search">
+
+    <title>Претрага уназад: из ПДФ-а у извор Бимер-ЛаТеКс-а (из Атрила у <app>плуму</app>)</title>
+     <p>Помоћу <link xref="synctex-search#backward-search">претраге уназад</link>, кликнете на неки текст у оквиру и одговарајући ред ЛаТеКс кôда који завршава тај одређени оквир бива истакнут. То ће обично бити ред:</p>
+ <code>\end{frame}</code>
+<p>одговара оквиру на који сте кликнули.</p>
+
+
+</section>
+
+
+</page>

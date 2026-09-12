@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task" id="print-2sided" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="printing"/>
+
+    <desc>両面印刷とマルチページ印刷</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+
+  </info>
+
+<title>両面・多面付けレイアウトでの印刷</title>
+
+<p>各用紙の両面を印刷するには、次のようにします。</p>
+
+<steps>
+ <item>
+  <p><guiseq><gui style="menuitem">ファイル</gui><gui style="menuitem">印刷</gui></guiseq>へ移動し、<gui style="button">印刷</gui>ボタンを押下してください。</p>
+ </item>
+ <item>
+  <p>「印刷」メニューより<gui>ページの設定</gui>タブを開いて、<gui>両面印刷</gui>のプルダウンからオプションを選択します。</p>
+ </item>
+ <item>
+  <p>文書の複数ページを用紙の<em>片側</em>に印刷することもできます。これには、<gui>両面印刷</gui>のオプションを使用します。</p>
+ </item>
+</steps>
+
+</page>

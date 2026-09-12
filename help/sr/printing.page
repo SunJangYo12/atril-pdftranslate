@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task" id="printing" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#printing"/>
+    <link type="seealso" xref="noprint"/>
+
+    <desc>Како штампати и општа питања о штампању.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Фил Бул</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ана Филипс</name>
+      <email>anna.cs.au@gmail.com</email>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+
+  </info>
+
+<title>Штампање документа</title>
+
+<list>
+ <item><p>Да штампате документ:</p>
+  <steps>
+    <item>
+      <p>Кликните на изборник „<gui>Датотека</gui>“ и изаберите „<gui>Штампај</gui>“ или притисните <keyseq><key>Ктрл</key><key>P</key></keyseq>.</p>
+    </item>
+    <item>
+      <p>Изаберите штампач са списка.</p>
+    </item>
+   <item><p>Кликните „<gui>Штампај</gui>“.</p></item>
+  </steps>
+ </item>
+</list>
+
+<list>
+ <item>
+  <p>Штампање је омогућено за следеће формате датотеке:</p>
+   <list>
+    <item><p>Уређајно независтан формат датотеке (.dvi)</p></item>
+    <item><p>DjVu (.djvu, .djv)</p></item>
+    <item><p>Преносиви формат докумената (.pdf)</p></item>
+    <item><p>Постскрипт (.ps)</p></item>
+    <item><p>Формат датотеке означне слике (.tiff, .tif)</p></item>
+   </list>
+ </item>
+</list>
+
+</page>

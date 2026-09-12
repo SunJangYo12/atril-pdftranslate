@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="editing" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#faq"/>
+    <desc>Atril を使ってファイルを編集することはできません。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+
+  </info>
+
+<title>文書ビューアで編集作業を行えますか？</title>
+
+
+ <p>Atril では文書の変更を行うことができません。変更したいファイルの種類に応じて、別の適切な編集アプリケーションを使用する必要があります。</p>
+
+
+<note>
+ <p>PDF やポストスクリプト（.ps）ファイルは、通常、編集することが想定されていませんが、PDF 編集ソフトが存在します。<app>LibreOffice 描画</app>や <app>Okular</app> などを試してください。さらに、<app>pdfarranger</app> では、ページの並べ替えや削除、ファイルの結合ができます。</p>
+</note>
+</page>

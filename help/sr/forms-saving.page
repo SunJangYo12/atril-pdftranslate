@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="forms-saving" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#forms"/>
+    <desc>Уверите се да сте сачували образац, у супротном ће све информације које сте унели бити изгубљене.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Тифани Антополоски</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ана Филипс</name>
+      <email>anna.cs.au@gmail.com</email>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+  </info>
+
+<title>Чување обрасца</title>
+
+<p>Након што сте га попунили, можете сачувати образац на један од два начина:</p>
+
+<list type="numbered">
+<item><p>Да сачувате примерак који се може уређивати у будућности (образац остаје међудејствени):</p>
+   <steps>
+      <item>
+        <p>Идите на „<guiseq><gui style="menuitem">Датотека</gui> <gui style="menuitem">Штампај</gui></guiseq>“ и изаберите „<gui>Сачувај као…</gui>“ или притисните <keyseq><key>Ктрл</key><key>S</key></keyseq> на вашој тастатури.</p>
+     </item>
+ <item>
+      <p>Изаберите назив и фасциклу у којој ћете сачувати датотеку, затим кликните „<gui>Сачувај</gui>“. ПДФ ће бити сачуван у фасцикли коју изаберете.</p>
+    </item>
+   </steps>
+</item>
+<item><p>Да сачувате примерак који се не може више уређивати (на пример, да пошаљете образац путем е-поште или да га предате на мрежи):</p>
+   <steps>
+    <item>
+        <p>Идите на „<guiseq><gui style="menuitem">Датотека</gui> <gui style="menuitem">Штампај</gui></guiseq>“ и изаберите „<gui>Штампај</gui>“ или притисните <keyseq><key>Ктрл</key><key>P</key></keyseq> на вашој тастатури.</p>
+    </item>
+
+
+    <item>
+      <p>Изаберите „<gui>Штампај у датотеку</gui>“ и изаберите ПДФ као „<gui>Излазни формат</gui>“.</p>
+    </item>
+    <item>
+      <p>Изаберите назив и фасциклу у којој ћете сачувати датотеку, затим кликните „<gui>Штампај</gui>“. ПДФ ће бити сачуван у фасцикли коју изаберете.</p>
+    </item>
+   </steps>
+</item>
+</list>
+
+<note style="bug">
+<p>Примерци шифрованих датотека се не могу сачувати или штампати.</p>
+</note>
+
+</page>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="presentations" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#pres"/>
+    <desc>Come riprodurre delle presentazioni.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Anna Philips</name>
+      <email>anna.cs.au@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+<title>Presentazioni</title>
+<section id="start-presentation">
+<title>Avviare una presentazione</title>
+<p>Per avviare una presentazione:</p>
+<steps>
+ <item>
+  <p><link xref="opening">Aprire un file</link></p>
+ </item>
+ <item>
+   <p>Andare su <gui style="menuitem">Visualizza</gui> e selezionare <gui style="menuitem">Presentazione</gui> (o premere <key>F5</key>).</p>
+  <p>La presentazione si avvierà a schermo intero.</p>
+ </item>
+</steps>
+</section>
+<section id="present">
+ <title>Muoversi dentro una presentazione</title>
+ <p>Usare la <key>barra spaziatrice</key>, <key>→</key>, <key>↓</key>, o fare clic con il pulsante sinistro del mouse per andare alla slide successiva.</p>
+ <p>Usare <key>←</key>, <key>↑</key> o fare clic con il pulsante destro del mouse per andare alla slide precedente.</p>
+ <note style="tip">
+  <p>Si può utilizzare anche la rotella del mouse per muoversi avanti ed indietro nella presentazione.</p>
+ </note>
+ <p>Premere <key>Esc</key> per uscire dalla presentazione.</p>
+</section>
+
+<section id="blank-screen">
+<title>Mostrare uno schermo vuoto</title>
+<p>Premere <key>B</key> o <key>.</key> per mostrare uno schermo nero.</p>
+<p>Press <key>W</key> per mostrare uno schermo bianco.</p>
+<p>Premere nuovamente <key>B</key>, <key>.</key>, o <key>W</key> per ritornare alla slide.</p>
+</section>
+
+<section id="file-formats">
+<title>Formati di presentazione supportati</title>
+<p>Possono essere utilizzati i seguenti formati di presentazione:</p>
+<list>
+ <item><p>Comic Book Archive (.cbr and .cbz)</p></item>
+ <item><p>Device Independent file format (.dvi)</p></item>
+ <item><p>DjVu (.djvu, .djv)</p></item>
+ <item><p>Open Document Presentation (.odp)</p></item>
+ <item><p>Portable Document Format (.pdf)</p></item>
+ <item><p>PostScript (.ps)</p></item>
+</list>
+</section>
+</page>

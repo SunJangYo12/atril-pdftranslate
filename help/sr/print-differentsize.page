@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" style="task" id="print-differentsize" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="printing"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Фил Бул</name>
+      <email its:translate="no">philbull@gmail.com</email>
+    </credit>
+    <credit type="author">
+      <name>Екатерина Герасимова</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+
+    <desc>Штампање документа на папиру другачије величине или усмерења.</desc>
+  </info>
+
+  <title>Промена величине папира приликом штампања</title>
+
+  <p>Ако желите да измените величину папира вашег документа (на пример, да одштампате ПДФ величине америчког писма на А4 папиру), можете да измените формат штампања документа.</p>
+
+  <steps>
+    <item>
+      <p>Идите на „<guiseq><gui style="menuitem">Датотека</gui><gui style="menuitem">Штампај</gui></guiseq>“ и притисните дугме „<gui style="button">Штампај</gui>“.</p>
+    </item>
+    <item>
+      <p>Изаберите језичак „<gui>Подешавање стране</gui>“.</p>
+    </item>
+    <item>
+      <p>У одељку <em>Папир</em>, изаберите жељену <em>Величину папира</em> из падајућег списка.</p>
+    </item>
+    <item>
+      <p>Кликните <gui>Штампај</gui> и ваш документ ће бити одштампан.</p>
+    </item>
+  </steps>
+
+  <p>Можете такође да користите изборник „<em>Усмерење</em>“ да одаберете другачије усмерење:</p>
+
+  <list>
+    <item>
+      <p><gui>Усправно</gui></p>
+    </item>
+    <item>
+      <p><gui>Положено</gui></p>
+    </item>
+    <item>
+      <p><gui>Обрнуто усправно</gui></p>
+    </item>
+    <item>
+      <p><gui>Обрнуто положено</gui></p>
+    </item>
+  </list>
+
+</page>

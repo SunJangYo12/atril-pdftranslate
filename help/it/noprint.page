@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:if="http://projectmallard.org/if/1.0/" type="topic" style="task" id="noprint" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#printing"/>
+    <desc>L'autore potrebbe aver imposto delle restrizioni sulla stampa del documento.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+<title>Non riesco a stampare un documento</title>
+<section id="why">
+ <title>Possibili ragioni per la mancata stampa</title>
+<p>Un documento potrebbe non essere stampabile a causa di:</p>
+ <list>
+  <item><p>Problemi alla stampante o,</p></item>
+  <item><p>Restrizioni sulla stampa del documento PDF</p></item>
+ </list>
+</section>
+
+<section id="printer-problems">
+  <title>Problemi relativi alla stampante</title>
+  <p>Sono molteplici le cause del mancato funzionamento della stampante; ad esempio potrebbe essere esauriti la carta o l'inchiostro, essere scollegata o danneggiata.</p>
+  <p>Controllare le impostazioni della stampante dal Centro di Controllo.</p>
+</section>
+
+<section id="pdf-restrictions">
+  <title>Restrizioni sulla stampa del documento PDF</title>
+  <p>Alcuni documenti PDF hanno un'impostazione che impedisce la loro stampa. Gli autori possono impostare questa restrizione al momento della creazione del documento. Atril sovrascrive per default questa impostazione, ma si potrebbe controllare che ciò non sia stato disabilitato:</p>
+
+  <note style="important">
+    <p>Per modificare questa impostazione, occorre avere installato <app>dconf Editor</app>.</p>
+  </note>
+
+  <steps>
+    <item>
+      <p>Aprire <gui>dconf Editor</gui>.</p>
+    </item>
+    <item>
+      <p>Andare su <sys>/org/mate/atril</sys>.</p>
+    </item>
+    <item>
+      <p>Assicurarsi che l'opzione <gui>sovrascrivi-restrizioni</gui> (override-restrictions) sia attivata.</p>
+    </item>
+    <item>
+      <p>Ritornare su <app>Atril</app> e provare a ristampare il documento.</p>
+    </item>
+  </steps>
+</section>
+
+</page>

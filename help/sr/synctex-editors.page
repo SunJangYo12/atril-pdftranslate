@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="synctex-editors" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#synctex" group="fourth"/>
+    <desc>Који уређивач можете користити за уређивање ТеКс датотеке?</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Тифани Антополоски</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+
+  </info>
+
+<title>Подржани уређивачи</title>
+
+<section id="pluma"><title><app>плума</app></title>
+<p>Подржана је и <link xref="synctex-search#forward-search">Претрага унапред</link> (из <app>плуме</app> у Атрил) и <link xref="synctex-search#backward-search">Претрага уназад</link> (из Атрила у <app>плуму</app>).</p>
+</section>
+
+<section id="vim-latex"><title>Vim-latex</title>
+<p>Прикључак <app>плуме</app> садржи скрипту питона (<file>atril_dbus.py</file>) која се може користити за рад СинкТеКс-а са Вимом. Да бисте користили „vim-latex“ са Атрилом морате испратити следеће кораке:</p>
+<steps>
+ <item>
+  <p>Умножите „<file>atril_dbus.py</file>“ у неки директоријум у вашој путањи и дајте јој овлашћења „+x“.</p>
+ </item>
+ <item>
+  <p>Измените вашу датотеку „<file>~/.vimrc</file>“ и додајте следеће редове.</p>
+<code>
+let g:Tex_ViewRule_pdf = 'atril_dbus.py'
+let g:Tex_DefaultTargetFormat = 'pdf'
+let g:Tex_CompileRule_pdf = 'pdflatex --synctex=1 -interaction=nonstopmode $*'
+</code>
+
+  </item>
+  <item>
+   <p>Сада можете користити претрагу унапред из „vim-latex“-а уписавши „\ls“. Претрага уназад још није подржана.</p>
+  </item>
+</steps>
+</section>
+</page>

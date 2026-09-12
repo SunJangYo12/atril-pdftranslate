@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="editing" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#faq"/>
+    <desc>Non è possibile utilizzare Atril per modificare i file.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+<title>Posso modificare i documenti dal visualizzatore di documenti?.</title>
+
+
+ <p>Atril non può essere utilizzato per apportare modifiche ai documenti. Occorre utilizzare l'applicazione di editing appropriata per il tipo di file che si vuole modificare.</p>
+
+
+<note>
+ <p>I file PDF e PostScript (.ps) non sono pensati per essere modificati, ma sono disponibili software per la modifica dei PDF. Provate, per esempio, <app>Draw di LibreOffice</app> o <app>Okular</app>. <app>Pdfarranger</app>, consente inoltre di riarrangiare o rimuovere pagine e di unire file.</p>
+</note>
+</page>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="annotations-disabled" xml:lang="ja">
+<info>
+  <link type="guide" xref="index#annotations"/>
+  <link type="seealso" xref="annotations"/>
+ <desc>注釈は PDF ファイルにのみ追加できます。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+</info>
+<title>注釈を追加できませんが？</title>
+ <p>注釈は、PDF ファイルにのみ追加できます。PDF 以外の形式の場合、注釈を追加するオプションはグレー表示（無効）になります。</p>
+</page>

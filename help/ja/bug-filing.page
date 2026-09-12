@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="bug-filing" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#getInvolved"/>
+    <desc>問題の報告方法と場所について。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+  </info>
+
+<title>Atril の不具合を報告する</title>
+<p>Atrilは、ボランティアのコミュニティによって保守されています。あなたの参加を歓迎します。もし問題に気づいたら、<em>不具合報告</em>を提出することができます。不具合の提出は、<link href="https://github.com/mate-desktop/atril/issues"/>へどうぞ。</p>
+   <p>これは、ユーザーや開発者が不具合やクラッシュの詳細を提出したり、機能拡張を要求したりできる不具合追跡システムです。</p>
+   <p>参加するにはアカウントが必要で、これによってアクセス、不具合の提出、コメントの作成が可能になります。また、提出したバグの状況を電子メールで受け取るためにも登録が必要です。まだアカウントをお持ちでない方は、<gui>サインイン / 登録</gui>のリンクをクリックしてアカウントを作成してください。</p>
+   <p>アカウントを取得したら、ログインして<gui>新しい問題</gui>をクリックします。</p>
+   <p>件名と説明の部分を記入し、<gui>問題を提出</gui>をクリックします。</p>
+   <p>あなたの報告には ID 番号が付与され、対応中は処理状況がその都度更新されます。</p>
+</page>

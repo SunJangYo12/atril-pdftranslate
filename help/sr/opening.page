@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="opening" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#reading"/>
+    <link type="seealso" xref="formats"/>
+    <link type="seealso" xref="commandline"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Тифани Антополоски</name>
+      <email its:translate="no">tiffany@antopolski.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Екатерина Герасимова</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+    </credit>
+
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal-unported.xml"/>
+
+    <desc>Како да отворите документ.</desc>
+  </info>
+
+  <title>Отварање документа</title>
+
+  <p>Можете да отворите документ користећи један од следећих начина:</p>
+
+  <list>
+    <item>
+      <p>Два пута кликните на датотеку у <app>Цаји</app> или вашем <em>управнику датотека</em>.</p>
+      <note style="tip">
+        <p>Двоклик на ПДФ, Постскрипт, „.djvu“, „.dvi“ и датотеке архиве стрипа их отвара у <app>Атрилу</app> по основи.</p>
+      </note>
+    </item>
+    <item>
+      <p>Десни клик на иконицу датотеке у <app>Цаји</app> и кликните „<guiseq><gui>Отвори програмом</gui><gui>Атрил</gui></guiseq>“.</p>
+    </item>
+  </list>
+
+  <p>Ако је прозор <app>Атрила</app> већ отворен можете:</p>
+
+  <list>
+    <item>
+      <p>Да превучете датотеку у прозор из <app>Цаје</app>. Нова датотека ће се отворити у новом прозору.</p>
+    </item>
+    <item>
+      <p>Притисните дугме „<gui>Отвори…</gui>“ у горњем левом углу прозора. У прозорчету „<gui>Отворите документ</gui>“, изаберите датотеку коју желите да отворите, и кликните „<gui>Отвори</gui>“. Датотека ће се отворити у новом прозору.</p>
+    </item>
+  </list>
+
+  <p>Ако је документ већ отворен у прозору <app>Атрила</app> можете:</p>
+
+  <list>
+    <item>
+      <p>Да превучете датотеку у прозор из <app>Цаје</app>. Нова датотека ће се отворити у новом прозору.</p>
+    </item>
+    <item>
+      <p>Притисните <keyseq><key>Ктрл</key><key>О</key></keyseq>. У прозорчету „<gui>Отворите документ</gui>“, изаберите датотеку коју желите да отворите, и кликните „<gui>Отвори</gui>“. Датотека ће се отворити у новом прозору.</p>
+    </item>
+  </list>
+
+</page>

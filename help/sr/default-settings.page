@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="default-settings" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#faq"/>
+    <desc>Сачувајте текуће поставке као основне за нова документа.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Синдху С</name>
+      <email>sindhus@live.in</email>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+
+  </info>
+
+  <title>Промена основних поставки</title>
+
+  <p>Када се документ отвори по први пут, основне поставке, као што су поставке увеличавања и прегледа странице, се примењују. Све измене које учините у овим поставкама се чувају за документ.</p>
+  <p>Можете да сачувате поставке које тренутно користите као основне за сва документа притиском на „<gui style="menuitem">Уређивање</gui>“ и изабравши „<gui style="menuitem">Сачувај текуће поставке као основне</gui>“.</p>
+
+  <note style="important">
+    <p>Нове основне поставке не преписују поставке претходно отворених докумената, примењују се само на документа отворена по први пут.</p>
+  </note>
+
+</page>

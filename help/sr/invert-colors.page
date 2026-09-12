@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="invert-colors" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#tips"/>
+
+    <desc>Преокретање боја може учинити лакшим читање неког текста.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Фил Бул</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ана Филипс</name>
+      <email>anna.cs.au@gmail.com</email>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+
+  </info>
+
+<title>Преокретање боја на страници</title>
+
+
+ <p>Да размените црну са белом, белу сацрном, и тако редом, идите на изборник „<gui style="menuitem">Преглед</gui>“ и изаберите „<gui style="menuitem">Преокрени боје</gui>“ (или притисните <keyseq><key>Ктрл</key><key>I</key></keyseq>).</p>
+
+<note style="tip">
+ <p>Ово може олакшати читање текста, нарочито у случају одређених визуелних потешкоћа.</p>
+</note>
+</page>

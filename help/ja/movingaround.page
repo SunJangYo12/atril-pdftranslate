@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="movingaround" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#reading"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email its:translate="no">philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Anna Philips</name>
+      <email its:translate="no">anna.cs.au@gmail.com</email>
+    </credit>
+
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal-unported.xml"/>
+
+    <desc>移動やスクロール、拡大・縮小について。</desc>
+  </info>
+
+  <title>文書内の移動</title>
+
+  <p>以下の方法のいずれかによって、文書の各ページへ移動できます。</p>
+
+  <list>
+    <item>
+      <p>マウスホイールを使って、上下にスクロールします。マウスを移動させて任意のページに移動するには</p>
+      <steps>
+        <item>
+          <p>ページを右クリックし、<gui>自動スクロールを選択します</gui>。</p>
+        </item>
+        <item>
+          <p>下方向へスクロールするには、マウスポインターをウィンドウの下の方へ移動します。どのくらい下に移動するかによって、スクロールの速さが変わります。</p>
+        </item>
+        <item>
+          <p>自動スクロールを停止するには、文書内の任意の場所をクリックします。</p>
+        </item>
+      </steps>
+    </item>
+    <item>
+      <p>文書のウィンドウにあるスクロール・バーを使います。</p>
+    </item>
+    <item>
+      <p>キーボードの上矢印キーと下矢印キーを使います。</p>
+    </item>
+    <item>
+      <p>マウスを使って、ページをつかむようにドラッグします。これを行うには</p>
+      <list>
+        <item>
+          <p>ページ上へマウスポインターを移動し、ドラッグするためにマウスの中ボタンを押したままにします。</p>
+        </item>
+        <item>
+          <p>もし、マウスに中ボタンがない場合は、マウスの左と右のボタンを同時に押したままでドラッグしてください。</p>
+        </item>
+      </list>
+    </item>
+  </list>
+
+<section id="between-pages">
+  <title>ページをめくるには</title>
+
+  <p>文書のページをめくるのは、以下のいずれかの方法で行うことができます。</p>
+
+  <list>
+    <item>
+      <p>キーボードの <keyseq><key>Ctrl</key><key>Page Up</key></keyseq> または <keyseq><key>Ctrl</key><key>Page Down</key></keyseq>ボタンを押します。</p>
+    </item>
+    <item>
+      <p>指定したページへ移動するには</p>
+      <list>
+        <item>
+          <p><gui style="input">ページの選択</gui>にページ番号を入力し、<key>Enter</key> を押します。</p>
+        </item>
+        <item>
+          <p>文書の冒頭または末尾へ移動したい場合</p>
+          <list>
+            <item>
+              <p>キーボードで<keyseq><key>Ctrl</key><key>Home</key></keyseq>を押します。</p>
+            </item>
+            <item>
+              <p>キーボードで<keyseq><key>Ctrl</key><key>End</key></keyseq>を押します。</p>
+            </item>
+          </list>
+        </item>
+      </list>
+    </item>
+    <item>
+      <p>一度に 10 ページぶん移動するには、 <keyseq><key>Shift</key><key>Page Up</key></keyseq> または <keyseq><key>Shift</key><key>Page Down</key></keyseq>を押します。</p>
+      <note style="tip">
+        <p>初期設定では、一度に 1 ページしか移動できません。スクロールやドラッグだけでページを移動したい場合は、<gui style="menuitem">表示</gui>メニューから<gui style="menuitem">連続</gui>を選択してください。</p>
+      </note>
+    </item>
+  </list>
+
+</section>
+
+<section id="navigating">
+  <title>ページ一覧や目次を利用して移動</title>
+
+  <p>ファイルを開くと、ウィンドウの左側にサイドペインが表示されます。サイドペインが表示されていない場合は、<guiseq><gui style="menuitem">表示</gui><gui style="menuitem">サイドペイン</gui></guiseq>または、キーボードの<key>F9</key>キーを押してください。</p>
+
+  <p>サイドペインは、文書内の全ページのプレビューを表示します。</p>
+
+  <p>サイドペイン内のプレビューをクリックすると、ページ間を移動できます。</p>
+
+  <note>
+    <p>文書によっては、インデックスや目次が付いているので、これをサイドペインに表示することができます。サイドペインの上部にある<gui>サムネイル</gui>コンボボックスを選択し、<gui>インデックス</gui>を選択すると表示されます。</p>
+    <note style="tip">
+      <p>ほとんどの文書がこの機能を使っていないので、サイドペイン内に目次を表示できません。</p>
+    </note>
+  </note>
+
+</section>
+
+<section id="zoom">
+  <title>拡大や縮小を行う</title>
+
+  <p>拡大率を調節するには</p>
+
+  <list>
+    <item>
+      <p>ツールバーのコンボボックスより、ご希望の拡大率を選択してください。</p>
+    </item>
+    <item>
+      <p>または、キーボード・ショートカットでも、<keyseq><key>Ctrl</key><key>+</key></keyseq>で拡大し、<keyseq><key>Ctrl</key><key>-</key></keyseq>で縮小することができます。</p>
+    </item>
+    <item>
+      <p>あるいは、<key>Ctrl</key>を押しながら、マウスのスクロール・ホイールを使ってズームすることもできます。</p>
+    </item>
+  </list>
+
+  <note>
+    <p><gui>ページを合わせる</gui>オプションは、文書のページをウィンドウの<em>高さ</em>いっぱいに合わせることができます。</p>
+    <p><gui>幅に合わせる</gui>オプションは、文書のページをウィンドウの<em>幅</em>いっぱいに合わせます。</p>
+    <p>本のように2つのページを同時に横に並べて見たい場合は、<guiseq><gui style="menuitem">表示</gui><gui style="menuitem">見開きページ</gui></guiseq>へ移動し<gui style="menuitem">見開きページ</gui>を押します。</p>
+    <p>allow-links-change-zoom gsetting が false に設定されている場合、リンクによる拡大率の変更がブロックされます。</p>
+  </note>
+
+  <p>画面全体を使って文書を表示できます。次のとおり行ってください。</p>
+
+  <list>
+    <item>
+      <p><key>F11</key> キーを押します。</p>
+    </item>
+    <item>
+      <p>全画面モードを解除するには</p>
+      <p><key>F11</key> キーまたは <key>Escape</key> キーを押します。</p>
+    </item>
+  </list>
+</section>
+
+</page>

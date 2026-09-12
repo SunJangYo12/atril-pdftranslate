@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" style="task" id="print-differentsize" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="printing"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email its:translate="no">philbull@gmail.com</email>
+    </credit>
+    <credit type="author">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+
+    <desc>異なるサイズや向きの用紙に文書を印刷します。</desc>
+  </info>
+
+  <title>プリント時に用紙サイズを変更する</title>
+
+  <p>文書の用紙サイズを変更したい場合（例えば、US レターサイズの PDF を A4 用紙に印刷するとき）は、文書の印刷様式を変更します。</p>
+
+  <steps>
+    <item>
+      <p><guiseq><gui style="menuitem">ファイル</gui><gui style="menuitem">印刷</gui></guiseq>へ移動し、<gui style="button">印刷</gui>ボタンを押下してください。</p>
+    </item>
+    <item>
+      <p><gui>ページの設定</gui>タブを選んでください。</p>
+    </item>
+    <item>
+      <p><em>用紙</em>欄の中から、ドロップダウンリストで<em>用紙サイズ</em>を選びます。</p>
+    </item>
+    <item>
+      <p><gui>印刷</gui>をクリックすると、文書が印刷されます。</p>
+    </item>
+  </steps>
+
+  <p>また、<em>用紙の向き</em>というメニューで、別の方向を選ぶこともできます。</p>
+
+  <list>
+    <item>
+      <p><gui>縦向き</gui></p>
+    </item>
+    <item>
+      <p><gui>横向き</gui></p>
+    </item>
+    <item>
+      <p><gui>縦向き（逆方向）</gui></p>
+    </item>
+    <item>
+      <p><gui>横向き（逆方向）</gui></p>
+    </item>
+  </list>
+
+</page>

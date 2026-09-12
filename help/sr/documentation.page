@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="documentation" xml:lang="sr">
+  <info>
+   <link type="guide" xref="index#getInvolved"/>
+    <desc>Ступите у везу са тимом за документацију.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="editor copyright">
+      <name>Тифани Антополоски</name>
+      <email>tiffany.antopolski@gmail.com</email>
+      <years>2011.</years>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+  </info>
+
+<title>Помозите у писању документације</title>
+
+<p>Документацију Атрила одржава заједница дбровољаца. Слободно се придружите.</p>
+
+<p>Да допринесете пројекту документације, слободно нам се обратите и направите <link href="https://github.com/mate-desktop/atril">Захтев за повлачењем</link>.</p>
+<p>Наш <link href="https://mate-desktop.org/development/">веб сајт</link> садржи корисне информације.</p>
+
+
+</page>

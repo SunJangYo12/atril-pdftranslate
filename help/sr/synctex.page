@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="synctex" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#synctex" group="first"/>
+    <desc>СинкТеКс подржка је доступна.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Тифани Антополоски</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+  </info>
+
+<title>Шта је СинкТеКс?</title>
+<p>СинкТеКс је метода која омогућава усклађивање између изворне ТеКс датотеке и резултирајућег ПДФ излаза.</p>
+
+</page>

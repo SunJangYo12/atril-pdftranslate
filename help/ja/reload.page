@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="reload" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#faq"/>
+
+    <desc>閲覧中に他のプログラムが文書を変更した場合、その文書は自動的に再読み込みされます。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+
+  </info>
+
+<title>文書がリロードを繰り返すのはなぜですか？</title>
+
+<p><app>Atril</app> は、開いている文書が変更されたこと（他のプログラムが更新した場合など）を検知すると、自動的にその文書を再読み込みして、最新のバージョンを表示します。</p>
+
+<p>閲覧中に文書を削除しても、開いたままの状態になります。</p>
+
+</page>

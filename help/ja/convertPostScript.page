@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="convertPostScript" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#tips"/>
+    <desc>文書をポストスクリプトに変換することができます。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Anna Philips</name>
+      <email>anna.cs.au@gmail.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+
+  </info>
+
+<title>文書をポストスクリプトに変換する</title>
+
+<p>以下のファイル形式の文書をポストスクリプト・ファイルへ変換することができます。</p>
+<list>
+ <item><p>DjVu (.djvu, .djv)</p></item>
+ <item><p>ポータブル文書フォーマット (.pdf)</p></item>
+ <item><p>タグ付き画像ファイル形式 (.tiff, .tif)</p></item>
+</list>
+<p>これは、<app>Atril</app> でファイルを開き、ポストスクリプト・ファイルとして文書印刷することで実行できます。</p>
+<steps>
+    <item>
+     <p><guiseq><gui style="menuitem">ファイル</gui><gui style="menuitem">印刷</gui></guiseq>で<gui>印刷</gui>を選択するか、キーボードの<keyseq><key>Ctrl</key><key>P</key></keyseq>を押して<gui>全般</gui>タブへ移動してください。</p>
+    </item>
+    <item>
+      <p><gui>ファイルへ印刷</gui>を選択し、<gui>出力形式</gui>としてポストスクリプトを選択します。</p>
+    </item>
+    <item>
+      <p>保存先の名前とフォルダを選択し、<gui>印刷</gui>をクリックします。ポストスクリプトは選択したフォルダに保存されます。</p>
+    </item>
+</steps>
+</page>

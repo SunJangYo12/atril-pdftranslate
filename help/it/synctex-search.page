@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="synctex-search" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#synctex" group="fifth"/>
+    <desc>Scambio tra Atril e <app>pluma</app>.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+<title>Ricercare con SyncTeX</title>
+<p>Dopo aver <link xref="synctex-compile">compilato il vostro file TeX con SyncTeX</link>, sarete in grado di effettuare ricerche. SyncTeX supporta anche la ricerca in avanti e all'indietro da un file incluso.</p>
+
+<section id="forward-search">
+    <title>Ricerca in avanti: da TeX a PDF (da <app>pluma</app> ad Atril)</title>
+     <p>La ricerca in avanti consente di fare clic su una sezione specifica del file TeX, e saltare alla posizione associata corrispondente nel PDF. Per effettuare la ricerca in avanti:</p>
+<steps>
+<item>
+<p>Fare clic su una linea del file TeX.</p>
+</item>
+<item>
+<p>In <app>pluma</app>, fare click su <guiseq><gui>Strumenti</gui> <gui>Ricerca in avanti</gui></guiseq>. La riga corrispondente nel PDF sarà evidenziata in rosso.</p>
+<p>Da tastiera si ottiene il medesimo effetto premendo <keyseq><key>Ctrl</key><key>Alt</key><key>F</key></keyseq>, o <keyseq><key>Ctrl</key> clic sinistro</keyseq>. La riga corrispondente del file PDF sarà evidenziata in rosso.</p>
+</item>
+</steps>
+<note>
+<p>Se il file PDF corrispondente non è attualmente aperto, eseguire una ricerca in avanti aprirà il documento in Atril.</p>
+</note>
+<p>Se si ha un progetto complesso con molti file TeX si può porre</p>
+<code>% mainfile: mainfile.tex</code>
+<p>nelle prime tre linee o nelle ultime tre di ciascun file TeX incluso, e la ricerca in avanti funzionerà correttamente. La ricerca all'indietro dovrebbe sempre funzionare, anche se non si aggiunge il modline.</p>
+
+</section>
+
+<section id="backward-search">
+    <title>Ricerca all'indietro: da PDF a TeX (da Atril a<app>pluma</app>)</title>
+     <p>La ricerca all'indietro consente di fare clic su una specifica riga del file PDF, e saltare alla posizione associata corrispondente nel codice sorgente TeX.</p>
+<p>La ricerca all'indietro può essere effettuata premendo <keyseq><key>Ctrl</key>clic sinistro</keyseq> in Atril. Verrà evidenziata la corrispondente linea del codice sorgente TeX.</p>
+</section>
+
+</page>

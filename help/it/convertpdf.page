@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="convertpdf" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#tips"/>
+    <desc>È possibile convertire un documento in PDF "stampandolo" come file.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Anna Philips</name>
+      <email>anna.cs.au@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+<title>Convertire un documento in formato PDF</title>
+
+<p>È possibile convertire documenti nei seguenti tipi di formati nel formato PDF:</p>
+<list>
+ <item><p>Device Independent file format (.dvi)</p></item>
+ <item><p>PostScript (.ps)</p></item>
+</list>
+<p>Basta aprire il file in <app>Atril</app> e "stampare" il documento come file PDF.</p>
+<steps>
+    <item>
+      <p>Andare su <guiseq><gui style="menuitem">File</gui> <gui style="menuitem">Stampa</gui></guiseq> e selezionare <gui>Stampa</gui> o premere <keyseq><key>Ctrl</key><key>P</key></keyseq> sulla tastiera.</p>
+    </item>
+    <item>
+      <p>Selezionare <gui>Stampa su file</gui> e scegliere PDF come <gui>formato di output</gui>.</p>
+    </item>
+    <item>
+      <p>Specificare un nome ed una cartella in cui salvare il documento e fare clic su <gui>Stampa</gui>. Il file PDF verrà salvato nella cartella scelta.</p>
+    </item>
+</steps>
+<note>
+<p>Non è possibile selezionare del testo nei file PostScript o .dvi ma è generalmente possibile farlo con i file PDF. Convertire il documento da .dvi o PostScript a PDF non renderà selezionabile il testo. Questo perché il testo stesso non è memorizzato all'interno del file (ma è solo una immagine di ciò che rappresenta) e non esiste quindi la possibilità di recuperarlo e inserirlo nel documento PDF. In questo caso è possibile utilizzare dei programmi di Riconoscimento Ottico dei Caratteri (OCR) per estrarre il testo di cui si abbisogna.</p>
+</note>
+
+</page>

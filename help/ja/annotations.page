@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" style="task" id="annotations" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#annotations"/>
+    <desc>注釈を作成したりカスタマイズするには</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <credit type="author">
+      <name>Andre Klapper</name>
+      <email>ak-47@gmx.net</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+
+  </info>
+
+<title>注釈の追加</title>
+<p>注釈とは、PDF 文書に追加したメモやコメントのことです。Atril を使って注釈を追加することができます。</p>
+<p>ファイルを開くと、ウィンドウの左側にサイドペインが表示されているはずです。サイドペインが表示されていない場合は、<guiseq><gui style="menuitem">サイドペイン</gui>を<gui style="menuitem">表示</gui></guiseq>をクリックするか、キーボードの<key>F9</key>キーを押してください。</p>
+
+<p>サイドペインの上部にある、ドロップダウン一覧の<gui>サムネイル</gui>、<gui>インデックス</gui>、<gui>注釈</gui>、<gui>ブックマーク</gui>の項目で、サイドペインに表示する内容を選択できます。（文書によっては、利用できないオプションがあります）。</p>
+<p>注釈を作成するには：</p>
+<steps>
+ <item>
+  <p>ドロップダウンの一覧から<gui style="button">注釈</gui>を選択します：</p>
+ </item>
+ <item>
+  <p><gui style="button">追加</gui>をクリックして、テキスト注釈を追加します。</p>
+ </item>
+ <item>
+  <p>文書のウィンドウ内で、注釈を追加したい箇所をクリックします。<em>注釈</em>のウィンドウが開きます。</p>
+ </item>
+ <item>
+  <p><em>注釈</em>ウィンドウにテキストを入力します。</p>
+   <note>
+    <p>ノートのサイズを変更するには、その下側のどちらかの角をマウスの左ボタンでクリックしたまま移動させます。</p>
+   </note>
+ </item>
+ <item>
+  <p>ノートの上隅にある <gui>x</gui> をクリックして、ノートを閉じます。</p>
+ </item>
+</steps>
+
+
+</page>

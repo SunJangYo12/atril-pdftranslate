@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="shortcuts" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#advanced"/>
+    <desc>Видите списак свих пречица.</desc>
+
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Фил Бул</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <credit type="author">
+       <name>Тифани Антополоски</name>
+       <email>tiffany.antopolski@gmail.com</email>
+    </credit>
+    <credit type="editor">
+       <name>Тауфан Лубис</name>
+       <email>taufanlinux@gmail.com</email>
+    </credit>
+   <credit type="editor">
+       <name>Роналди Сантоза</name>
+       <email>ronald.santosa@gmail.com</email>
+    </credit>
+   <credit type="editor">
+       <name>Ибну Амансиах</name>
+       <email>javalander9@gmail.com</email>
+    </credit>
+   <credit type="editor">
+       <name>Андре Клапер</name>
+       <email>ak-47@gmx.net</email>
+    </credit>
+   <credit type="editor">
+       <name>Жерман Поо-Камањо</name>
+       <email>gpoo@gnome.org</email>
+    </credit>
+
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+
+  </info>
+
+
+<title>Пречице тастатуре</title>
+
+<section id="default-shortcuts"><title>Основне пречице</title>
+<section id="open-close-save-print">
+  <title>Отварање, затварање, чување и штампање</title>
+  <table frame="all" rules="cols" shade="rows">
+    <tr>
+        <td><p>Отвара документ.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>O</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Отворите умножак текућег документа.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>N</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Сачувајте умножак текућег документа под новим називом датотеке.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>S</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Штампа текући документ.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>P</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Затворите прозор текућег документа.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>W</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Поново учитава документ (заправо затвара и поново отвара документ).</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>R</key></keyseq></p></td>
+    </tr>
+  </table>
+</section>
+
+<section id="move-around">
+    <title>Премештање документа</title>
+<table frame="all" rules="cols" shade="rows">
+    <tr>
+        <td><p>Премешта страницу горе/доле.</p></td>
+        <td><p>Тастери стрелица</p></td>
+    </tr>
+    <tr>
+        <td><p>Помера страницу горе/доле неколико редова одједном.</p></td>
+        <td><p><key>Страница горе</key> / <key>Страница доле</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Иде на претходну страницу.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>Страница горе</key></keyseq> / <key>P</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Иде на следећу страницу.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>Страница доле</key></keyseq> / <key>N</key></p></td>
+    </tr>
+<tr>
+        <td><p>Иде на број странице.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>L</key></keyseq> за којим следи број странице и <key>Унеси</key></p></td>
+</tr>
+    <tr>
+        <td><p>Иде на почетак странице (почетак документа ако је изабрано „<gui>Непрекидно</gui>“ у главном изборнику у горњем десном углу).</p></td>
+         <td><p><key>Почетак</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Иде на крај странице (крај документа ако је изабрано „<gui>Непрекидно</gui>“ у главном изборнику у горњем десном углу).</p></td>
+        <td><p><key>Крај</key></p></td>
+    </tr>
+    <tr>
+    	<td><p>Иде на почетак документа.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>Почетак</key></keyseq></p></td>
+    </tr>
+    <tr>
+    	<td><p>Иде на крај документа.</p></td>
+         <td><p><keyseq><key>Ктрл</key><key>Крај</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Додаје обележивач на тренутну страницу.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>D</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Брише обележивач на текућој страници ако га има.</p></td>
+        <td><p><keyseq><key>Шифт</key><key>Ктрл</key><key>D</key></keyseq></p></td>
+    </tr>
+    <tr>
+         <td><p>Приказује бочну површ са табелом садржаја и обележивачима.</p></td>
+         <td><p><key>Ф9</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Омогућите кретање уметком постављањем покретног курзора на странице текста, који вам омогућава кретање и бирање текста помоћу тастатуре.</p></td>
+        <td><p><key>Ф7</key></p></td>
+    </tr>
+  </table>
+</section>
+
+<section id="copy">
+    <title>Бирање и умножавање текста</title>
+<table frame="all" rules="cols" shade="rows">
+    <tr>
+        <td><p>Умножите истакнути текст.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>C</key></keyseq> / <keyseq><key>Ктрл</key><key>Уметни</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Бира сав текст у документу.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>A</key></keyseq></p></td>
+    </tr>
+</table>
+</section>
+
+<section id="find">
+    <title>Налажење текста</title>
+<table frame="all" rules="cols" shade="rows">
+    <tr>
+        <td><p>Приказује траку алата која вам омогућава да тражите речи у документу. Поље за претрагу се аутоматски означава када притиснете ово, а претраживање ће започети чим упишете неки текст. Ако изаберете текст у документу пре претраживања, претрага ће почети да користи тај текст као улаз.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>F</key></keyseq> / <key>/</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Иде на следећи резултат претраге.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>G</key></keyseq> / <key>F3</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Иде на претходни резултат претраге.</p></td>
+        <td><p><keyseq><key>Шифт</key><key>Ктрл</key><key>G</key></keyseq> / <keyseq><key>Шифт</key><key>F3</key></keyseq></p></td>
+    </tr>
+</table>
+</section>
+
+<section id="rotate-zoom">
+    <title>Окретање и увеличавање</title>
+<table frame="all" rules="cols" shade="rows">
+    <tr>
+        <td><p>Окрећи страницу 90 степени на лево.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>Лева стрелица</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Окрећи страницу 90 степени на десно.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>Десна стрелица</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Основно увеличање.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>0</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Увећава.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>+</key></keyseq> / <key>=</key> / <keyseq><key>Ктрл</key><key>=</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Умањује.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>-</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Уклапа страницу у прозор.</p></td>
+        <td><p><key>F</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Уклапа ширину садржаја у доступан простор.</p></td>
+        <td><p><key>W</key></p></td>
+    </tr>
+</table>
+</section>
+
+<section id="window">
+    <title>Прозор</title>
+<table frame="all" rules="cols" shade="rows">
+    <tr>
+        <td><p>Користи читав екран за преглед документа.</p></td>
+        <td><p><key>Ф11</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Покреће презентацију.</p></td>
+        <td><p><key>F5</key> / <keyseq><key>Шифт</key><key>F5</key></keyseq></p></td>
+    </tr>
+</table>
+</section>
+
+<section id="document">
+    <title>Преглед документа</title>
+<table frame="all" rules="cols" shade="rows">
+    <tr>
+        <td><p>Изврће боје позадине и текста.</p></td>
+        <td><p><keyseq><key>Ктрл</key><key>I</key></keyseq></p></td>
+    </tr>
+    <tr>
+        <td><p>Размењује између непрекидног и страница по страница прегледа документа.</p></td>
+        <td><p><key>C</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Приказује две странице једну поред друге.</p></td>
+        <td><p><key>D</key></p></td>
+    </tr>
+</table>
+</section>
+
+<section id="presentation">
+    <title>Режим презентације</title>
+<table frame="all" rules="cols" shade="rows">
+    <tr>
+        <td><p>Окида црни екран.</p></td>
+        <td><p><key>B</key> / <key>.</key></p></td>
+    </tr>
+    <tr>
+        <td><p>Окида бели екран.</p></td>
+        <td><p><key>W</key></p></td>
+    </tr>
+</table>
+</section>
+
+</section>
+
+</page>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task" id="printing" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#printing"/>
+    <link type="seealso" xref="noprint"/>
+
+    <desc>プリントの方法や、プリントに関するよくある質問。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Anna Philips</name>
+      <email>anna.cs.au@gmail.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+
+  </info>
+
+<title>文書のプリント</title>
+
+<list>
+ <item><p>文書をプリントするには</p>
+  <steps>
+    <item>
+      <p><gui>ファイル</gui>メニューをクリックし、<gui>印刷</gui>を選択するか、<keyseq><key>Ctrl</key><key>P</key></keyseq>を押します。</p>
+    </item>
+    <item>
+      <p>一覧からプリンタを選択してください。</p>
+    </item>
+   <item><p><gui>印刷</gui>をクリックします。</p></item>
+  </steps>
+ </item>
+</list>
+
+<list>
+ <item>
+  <p>次のファイル形式で印刷が可能です。</p>
+   <list>
+    <item><p>デバイス独立フォーマット (.dvi)</p></item>
+    <item><p>DjVu (.djvu, .djv)</p></item>
+    <item><p>ポータブル文書フォーマット (.pdf)</p></item>
+    <item><p>ポストスクリプト (.ps)</p></item>
+    <item><p>タグ付き画像ファイル形式 (.tiff, .tif)</p></item>
+   </list>
+ </item>
+</list>
+
+</page>

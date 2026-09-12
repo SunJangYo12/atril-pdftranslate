@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="synctex-beamer" xml:lang="zh-CN">
+
+  <info>
+    <link type="guide" xref="index#synctex" group="sixth"/>
+    <desc>Using SyncTeX with the LaTeX Beamer class.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Christopher Meng</mal:name>
+      <mal:email>i@cicku.me</mal:email>
+      <mal:years>2012-2013</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>ravix</mal:name>
+      <mal:email>dr.neemous@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Dianjin Wang</mal:name>
+      <mal:email>1132321739qq@gmail.com</mal:email>
+      <mal:years>2012</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Cravix</mal:name>
+      <mal:email>dr.neemous@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>nyanyh</mal:name>
+      <mal:email>rebuilty@gmail.com</mal:email>
+      <mal:years>2013</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>liulitchi</mal:name>
+      <mal:email>xingzuo88@qq.com</mal:email>
+      <mal:years>2013</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>玉堂白鹤</mal:name>
+      <mal:email>yjwork@qq.com</mal:email>
+      <mal:years>2015</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Mingye Wang</mal:name>
+      <mal:email>arthur200126@gmail.com</mal:email>
+      <mal:years>2015-2016</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>白铭骢</mal:name>
+      <mal:email>jeffbai@aosc.xyz</mal:email>
+      <mal:years>2015-2016</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>刘子兴</mal:name>
+      <mal:email>liushuyu@aosc.xyz</mal:email>
+      <mal:years>2015-2016</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Beamer with SyncTeX</title>
+<p>
+    Beamer is a LaTeX class for creating slides for presentations.
+</p>
+<p>
+   You can perform forward and backward search in a <em>Beamer-LaTeX</em> presentation in a similar fashion to <link xref="synctex-search">searching</link> through other TeX files compiled with SyncTeX.  However the search brings you to the corresponding frame (slide), not necessarily the associated line of text.  This difference is outlined in detail below.
+</p>
+<section id="forward-search">
+    <title>Forward search: from Beamer-LaTeX source to PDF (<app>pluma</app> to Atril)</title>
+    <p>
+      With <link xref="synctex-search#forward-search">forward search</link>, you can click on a specific line of Beamer-LaTeX source code. The <em>top</em> of the corresponding slide in the PDF will be outlined in red.  This will often be the <em>frametitle</em>.
+    </p>
+</section>
+
+<section id="backward-search">
+
+    <title>Backward search: from PDF to Beamer-LaTeX source (from Atril to <app>pluma</app>)</title>
+     <p>
+     With <link xref="synctex-search#backward-search">backward search</link>, you click on some text in a frame, and the corresponding line of LaTex code that ends that particular frame is highlighted.  This will usually be the line:
+     </p>
+ <code>\end{frame}</code>
+<p>corresponding to the frame you clicked on.</p>
+
+
+</section>
+
+
+</page>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="commandline" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#advanced"/>
+    <title type="sort">コマンドライン</title>
+    <desc><cmd>atril</cmd> コマンドは、任意の数のファイルを、特定のページかつ色々なモードで、開くことができます。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+    <name>Tiffany Antopolski</name>
+    <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+  </info>
+
+<title>コマンドライン</title>
+<p>コマンドラインから <app>Atril</app> を起動するには、<cmd>atril</cmd> と入力します。コマンドの後でファイル名を入力すると、特定のファイルを開くことができます。</p>
+
+<screen>atril file.pdf</screen>
+<p>atril コマンドの後に、ファイル名をスペースで区切って入力することで、複数のファイルを開くことができます。このように：</p>
+<screen>atril file1.pdf file2.pdf</screen>
+<p>Atril は Web 上のファイルを取り扱うことも可能です。例えば、atril コマンドの後に、ウェブ上のファイルの場所を指定することができます。</p>
+<section id="open">
+    <title>文書を指定したページで開く</title>
+    <p>文書を指定のページで開くには、<cmd>--page-label</cmd> スイッチが使えます。例えば、文書トを 3 ページ目まで開くには、次のように入力します。</p>
+    <screen>atril --page-label=3 file.pdf</screen>
+    <p>ページラベルは、<app>Atril</app> のヘッダーバーに表示されているページ番号と同じ形式でな くてはいけません。</p>
+</section>
+<section id="fullsreen">
+    <title>全画面モードで文書を開く</title>
+    <screen>atril --fullscreen file.pdf</screen>
+</section>
+<section id="presentation">
+    <title>プレゼンテーション・モードで文書を開く</title>
+    <screen>atril --presentation file.pdf</screen>
+</section>
+<section id="preview">
+    <title>プレビュー・モードで文書を開く</title>
+    <screen>atril --preview file.pdf</screen>
+</section>
+</page>

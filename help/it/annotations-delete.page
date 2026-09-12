@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="annotations-delete" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#annotations"/>
+    <link type="seealso" xref="annotations-save"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>David King</name>
+      <email its:translate="no">davidk@mate.org</email>
+    </credit>
+
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal-unported.xml"/>
+
+    <desc>Cancellare annotazioni da un documento PDF.</desc>
+  </info>
+
+  <title>Rimuovere le annotazioni</title>
+
+  <p>Una annotazione è una nota o un commento aggiunto ad un documento PDF. È possibile rimuovere le annotazioni create da voi o da altra gente.</p>
+
+  <steps>
+    <item>
+      <p>Visualizzare una pagina che contiene annotazioni. Se non si è sicuri su quali pagine contengano annotazioni, cercarle nel <link xref="annotations-navigate">pannello laterale delle annotazioni</link>.</p>
+    </item>
+    <item>
+      <p>Fare clic col tanto destro del mouse sull'icona nel documento, e fare clic s <gui style="menuitem">Rimuovi annotazione</gui>.</p>
+    </item>
+    <item>
+      <p>Salvare le modifiche al nuovo documento facendo clic su <gui style="menuitem">File</gui>, seguito da <gui style="menuitem">Salva come...</gui>.</p>
+    </item>
+  </steps>
+
+</page>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task" id="print-booklet" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#printing"/>
+
+    <desc>Come stampare un libretto.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+<title>Stampare un libretto</title>
+
+<p>Se state stampando un libretto (che probabilmente sarà legato o spillato al centro di ciascuna pagina), selezionare il tipo di stampante che si utilizzerà dalla lista qui sotto, quindi selezionare quante pagine avrà il libretto.</p>
+
+<section id="singleSided" style="2column">
+    <title>La stampante consente la stampa su una sola facciata</title>
+</section>
+
+<section id="doubleSided" style="2column">
+    <title>La stampante prevede la stampa su due facciate</title>
+</section>
+
+
+
+</page>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="editing" xml:lang="cmn">
+
+  <info>
+    <link type="guide" xref="index#faq"/>
+    <desc>You can't use Atril to edit files.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Woodman Tuen</mal:name>
+      <mal:email>wmtuen@gmail.com</mal:email>
+      <mal:years>2005-06</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Abel Cheung</mal:name>
+      <mal:email>abel@oaka.org</mal:email>
+      <mal:years>2003-04</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>趙惟倫</mal:name>
+      <mal:email>bluebat@member.fsf.org</mal:email>
+      <mal:years>2013</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Can I edit documents in the document viewer?</title>
+
+
+ <p>
+  Atril can't be used to make changes to documents. You need to use the appropriate editing application for the type of file you want to change.
+ </p>
+
+
+<note>
+ <p>
+ PDF and PostScript (.ps) files are not usually intended to be edited, but PDF editing software is available. Try
+ <app>LibreOffice Draw</app> or <app>Okular</app>, for example.
+ Furthermore, <app>pdfarranger</app> allows rearranging or removing pages and merging files.
+ </p>
+</note>
+</page>

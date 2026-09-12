@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="presentations" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#pres"/>
+    <desc>Како пуштати презентације.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Фил Бул</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ана Филипс</name>
+      <email>anna.cs.au@gmail.com</email>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+
+  </info>
+
+<title>Презентације</title>
+<section id="start-presentation">
+<title>Покретање презентације</title>
+<p>Да покренете презентацију:</p>
+<steps>
+ <item>
+  <p><link xref="opening">Отворите датотеку</link></p>
+ </item>
+ <item>
+   <p>Притисните „<gui style="menuitem">Преглед</gui>“ и изаберите „<gui style="menuitem">Презентација</gui>“ (или притисните <key>F5</key>).</p>
+  <p>Презентација ће бити приказана преко целог екрана.</p>
+ </item>
+</steps>
+</section>
+<section id="present">
+ <title>Кретање кроз презентацију</title>
+ <p>Користите <key>размакницу</key>, <key>→</key>, <key>↓</key>, или леви клик миша да идете на следећи слајд.</p>
+ <p>Користите <key>←</key>, <key>↑</key> или десни клик миша да идете на претходни слајд.</p>
+ <note style="tip">
+  <p>Можете такође да користите точкић премицања да идете назад или напред кроз презентацију.</p>
+ </note>
+ <p>Користите <key>Esc</key> да изађете из презентације.</p>
+</section>
+
+<section id="blank-screen">
+<title>Приказивање празног екрана</title>
+<p>Притисните <key>B</key> или <key>.</key> да прикажете црни екран.</p>
+<p>Притисните <key>W</key> да прикажете бели екран.</p>
+<p>Притисните <key>B</key>, <key>.</key>, или <key>W</key> поново да прикажете слајд.</p>
+</section>
+
+<section id="file-formats">
+<title>Подржани формати датотеке презентације</title>
+<p>Следећи формати датотеке се могу користити за презентације:</p>
+<list>
+ <item><p>Архиву стрипа („.cbr“ и „.cbz“)</p></item>
+ <item><p>Уређајно независтан формат датотеке (.dvi)</p></item>
+ <item><p>DjVu (.djvu, .djv)</p></item>
+ <item><p>Презентација отвореног документа (.odp)</p></item>
+ <item><p>Преносиви формат докумената (.pdf)</p></item>
+ <item><p>Постскрипт (.ps)</p></item>
+</list>
+</section>
+</page>

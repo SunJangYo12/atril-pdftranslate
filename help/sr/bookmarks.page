@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="bookmarks" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#annotations"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Тифани Антополоски</name>
+      <email its:translate="no">tiffany@antopolski.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Екатерина Герасимова</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+    </credit>
+
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+
+    <desc>Можете да користите прибелешке као обележиваче.</desc>
+  </info>
+
+<title>Обележивачи</title>
+
+  <p>Можете да додате, преименујете и обришете обележиваче користећи <app>Прегледника документа</app>.</p>
+
+  <p>Када отворите датотеку, требало би да на левој страни имате бочну површ прозора. Ако бочна површ није приказана, кликните „<guiseq><gui style="menuitem">Преглед</gui> <gui style="menuitem">Бочна површ</gui></guiseq>“, или притисните тастер <key>F9</key> на тастатури.</p>
+
+  <p>При дну ове бочне површи, изаберите „<gui style="button">Обележивачи</gui>“ са падајућег списка.</p>
+
+  <links type="section"/>
+
+<section id="create">
+  <title>Прављење обележивача</title>
+
+  <steps>
+    <item>
+      <p>У самом ПДФ документу, идите до странице којој желите да додате обележивач.</p>
+    </item>
+    <item>
+      <p>У бочној површи, изаберите „<gui style="button">Обележивачи</gui>“ са падајућег списка.</p>
+    </item>
+    <item>
+      <p>Притисните дугме <gui style="button">+</gui> при дну бочне површи. Подразумевани назив обележивача који сте управо додали јесте број странице документа.</p>
+    </item>
+    <item>
+      <p>Обележивач се сада налази на списку обележивача.</p>
+    </item>
+  </steps>
+
+</section>
+
+<section id="rename">
+  <title>Преименовање обележивача</title>
+
+  <steps>
+    <item><p>У бочној површи, изаберите „<gui style="button">Обележивачи</gui>“ са падајућег списка.</p></item>
+    <item><p>Изаберите обележивач у бочној површи.</p></item>
+    <item><p>Кликните на назив обележивача.</p></item>
+    <item><p>Унесите нов назив.</p></item>
+    <item><p>Притисните <key>Унеси</key>.</p></item>
+  </steps>
+
+</section>
+
+<section id="delete">
+  <title>Брисање обиљеживача</title>
+
+  <steps>
+   <item><p>У бочној површи, изаберите „<gui style="button">Обележивачи</gui>“ са падајућег списка.</p></item>
+   <item><p>Притисните дугме <gui style="button">-</gui> при дну бочне површи.</p></item>
+  </steps>
+
+</section>
+
+</page>

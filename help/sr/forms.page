@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="forms" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#forms"/>
+    <desc>Рад са обрасцима за испуњавање.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Тифани Антополоски</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+
+  </info>
+
+<title>Обрасци</title>
+<p>Када попуњавате неки образац, можете да се крећете од поља до поља кликом мишем на поље. Када завршите са попуњавањем поља за текст, притисните <key>Унеси</key>.</p>
+
+<p>У пољу списка за премицање можете да направите избор кликом на поље списка и премицањем мишем до вашег избора.</p>
+<note style="tip">
+ <p>Могу постојати неки делови обрасца које ћете морати ручно да попуните <em>након</em> што одштампате образац. На пример, можда ћете морати да заокружите неке ствари, или да потпишете образац не једном или више места. Ако ово желите да урадите електронским путем, можете пробати <link href="http://www.g-loaded.eu/2008/05/03/how-to-annotate-pdf-files-in-linux-using-xournal/">Xournal</link>.</p>
+</note>
+
+
+</page>

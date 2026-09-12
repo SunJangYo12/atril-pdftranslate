@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="bookmarks" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#annotations"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email its:translate="no">tiffany@antopolski.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+    </credit>
+
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+
+    <desc>注釈はブックマークのように使えます。</desc>
+  </info>
+
+<title>ブックマーク</title>
+
+  <p><app>文書ビューア</app>を使って、ブックマークの追加、名前の変更、削除を行えます。</p>
+
+  <p>ファイルを開くと、ウィンドウの左側にサイドペインが表示されているはずです。サイドペインが表示されていない場合は、<guiseq><gui style="menuitem">表示</gui> <gui style="menuitem">サイドペイン</gui></guiseq>をクリックするか、キーボードの<key>F9</key>キーを押してください。</p>
+
+  <p>サイドペインの下端にあるドロップダウン一覧から、<gui style="button">ブックマーク</gui>を選択します。</p>
+
+  <links type="section"/>
+
+<section id="create">
+  <title>ブックマークを作る</title>
+
+  <steps>
+    <item>
+      <p>PDF 文書の中で、ブックマークを追加したいページに移動します。</p>
+    </item>
+    <item>
+      <p>サイドペインのところで、ドロップダウン一覧より<gui style="button">ブックマーク</gui>を選択します。</p>
+    </item>
+    <item>
+      <p>サイドペインの下端にある <gui style="button">＋</gui> ボタンを押してください。追加したブックマークの既定名は、文書のページ番号です。</p>
+    </item>
+    <item>
+      <p>これで、ブックマークの一覧に表示されるようになります。</p>
+    </item>
+  </steps>
+
+</section>
+
+<section id="rename">
+  <title>ブックマークの名前を変更する</title>
+
+  <steps>
+    <item><p>サイドペインのところで、ドロップダウン一覧より<gui style="button">ブックマーク</gui>を選択します。</p></item>
+    <item><p>サイドペインでブックマークを選択します。</p></item>
+    <item><p>ブックマーク名をクリックしてください。</p></item>
+    <item><p>新しい名前を入力します。</p></item>
+    <item><p><key>Enter</key>キーを押下します。</p></item>
+  </steps>
+
+</section>
+
+<section id="delete">
+  <title>ブックマークを削除する</title>
+
+  <steps>
+   <item><p>サイドペインのところで、ドロップダウン一覧より<gui style="button">ブックマーク</gui>を選択します。</p></item>
+   <item><p>サイドペインの下端にある <gui style="button">-</gui> ボタンを押下してください。</p></item>
+  </steps>
+
+</section>
+
+</page>

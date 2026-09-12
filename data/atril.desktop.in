@@ -1,0 +1,20 @@
+[Desktop Entry]
+Name=Atril Document Viewer
+GenericName=Document Viewer
+Comment=View multi-page documents
+TryExec=atril
+Exec=atril %U
+StartupNotify=true
+Terminal=false
+Type=Application
+# Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+Icon=atril
+X-MATE-DocPath=
+X-MATE-Bugzilla-Bugzilla=MATE
+X-MATE-Bugzilla-Product=atril
+X-MATE-Bugzilla-Component=BugBuddyBugs
+X-MATE-Bugzilla-Version=1.26.0
+Categories=GTK;Office;Viewer;
+# Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+Keywords=MATE;document;viewer;pdf;dvi;ps;xps;tiff;pixbuf;djvu;comics;
+MimeType=application/pdf;application/x-bzpdf;application/x-gzpdf;application/x-xzpdf;application/postscript;application/x-bzpostscript;application/x-gzpostscript;image/x-eps;image/x-bzeps;image/x-gzeps;application/x-dvi;application/x-bzdvi;application/x-gzdvi;image/vnd.djvu;image/vnd.djvu+multipage;image/tiff;application/x-cbr;application/x-cbz;application/x-cb7;application/x-cbt;application/vnd.comicbook+zip;application/vnd-comicbook.rar;application/oxps;application/vnd.ms-xpsdocument;application/epub+zip;

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="finding" xml:lang="tr">
+
+  <info>
+    <link type="guide" xref="index#reading"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email its:translate="no">philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Anna Philips</name>
+      <email its:translate="no">anna.cs.au@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+    </credit>
+
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal-unported.xml"/>
+
+    <desc>Search for a word or phrase in a document.</desc>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Fatih Demir</mal:name>
+      <mal:email>kabalak@kabalak.net</mal:email>
+      <mal:years>2000.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Görkem Çetin</mal:name>
+      <mal:email>gorkem@gelecek.com.tr</mal:email>
+      <mal:years>2002/2003.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Barış Çicek</mal:name>
+      <mal:email>baris@teamforce.name.tr</mal:email>
+      <mal:years>2004, 2008, 2009.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Muhammet Kara</mal:name>
+      <mal:email>muhammet.k@gmail.com</mal:email>
+      <mal:years>2011.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>hsngrms</mal:name>
+      <mal:email>dead-bodies-everywhere@hotmail.com</mal:email>
+      <mal:years>2012</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Atilla Öntaş</mal:name>
+      <mal:email>tarakbumba@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Emre FIRAT</mal:name>
+      <mal:email>emrefirat93@gmail.com</mal:email>
+      <mal:years>2013, 2014, 2015</mal:years>
+    </mal:credit>
+  </info>
+
+  <title>Find text in a document</title>
+
+  <steps>
+    <item>
+      <p>Click
+      <guiseq><gui style="menuitem">Edit</gui>
+      <gui style="menuitem">Find</gui></guiseq> or
+      <keyseq><key>Ctrl</key><key>F</key></keyseq> or
+      <key>/</key> to display a
+      search box.</p>
+    </item>
+    <item>
+      <p>Start typing into the search box and the search will start
+      automatically.</p>
+    </item>
+    <item>
+      <p>Use the <gui>Find Previous</gui> and <gui>Find Next</gui> buttons to move to the previous
+      or next search result.</p>
+    </item>
+    <item>
+      <p>To hide the search bar, click anywhere in the window
+      again or press <key>Esc</key>.</p>
+    </item>
+  </steps>
+
+  <note style="tip">
+    <p>To filter words by case, you can press the <gui>Case Sensitive</gui>
+    button.</p>
+
+  </note>
+  <p>If the word or phrase that you searched for appears in the document at least once, you will be shown how many times the search result appears on the current page.</p>
+
+  <note>
+    <p>Only PDF documents are searchable. Some PDF documents are not
+    searchable because their text is encoded in the document as an image.</p>
+  </note>
+
+</page>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="openerror" xml:lang="et">
+
+  <info>
+    <link type="guide" xref="index#faq"/>
+    <desc>Error When Opening A File.</desc>
+   <link type="seealso" xref="formats"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Ilmar Kerm</mal:name>
+      <mal:email>ikerm hot ee</mal:email>
+      <mal:years>2001, 2002.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Tõivo Leedjärv</mal:name>
+      <mal:email>toivo linux ee</mal:email>
+      <mal:years>2002, 2003.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Priit Laes</mal:name>
+      <mal:email>plaes plaes org</mal:email>
+      <mal:years>2004–2006, 2008, 2009</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Ivar Smolin</mal:name>
+      <mal:email>okul linux ee</mal:email>
+      <mal:years>2005–2010, 2014–2015, 2018.</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Why can't I open a file?</title>
+
+<p>If you try to open a document of a format that Atril does not recognize, you will get an "Unable to open document" error message. Click <gui>Close</gui> to return to<app>Atril</app> window.
+</p>
+
+</page>

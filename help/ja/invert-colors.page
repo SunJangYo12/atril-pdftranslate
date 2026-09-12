@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="invert-colors" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#tips"/>
+
+    <desc>色を反転させることで、文字が読みやすくなります。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Anna Philips</name>
+      <email>anna.cs.au@gmail.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+
+  </info>
+
+<title>ページの色を反転させる</title>
+
+
+ <p>黒と白、白と黒などを入れ替えるには、<gui style="menuitem">表示</gui>メニューで<gui style="menuitem">色の反転</gui>（または <keyseq><key>CtrlI</key><key>|</key></keyseq>）を選択します）。</p>
+
+<note style="tip">
+ <p>これによって、特に視覚障害のある方にとっては文字が読みやすくなります。</p>
+</note>
+</page>

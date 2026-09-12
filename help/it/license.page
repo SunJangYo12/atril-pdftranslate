@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" id="license" xml:lang="it">
+
+  <info>
+    <link type="seealso" xref="index"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <desc>Informazioni legali.</desc>
+  </info>
+
+  <title>Licenza</title>
+  <p>Questo lavoro è distribuito sotto una licenza non registrata Creative Commons Attribution-Share Alike 3.0.</p>
+  <p>Siete liberi di:</p>
+  <terms>
+    <item>
+      <title><em>condividere</em></title>
+      <p>Copiare, distribuire e trasmettere il lavoro.</p>
+    </item>
+    <item>
+      <title><em>modificare</em></title>
+      <p>Adattare il lavoro ad altre esigenze.</p>
+    </item>
+  </terms>
+  <p>Sotto le sefuenti condizioni:</p>
+  <terms>
+    <item>
+      <title><em>Attribution</em></title>
+      <p>Si deve attribuire l'opera nel modo specificato dall'autore o dal licenziatario (ma non in modo da suggerire che essi approvino voi o il vostro utilizzo dell'opera).</p>
+    </item>
+    <item>
+      <title><em>Share Alike</em></title>
+      <p>Se si modifica, si trasforma, o si costruisce un'opera basata su questo lavoro, si dovrà distribuire l'opera risultante sotto una licenza uguale, simile o compatibile a questa.</p>
+    </item>
+  </terms>
+  <p>Per il testo completo della licenza, si visiti il sito <link href="http://creativecommons.org/licenses/by-sa/3.0/legalcode">CreativeCommons</link>, o si legga l'intero <link href="http://creativecommons.org/licenses/by-sa/3.0/">Commons Deed</link>.</p>
+</page>

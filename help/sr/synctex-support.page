@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="synctex-support" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#synctex" group="second"/>
+    <desc>Како да додате подршку за СинкТеКс.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Тифани Антополоски</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Жерман Поо-Камањо</name>
+      <email>gpoo@mate.org</email>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+
+  </info>
+
+<title>Подешавање СинкТеКс-а</title>
+<p>Следећи пакети морају бити инсталирани да бисте додали подршку за СинкТеКс:</p>
+<list>
+  <item>
+    <p>ЛаТеКс погон са СинкТеКс подршком, као што је „<app>pdflatex</app>“.</p>
+  </item>
+  <item>
+    <p>Уређивач текста са СинкТеКс подршком, као што је <app>плума</app> са инсталираним прикључцима плуме.</p>
+  </item>
+</list>
+
+<p>У <app>плуми</app>, укључите СинкТеКс прикључцак:</p>
+<steps>
+   <item>
+    <p>Кликните „<guiseq><gui>Уређивање</gui><gui>Поставке</gui><gui>Прикључци</gui></guiseq>“.</p>
+   </item>
+   <item>
+    <p>Означите „<gui>SyncTeX</gui>“.</p>
+   </item>
+</steps>
+</page>

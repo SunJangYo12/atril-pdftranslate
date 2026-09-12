@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="annotations-navigate" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#annotations"/>
+    <desc>注釈を参照するには</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+
+  </info>
+
+ <title>注釈を見る</title>
+   <p>文書に注釈を作成した場合、サイドペインを使って、文書内のすべての注釈の一覧を表示することができます。一覧には、注釈の種類、ページ番号、作成者が表示されます。</p>
+</page>

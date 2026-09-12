@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="translate" xml:lang="sr">
+
+  <info>
+   <link type="guide" xref="index#getInvolved"/>
+    <desc>Преведите <app>Атрил.</app></desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author copyright">
+      <name>Тифани Антополоски</name>
+      <email>tiffany.antopolski@gmail.com</email>
+      <years>2011.</years>
+    </credit>
+     <credit type="editor">
+      <name>Мајкл Хил</name>
+      <email>mdhillca@gmail.com</email>
+    </credit>
+    <license>
+       <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+     </license>
+  </info>
+
+<title>Помозите у превођењу</title>
+<p>Корисничко сучеље и документацију Атрила преводе добровољне заједнице широм света. Слободно се придружите.</p>
+<p>Има много језика за које су још увек потребни преводи.</p>
+<p>Да почнете са превођењем морате да <link href="https://www.transifex.com/signin/">отворите налог</link> и да се придружите <link href="https://www.transifex.com/mate/MATE/">преводилачком тиму</link> за језик на који желите да преводите. Ово ће вам дати могућност да отпремате нове преводе.</p>
+
+</page>

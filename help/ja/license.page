@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" id="license" xml:lang="ja">
+
+  <info>
+    <link type="seealso" xref="index"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <desc>法律的なことについて。</desc>
+  </info>
+
+  <title>ライセンス</title>
+  <p>このビューアは、クリエイティブ・コモンズ 表示・共有 3.0 非移植ライセンスで配布されています。</p>
+  <p>あなたは以下のことを自由に行えます。</p>
+  <terms>
+    <item>
+      <title><em>共有するには</em></title>
+      <p>この著作物を複製、配布、送信するには。</p>
+    </item>
+    <item>
+      <title><em>改変するには</em></title>
+      <p>このアプリケーションを改変したいときは。</p>
+    </item>
+  </terms>
+  <p>次のような条件があります。</p>
+  <terms>
+    <item>
+      <title><em>著作権表示</em></title>
+      <p>著作者やライセンサ許諾者が指定した方法で著作権の表示をしなければなりません（ただし、あなたやあなたの著作物の使用を支持していると示唆するような方法でなく）。</p>
+    </item>
+    <item>
+      <title><em>表示 共有</em></title>
+      <p>この著作物を改変、変形、またはビルドした場合、あなたは結果として生じる著作物を同一、類似、または互換性のあるライセンスの下でのみ配布することができます。</p>
+    </item>
+  </terms>
+  <p>ライセンスの全文は、<link href="http://creativecommons.org/licenses/by-sa/3.0/legalcode">クリエイティブ・コモンズのウェブサイト</link>をご覧いただくか、<link href="http://creativecommons.org/licenses/by-sa/3.0/">コモンズ約款</link>の全文をお読みください。</p>
+</page>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task" id="print-booklet" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#printing"/>
+
+    <desc>小冊子を印刷する方法です。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+
+  </info>
+
+<title>小冊子の印刷</title>
+
+<p>小冊子を印刷する場合（各ページの中央を綴じたり、ホチキスで留めたりするとき）、印刷に使用するプリンターの種類を以下の一覧から選択してください。次に、冊子のページ数を選択してください。</p>
+
+<section id="singleSided" style="2column">
+    <title>プリンターは片面印刷が可能</title>
+</section>
+
+<section id="doubleSided" style="2column">
+    <title>プリンターは両面印刷が可能</title>
+</section>
+
+
+
+</page>

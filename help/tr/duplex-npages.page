@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="duplex-npage" xml:lang="tr">
+
+  <info>
+    <link type="guide" xref="print-booklet#doubleSided"/>
+
+    <desc>Print a booklet with n pages.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Fatih Demir</mal:name>
+      <mal:email>kabalak@kabalak.net</mal:email>
+      <mal:years>2000.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Görkem Çetin</mal:name>
+      <mal:email>gorkem@gelecek.com.tr</mal:email>
+      <mal:years>2002/2003.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Barış Çicek</mal:name>
+      <mal:email>baris@teamforce.name.tr</mal:email>
+      <mal:years>2004, 2008, 2009.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Muhammet Kara</mal:name>
+      <mal:email>muhammet.k@gmail.com</mal:email>
+      <mal:years>2011.</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>hsngrms</mal:name>
+      <mal:email>dead-bodies-everywhere@hotmail.com</mal:email>
+      <mal:years>2012</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Atilla Öntaş</mal:name>
+      <mal:email>tarakbumba@gmail.com</mal:email>
+      <mal:years>2014</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Emre FIRAT</mal:name>
+      <mal:email>emrefirat93@gmail.com</mal:email>
+      <mal:years>2013, 2014, 2015</mal:years>
+    </mal:credit>
+  </info>
+
+<title>n-page booklet</title>
+ <note style="important">
+  <p>
+   <em>n</em> is a multiple of 4.
+  </p>
+ </note>
+
+ <p>
+   If the number of pages in your PDF document is not a multiple of 4, you should add the appropriate number of blank pages (1,2 or 3) to make it a multiple of 4.
+ To do so, you can:
+   </p>
+ <steps>
+ <item>
+  <p>
+    Create a blank PDF using <app>LibreOffice Writer</app>.
+  </p>
+ </item>
+ <item>
+  <p>
+   Merge the blank pages with your PDF document using <app>PDF-Shuffler</app> placing the blank pages at the end.
+  </p>
+ </item>
+</steps>
+
+
+<steps>
+ <item>
+  <p>
+   Go to  <guiseq><gui style="menuitem">File</gui><gui style="menuitem">Print</gui></guiseq> and press the <gui style="button">Print</gui> button.
+  </p>
+ </item>
+ <item>
+  <p>
+   Choose the <gui>General</gui> tab.
+  </p>
+  <p>
+   Under <em>Range</em>, choose <gui>Pages</gui>.
+  </p>
+  <tree>
+   <item>
+   Type the numbers of the pages in this order:
+       <item>n, 1, 2, n-1, n-2, 3, 4, n-3, n-4, 5, 6, n-5, n-6, 7, 8, n-7, n-8, 9, 10, n-9, n-10, 11, 12, n-11...</item>
+      <item>...until you have typed n-number of pages.</item>
+    </item>
+  </tree>
+ </item>
+ <item>
+  <p>
+   Choose the <gui>Page Setup</gui> tab.
+  </p>
+  <p>
+   Under <em>Layout</em>, in the <gui>Two-sided</gui> menu, select <gui>Short Edge (Flip)</gui>.
+  </p>
+  <p>
+   In the <gui>Pages per side</gui> option, select <gui>2</gui>.
+  </p>
+  <p>
+   In the <gui>Page ordering</gui> menu, select <gui>Left to right</gui>.
+  </p>
+ </item>
+ <item>
+  <p>
+   Click <gui>Print</gui>.
+  </p>
+ </item>
+</steps>
+</page>

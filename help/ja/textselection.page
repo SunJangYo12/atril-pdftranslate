@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="textselection" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="index#faq"/>
+    <desc>テキストをコピーすると、貼り付けたテキストが選択していたものと異なる場合があります。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+
+  </info>
+
+<title>なぜ、選択したテキストが正しくコピーされなかったのですか？</title>
+
+
+<p>Atril を使って文書からテキストを選択してコピーした後、他のアプリケーションに貼り付けると、文書形式が変更される場合があります。また、元の選択部分とは異なる文字が含まれていることもあります。この現象は、複数の段組みの PDF 文書からテキストをコピーした場合に多く発生します。</p>
+
+
+ <p>この問題は、一部の文書形式でのテキストの取り扱い方に起因します。文書内の実際のテキストは、見た目の表示とは異なった方法で保存されます。その結果、コピーが期待通りの表示にならないという結果をもたらします。</p>
+
+ <p>残念ながら、この問題を解決する有効な方法はありません。一度にコピーする文字数を少なくしたり、テキストエディター（<app>pluma</app>など）にコピーしたりすることで、問題を最小限に抑えることができます。</p>
+
+</page>

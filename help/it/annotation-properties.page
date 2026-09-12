@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task" id="annotation-properties" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="annotations"/>
+    <desc>Come personalizzare l'autore, il colore, lo stile o l'icona di una annotazione.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+  </info>
+
+ <title>Personalizzare le annotazioni</title>
+
+<steps>
+ <item>
+  <p>Fare clic destro sull'icona annotazione nel documento.</p>
+ </item>
+ <item>
+  <p>Selezionare <gui>Proprietà annotazione...</gui>.</p>
+ </item>
+ <item>
+  <p>Nella finestra <gui>Proprietà annotazione</gui>, è possibile cambiare l'autore, il colore, lo stile e l'icona della vostra nota.</p>
+   <note>
+    <p>Le proprietà dell'annotazione saranno applicate solo alla nota a cui si è apportato modifiche. Ciascuna nota possiede il suo insieme di proprietà.</p>
+   </note>
+ </item>
+</steps>
+
+
+<section id="change-default">
+ <title>Posso modificare permanentemente le proprietà di annotazione predefinite?</title>
+<p>Le proprietà di annotazione predefinite (autore, colore, stile ed icona) possono essere modificate solo per singola nota, come è stato affermato precedentemente. Se pertanto si desidera che le icone delle note appaiano in <gui>rosso</gui> invece che in <gui>giallo</gui>, occorrerà modificare il colore da <gui>giallo</gui> a <gui>rosso</gui> individualmente su ogni singola nota. Al momento non esiste alcun modo per salvare proprietà di impostazione differenti per le proprietà di annotazione.</p>
+</section>
+
+</page>

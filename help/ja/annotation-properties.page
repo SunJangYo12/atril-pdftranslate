@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task" id="annotation-properties" xml:lang="ja">
+
+  <info>
+    <link type="guide" xref="annotations"/>
+    <desc>注釈の作者や色、スタイル、アイコンをカスタマイズする方法。</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>クリエイティブ・コモンズ表示継承 3.0</p>
+    </license>
+  </info>
+
+ <title>注釈のカスタマイズ</title>
+
+<steps>
+ <item>
+  <p>文書内の注釈アイコンを右クリックします。</p>
+ </item>
+ <item>
+  <p><gui>注釈のプロパティ…</gui>を選択します。</p>
+ </item>
+ <item>
+  <p><gui>注釈のプロパティ</gui>ウィンドウでは、ノートの作者、色、スタイル、アイコンを変更することができます。</p>
+   <note>
+    <p>注釈のプロパティは、変更を加えたノートにのみ適用されます。各ノートは、それぞれ異なるプロパティのセットを持つことができます。</p>
+   </note>
+ </item>
+</steps>
+
+
+<section id="change-default">
+ <title>既定の注釈のプロパティを恒久的に変更することはできますか？</title>
+<p>既定の注釈プロパティ（作成者、色、スタイルおよびアイコン）は、前述のように特定のノートでのみ変更できます。したがって、ノートのすべてのアイコンを<gui>黄色</gui>ではなく<gui>赤色</gui>にする場合は、各ノートで個別にデフォルトを<gui>黄色</gui>から<gui>赤色</gui>に変更する必要があります。現時点では、注釈プロパティの様々な既定の設定を保存する方法はありません。</p>
+</section>
+
+</page>

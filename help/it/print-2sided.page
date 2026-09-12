@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="guide" style="task" id="print-2sided" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="printing"/>
+
+    <desc>Stampare due pagine e più pagine per foglio.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+<title>Layout di stampa su due lati e più pagine per lato</title>
+
+<p>È possibile stampare su entrambe le facciate di ciascun foglio di carta:</p>
+
+<steps>
+ <item>
+  <p>Andare su <guiseq><gui style="menuitem">File</gui> <gui style="menuitem">Stampa</gui></guiseq> e premere il pulsante <gui style="button">stampa</gui>.</p>
+ </item>
+ <item>
+  <p>Andre sulla scheda <gui>Imposta pagina</gui> della finestra di Stampa e selezionare una opzione dal menù a comparsa <gui>Doppia-facciata</gui>.</p>
+ </item>
+ <item>
+  <p>Si possono anche stampare più pagine del documento per <em>facciata</em>.  Utilizzare l'opzione <gui>Pagine per facciata</gui>.</p>
+ </item>
+</steps>
+
+</page>

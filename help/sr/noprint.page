@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" xmlns:if="http://projectmallard.org/if/1.0/" type="topic" style="task" id="noprint" xml:lang="sr">
+
+  <info>
+    <link type="guide" xref="index#printing"/>
+    <desc>Може бити да је аутор ставио ограничења штампања у документу.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Фил Бул</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <license>
+      <p>Истоветно дељење заједничког стваралаштва 3.0</p>
+    </license>
+
+  </info>
+
+<title>Није могуће штампање документа</title>
+<section id="why">
+ <title>Могући разлози неуспеха штампања</title>
+<p>Документ се не може штампати због:</p>
+ <list>
+  <item><p>Проблема са штампачем или,</p></item>
+  <item><p>ограничења штампања ПДФ-а.</p></item>
+ </list>
+</section>
+
+<section id="printer-problems">
+  <title>Проблеми са штампањем</title>
+  <p>Може постојати више разлога зашто ваш штампач не ради. На пример, можда је остао без папира или мастила, или је искључен или оштећен.</p>
+  <p>Можете проверити подешавања штампача у Управљачком центру.</p>
+</section>
+
+<section id="pdf-restrictions">
+  <title>Ограничења штампања ПДФ-а</title>
+  <p>Нека ПДФ документа имају поставку која вам не дозвољава да их штампате. Аутори могу да поставе ово ограничење штампања приликом писања документа. Атрил превазилази ово ограничење по основи, али можете да проверите да ли је искључено:</p>
+
+  <note style="important">
+    <p>Морате имати инсталиран „<app>Уређивач д-подешавања</app>“ на рачунару да бисте изменили ову поставку.</p>
+  </note>
+
+  <steps>
+    <item>
+      <p>Отворите „<gui>Уређивач д-подешавања</gui>“.</p>
+    </item>
+    <item>
+      <p>Пронађите „<sys>/org/mate/atril</sys>“.</p>
+    </item>
+    <item>
+      <p>Уверите се да је опција „<gui>превазиђи ограничења</gui>“ изабрана.</p>
+    </item>
+    <item>
+      <p>Вратите се на <app>Атрил</app> и покушајте поново да штампате документ.</p>
+    </item>
+  </steps>
+</section>
+
+</page>

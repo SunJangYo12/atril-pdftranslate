@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="annotations-navigate" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#annotations"/>
+    <desc>Come navigare tra le annotazioni.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+ <title>Navigare tra le annotazioni</title>
+   <p>Se sono state create annotazioni sul vostro documento, è possibile utilizzare il pannello laterale per mostrare l'elenco di tutte le annotazioni del documento. L'elenco indica il tipo, li numero di pagina e l'autore di una nnotazione.</p>
+</page>

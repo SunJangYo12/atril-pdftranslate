@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="forms-saving" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#forms"/>
+    <desc>Assicurarsi di aver salvato il modulo così modificato, perché in caso contrario tutte le informazioni inserite andrebbero perse.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Anna Philips</name>
+      <email>anna.cs.au@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+  </info>
+
+<title>Salvare un modulo</title>
+
+<p>Dopo aver compilato il modulo, si può salvare il documento in due modi differenti:</p>
+
+<list type="numbered">
+<item><p>Salvare il modulo che potrebbe essere modificato in futuro (Il modulo rimane interattivo):</p>
+   <steps>
+      <item>
+        <p>Andare su <guiseq><gui style="menuitem">File</gui> <gui style="menuitem">Stampa</gui></guiseq> e selezionare <gui>Salva come…</gui> o premere <keyseq><key>Ctrl</key><key>S</key></keyseq> sulla tastiera.</p>
+     </item>
+ <item>
+      <p>Scegliere un nome ed una cartella su cui salvare il file, quindi fare clic su <gui>Salva</gui>. Il file PDF verrà salvato nella cartella selezionata.</p>
+    </item>
+   </steps>
+</item>
+<item><p>Per salvare una copia che non può più essere modificata (ad esempio per inviarlo via e-mail o spedirlo online):</p>
+   <steps>
+    <item>
+        <p>Andare su <guiseq><gui style="menuitem">File</gui> <gui style="menuitem">Stampa</gui></guiseq> e selezionare <gui>Stampa</gui> o premere <keyseq><key>Ctrl</key><key>P</key></keyseq> sulla tastiera.</p>
+    </item>
+
+
+    <item>
+      <p>Selezionare <gui>Stampa su file</gui> e scegliere PDF come <gui>formato di output</gui>.</p>
+    </item>
+    <item>
+      <p>Scegliere un nome ed una cartella su cui salvare il file, quindi fare clic su <gui>Stampa</gui>. Il file PDF verrà salvato nella cartella selezionata.</p>
+    </item>
+   </steps>
+</item>
+</list>
+
+<note style="bug">
+<p>Le copie cifrate non potranno essere né salvate né stampate.</p>
+</note>
+
+</page>

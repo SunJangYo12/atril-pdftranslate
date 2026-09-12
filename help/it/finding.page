@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" style="task" id="finding" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#reading"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email its:translate="no">philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Anna Philips</name>
+      <email its:translate="no">anna.cs.au@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+    </credit>
+
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal-unported.xml"/>
+
+    <desc>Cercare una parola o una frase in un documento.</desc>
+  </info>
+
+  <title>Cercare teso in un documento</title>
+
+  <steps>
+    <item>
+      <p>Fare clic su <guiseq><gui style="menuitem">Modifica</gui> <gui style="menuitem">Trova</gui></guiseq> o <keyseq><key>Ctrl</key><key>F</key></keyseq> o <key>/</key> per mostrare il riquadro del campo di ricerca.</p>
+    </item>
+    <item>
+      <p>Iniziate a digitare nel campo di ricerca ed essa comincerà automaticamente.</p>
+    </item>
+    <item>
+      <p>Utilizzare i pulsanti <gui>Trova precedente</gui> e <gui>Trova successivo</gui> per muoversi rispettivamente verso il precedente o il successivo risultato della ricerca.</p>
+    </item>
+    <item>
+      <p>Per nascondere la barra della ricerca, fare clic su un punto qualsiasi della finestra o premere il tasto <key>Esc</key>.</p>
+    </item>
+  </steps>
+
+  <note style="tip">
+    <p>Per filtrare le parole in modo sensibile alle Maiuscole, premere il pulsante <gui>Rispetta Maiuscole/minuscole</gui>.</p>
+
+  </note>
+  <p>Se la parola o la frase è contenuta almeno una volta nel documento, sarà mostrato il numero delle volte che il risultato della ricerca compare nella pagina.</p>
+
+  <note>
+    <p>Solo i documenti PDF possono essere soggetti a ricerche di testo, anche se alcuni di essi potrebbero non esserlo poiché il testo potrebbe essere codificato come immagine.</p>
+  </note>
+
+</page>

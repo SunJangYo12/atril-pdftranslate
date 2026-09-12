@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" style="task" id="print-pagescaling" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="printing"/>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
+
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal-unported.xml"/>
+
+    <desc>Restringere o espandere un documento per adattarlo alla dimensione della pagina.</desc>
+  </info>
+
+  <title>Scalare la pagina per la stampa</title>
+
+  <p>Se si vuole modificare la dimensione del proprio documento (ad esempio utilizzando il formato US Letter PDF su un foglio A4), si può cambiare il formato di stampa per il documento.</p>
+
+  <steps>
+    <item>
+      <p>Aprire il menù nel bordo superiore destro della finestra e selezionare <gui style="menuitem">Stampa...</gui>.</p>
+    </item>
+    <item>
+      <p>Selezionare la scheda <gui style="tab">Gestione pagina</gui>.</p>
+    </item>
+    <item>
+      <p>Selezionare un <em>Ridimensionamento pagina</em> dal menù a comparsa.</p>
+      <list>
+        <item>
+          <p><em>Nessuno</em>: non eseguire alcun ridimensionamento della pagina.</p>
+        </item>
+        <item>
+          <p><em>Adatta all'area stampabile</em>: le pagine del documento più grandi dell'area di stampa saranno ridotte per adattarle alla superficie stampabile della stampante.</p>
+        </item>
+        <item>
+          <p><em>Adatta all'area stampabile</em>: le pagine del documento verranno ingrandite al punto da riempire la superficie stampabile della stampante</p>
+        </item>
+      </list>
+    </item>
+    <item>
+      <p>Fare clic su <gui>Stampa</gui> per stampare il documento.</p>
+    </item>
+  </steps>
+
+</page>

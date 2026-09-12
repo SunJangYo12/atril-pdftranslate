@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="synctex-compile" xml:lang="cmn">
+
+  <info>
+    <link type="guide" xref="index#synctex" group="third"/>
+    <desc>How to compile your TeX document with SyncTeX</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Woodman Tuen</mal:name>
+      <mal:email>wmtuen@gmail.com</mal:email>
+      <mal:years>2005-06</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Abel Cheung</mal:name>
+      <mal:email>abel@oaka.org</mal:email>
+      <mal:years>2003-04</mal:years>
+    </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>趙惟倫</mal:name>
+      <mal:email>bluebat@member.fsf.org</mal:email>
+      <mal:years>2013</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Compile TeX with SyncTeX</title>
+<p>
+Adding the line <em>\synctex=1</em> in the preamble of your TeX file will trigger synchronization with SyncTeX.
+</p>
+<code>
+\documentclass{article}
+\synctex=1
+\usepackage{fullpage}
+\begin{document}
+...
+\end{document}
+</code>
+<p>
+  Alternatively, you can run the pdflatex command with the <em>-synctex=1</em> option:
+</p>
+<screen>pdflatex -synctex=1 yourFile.tex</screen>
+</page>

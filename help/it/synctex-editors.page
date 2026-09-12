@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="synctex-editors" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#synctex" group="fourth"/>
+    <desc>Quale editor si può utilizzare per modificare un file TeX?</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Tiffany Antopolski</name>
+      <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+
+  </info>
+
+<title>Editor supportati</title>
+
+<section id="pluma"><title><app>pluma</app></title>
+<p>La <link xref="synctex-search#forward-search">Ricerca in avanti</link> (da <app>pluma</app> ad Atril) e la <link xref="synctex-search#backward-search">Ricerca all'indietro</link> (da Atril a <app>pluma</app>) sono entrambe supportate.</p>
+</section>
+
+<section id="vim-latex"><title>Vim-latex</title>
+<p>Il plugin di <app>pluma</app> contiene uno script python (<file>atril_dbus.py</file>) che può essere impiegato per rendere funzionante SyncTeX con Vim. Per poter utililizzare vim-latex con Atril occorre seguire i seguenti passaggi:</p>
+<steps>
+ <item>
+  <p>Copiare lo script <file>atril_dbus.py</file> in una cartella nel vostro percorso e dargli i permessi +x.</p>
+ </item>
+ <item>
+  <p>Modificare il vostro file <file>~/.vimrc</file> ed aggiungervi le seguenti linee.</p>
+<code>
+let g:Tex_ViewRule_pdf = 'atril_dbus.py'
+let g:Tex_DefaultTargetFormat = 'pdf'
+let g:Tex_CompileRule_pdf = 'pdflatex --synctex=1 -interaction=nonstopmode $*'
+</code>
+
+  </item>
+  <item>
+   <p>Adesso è possibile utilizzare la ricerca in avanti da vim-latex digitando \ls. La ricerca all'indietro non è ancora supportata.</p>
+  </item>
+</steps>
+</section>
+</page>

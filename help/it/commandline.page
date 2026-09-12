@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" type="topic" style="task" id="commandline" xml:lang="it">
+
+  <info>
+    <link type="guide" xref="index#advanced"/>
+    <title type="sort">Riga di comando</title>
+    <desc>Il comando<cmd>Atril</cmd> può aprire un numero qualsiasi di documenti a pagine specifiche ed in varie modalità.</desc>
+    <revision pkgversion="1.25" version="0.1" date="2021-03-13" status="final"/>
+    <credit type="author">
+      <name>Phil Bull</name>
+      <email>philbull@gmail.com</email>
+    </credit>
+    <credit type="editor">
+    <name>Tiffany Antopolski</name>
+    <email>tiffany@antopolski.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+  </info>
+
+<title>La riga di comando</title>
+<p>Per avviare <app>Atril</app> dalla riga di comando, digitare <cmd>atril</cmd>. È possibile aprire un file specifico digitando il nome del file dopo il comando atril:</p>
+
+<screen>atril file.pdf</screen>
+<p>È possibile aprire più documenti contemporaneamente digitando i loro nomi dopo il comando atril, separando i nomi dei file con uno spazio:</p>
+<screen>atril file1.pdf file2.pdf</screen>
+<p>Atril consente anche di aprire file sul web. Ad esempio, dopo il comando atril è possibile specificare la posizione di un file sul web:</p>
+<section id="open">
+    <title>Aprire un documento ad una pagina specifica</title>
+    <p>Per aprire un documento ad una pagina specifica si può utilizzare l'opzione <cmd>--page-label</cmd>. Ad esempio per aprire un documento alla pagina 3, si dovrebbe scrivere:</p>
+    <screen>atril --page-label=3 file.pdf</screen>
+    <p>l'etichetta di pagina dovrebbe essere nel medesimo formato di quello riportato nella barra di intestazione di <app>Atril</app>.</p>
+</section>
+<section id="fullsreen">
+    <title>Aprire un documento a tutto schermo</title>
+    <screen>atril --fullscreen file.pdf</screen>
+</section>
+<section id="presentation">
+    <title>Aprire un documento in modalità presentazione</title>
+    <screen>atril --presentation file.pdf</screen>
+</section>
+<section id="preview">
+    <title>Aprire un documento in modalità anteprima</title>
+    <screen>atril --preview file.pdf</screen>
+</section>
+</page>
