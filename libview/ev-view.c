@@ -1129,6 +1129,7 @@ ev_view_get_page_size (EvView *view,
 					       view->rotation,
 					       page_width,
 					       page_height);
+
 }
 
 static void
@@ -5853,6 +5854,23 @@ draw_one_page (EvView       *view,
 		ev_view_get_page_size (view, page, &width, &height);
 		offset_x = overlap.x - real_page_area.x;
 		offset_y = overlap.y - real_page_area.y;
+
+		gdouble doc_width;
+		gdouble doc_height;
+		ev_document_get_page_size (view->document,
+		                           page,
+		                           &doc_width,
+		                           &doc_height);
+
+		g_print ("PAGE %d SIZE DEBUG:\n", page);
+		g_print ("  document page size: %.2f x %.2f\n",
+		         doc_width,
+		         doc_height);
+
+		g_print ("  view page size: %d x %d\n",
+		         width,
+	         height);
+
 
 		draw_surface (cr, page_surface, overlap.x, overlap.y, offset_x, offset_y, width, height);
 
