@@ -4478,6 +4478,24 @@ ev_view_button_press_event (GtkWidget      *widget,
 			EvFormField *field;
 			EvMapping *link;
 			gint page;
+
+			if (ev_view_point_in_translate_overlay (view, event->x, event->y)) {
+			   g_print ("START DRAG: page=%d block=%u\n",
+			             view->translate_page,
+			             view->translate_index);
+
+			    view->overlay_in_drag = TRUE;
+
+			    view->overlay_drag_start_x = event->x;
+			    view->overlay_drag_start_y = event->y;
+
+			    view->overlay_drag_rect = view->translate_rect;
+
+				printf("press\n");
+
+			    return TRUE;
+			}
+
 #ifdef ENABLE_SYNCTEX
 			if (event->state & GDK_CONTROL_MASK)
 				return ev_view_synctex_backward_search (view, event->x , event->y);
@@ -4784,11 +4802,37 @@ ev_view_motion_notify_event (GtkWidget      *widget,
 
 	bin_window = gtk_widget_get_window (widget);
 
-        if (event->is_hint || event->window != bin_window) {
+    if (event->is_hint || event->window != bin_window) {
 	    ev_document_misc_get_pointer_position (widget, &x, &y);
-        } else {
+    } else {
 	    x = event->x;
 	    y = event->y;
+	}
+
+	view->mouse_x = x;
+	view->mouse_y = y;
+
+	if (view->overlay_in_drag) {
+		g_print("DRAGGING\n");
+		gdouble dx;
+		gdouble dy;
+
+		dx = x - view->overlay_drag_start_x;
+		dy = y - view->overlay_drag_start_y;
+
+		view->translate_rect.x1 =
+			view->overlay_drag_rect.x1 + dx;
+		view->translate_rect.y1 =
+			view->overlay_drag_rect.y1 + dy;
+
+		view->translate_rect.x2 =
+			view->overlay_drag_rect.x2 + dx;
+		view->translate_rect.y2 =
+			view->overlay_drag_rect.y2 + dy;
+
+		gtk_widget_queue_draw (widget);
+
+		return TRUE;
 	}
 
 	if (view->scroll_info.autoscrolling) {
@@ -4940,6 +4984,17 @@ ev_view_button_release_event (GtkWidget      *widget,
 {
 	EvView *view = EV_VIEW (widget);
 	EvLink *link = NULL;
+
+	if (view->overlay_in_drag) {
+		printf("release\n");
+
+	    view->overlay_in_drag = FALSE;
+	    view->pressed_button = -1;
+
+	    gtk_widget_queue_draw (widget);
+
+	    return TRUE;
+	}
 
 	view->image_dnd_info.in_drag = FALSE;
 
@@ -5870,7 +5925,7 @@ draw_one_page (EvView       *view,
 		 * Harus dilakukan setelah draw_surface(), tetapi sebelum
 		 * selection handling karena bagian selection dapat return.
 		 */
-		ev_debug_draw_blocks (view->page_cache,
+		ev_debug_draw_blocks (view->page_cache, view,
 		                      cr,
 		                      page,
 		                      &real_page_area,

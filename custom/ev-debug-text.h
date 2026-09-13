@@ -5,9 +5,12 @@
 #include <gdk/gdk.h>
 #include "ev-page-cache.h"
 
-
+gboolean
+ev_view_point_in_translate_overlay (EvView *view,
+                                    gdouble x,
+                                    gdouble y);
 void
-ev_debug_draw_blocks (EvPageCache      *cache,
+ev_debug_draw_blocks (EvPageCache      *cache, EvView *view,
                       cairo_t          *cr,
                       gint              page,
                       GdkRectangle     *real_page_area,

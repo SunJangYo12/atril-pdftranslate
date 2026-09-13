@@ -7,13 +7,35 @@
 #include "ev-page-cache.h"
 
 #include "ev-view.h"
+#include "ev-view-private.h"
 
 #include <glib.h>
 #include <pango/pango.h>
 
+gboolean
+ev_view_point_in_translate_overlay (EvView  *view,
+                                    gdouble  x,
+                                    gdouble  y)
+{
+    g_print ("OVERLAY TEST: mouse=%f,%f rect=%f,%f - %f,%f page=%d\n",
+             x, y,
+             view->translate_rect.x1,
+             view->translate_rect.y1,
+             view->translate_rect.x2,
+             view->translate_rect.y2,
+             view->translate_page);
+
+	if (view->translate_page < 0)
+		return FALSE;
+
+	return x >= view->translate_rect.x1 &&
+	       x <= view->translate_rect.x2 &&
+	       y >= view->translate_rect.y1 &&
+	       y <= view->translate_rect.y2;
+}
 
 void
-ev_debug_draw_blocks (EvPageCache  *cache,
+ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
                    cairo_t         *cr,
                    gint             page,
                    GdkRectangle    *real_page_area,
@@ -156,14 +178,54 @@ ev_debug_draw_blocks (EvPageCache  *cache,
                 gdouble width;
                 gdouble height;
 
-                x = real_page_area->x +
-                    rect.x1 * scale_x;
+				if (view->translate_page == page &&
+				    view->translate_index == block_no) {
 
-                y = real_page_area->y +
-                    rect.y1 * scale_y;
+				    x = view->translate_rect.x1;
+				    y = view->translate_rect.y1;
 
-                width = (rect.x2 - rect.x1) * scale_x;
-                height = (rect.y2 - rect.y1) * scale_y;
+				    width = view->translate_rect.x2 -
+				            view->translate_rect.x1;
+
+				    height = view->translate_rect.y2 -
+				             view->translate_rect.y1;
+
+				} else {
+
+				    x = real_page_area->x +
+				        rect.x1 * scale_x;
+
+				    y = real_page_area->y +
+				        rect.y1 * scale_y;
+
+				    width = (rect.x2 - rect.x1) * scale_x;
+				    height = (rect.y2 - rect.y1) * scale_y;
+				}
+
+
+				if (view->mouse_x >= x &&
+				    view->mouse_x <= x + width &&
+				    view->mouse_y >= y &&
+				    view->mouse_y <= y + height) {
+
+				    view->translate_rect.x1 = x;
+				    view->translate_rect.y1 = y;
+				    view->translate_rect.x2 = x + width;
+				    view->translate_rect.y2 = y + height;
+
+				    view->translate_page = page;
+				    view->translate_index = block_no;
+
+					g_print ("BLOCK RECT: page=%d block=%d rect=%f,%f - %f,%f mouse=%f,%f\n",
+				         page,
+				         block_no,
+				         x, y,
+				         x + width,
+				         y + height,
+				         view->mouse_x,
+				         view->mouse_y);
+				}
+
 
                 /*
                  * Rectangle block.
@@ -245,14 +307,52 @@ ev_debug_draw_blocks (EvPageCache  *cache,
             gdouble width;
             gdouble height;
 
-            x = real_page_area->x +
-                rect.x1 * scale_x;
+			if (view->translate_page == page &&
+			    view->translate_index == block_no) {
 
-            y = real_page_area->y +
-                rect.y1 * scale_y;
+			    x = view->translate_rect.x1;
+			    y = view->translate_rect.y1;
 
-            width = (rect.x2 - rect.x1) * scale_x;
-            height = (rect.y2 - rect.y1) * scale_y;
+			    width = view->translate_rect.x2 -
+			            view->translate_rect.x1;
+
+			    height = view->translate_rect.y2 -
+			             view->translate_rect.y1;
+
+			} else {
+
+			    x = real_page_area->x +
+			        rect.x1 * scale_x;
+
+			    y = real_page_area->y +
+			        rect.y1 * scale_y;
+
+			    width = (rect.x2 - rect.x1) * scale_x;
+			    height = (rect.y2 - rect.y1) * scale_y;
+			}
+
+			if (view->mouse_x >= x &&
+			    view->mouse_x <= x + width &&
+			    view->mouse_y >= y &&
+			    view->mouse_y <= y + height) {
+
+			    view->translate_rect.x1 = x;
+			    view->translate_rect.y1 = y;
+			    view->translate_rect.x2 = x + width;
+			    view->translate_rect.y2 = y + height;
+
+			    view->translate_page = page;
+			    view->translate_index = block_no;
+
+				g_print ("BLOCK RECT: page=%d block=%d rect=%f,%f - %f,%f mouse=%f,%f\n",
+				         page,
+				         block_no,
+				         x, y,
+				         x + width,
+				         y + height,
+				         view->mouse_x,
+				         view->mouse_y);
+			}
 
             cairo_rectangle (cr,
                              x,
@@ -330,23 +430,8 @@ ev_debug_is_soft_return (EvPageCache  *cache,
 		this_line_end->y2 - this_line_end->y1;
 
 
-g_print ("SOFT RETURN CHECK offset=%d\n", offset);
-
-g_print ("  this line height = %.4f\n",
-         this_line_height);
-
-g_print ("  next line height = %.4f\n",
-         next_line_start->y2 - next_line_start->y1);
-
-g_print ("  height diff      = %.4f\n",
-         ABS (this_line_height -
-              (next_line_start->y2 - next_line_start->y1)));
-
-g_print ("  line spacing     = %.4f\n",
-         line_spacing);
-
 	if (ABS (this_line_height -
-		 (next_line_start->y2 - next_line_start->y1)) > 0.25)
+		 (next_line_start->y2 - next_line_start->y1)) > 2.0)
 		return FALSE;
 
 	line_spacing =

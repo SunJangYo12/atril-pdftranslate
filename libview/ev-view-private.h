@@ -232,6 +232,18 @@ struct _EvView {
 	/* Current zoom center */
 	gdouble zoom_center_x;
 	gdouble zoom_center_y;
+
+	/* JIN */
+	gboolean overlay_in_drag;
+	gdouble overlay_drag_start_x;
+	gdouble overlay_drag_start_y;
+	EvRectangle overlay_drag_rect;
+	/* state overlay */
+	EvRectangle translate_rect;
+	gint         translate_page;
+	guint        translate_index;
+	gdouble mouse_x;
+	gdouble mouse_y;
 };
 
 struct _EvViewClass {
