@@ -12,6 +12,89 @@
 #include <glib.h>
 #include <pango/pango.h>
 
+static void
+ev_debug_print_text_in_rect (EvPageCache  *cache,
+                             EvView       *view,
+                             gint          page,
+                             EvRectangle  *overlay_rect,
+                             gdouble       document_width,
+                             gdouble       document_height,
+                             GdkRectangle *real_page_area)
+{
+    const gchar *text;
+    EvRectangle *areas = NULL;
+    guint n_areas = 0;
+    gint i;
+    GString *result;
+
+    gdouble scale_x;
+    gdouble scale_y;
+
+    text = ev_page_cache_get_text (cache, page);
+
+    if (!text)
+        return;
+
+    if (!ev_page_cache_get_text_layout (cache,
+                                        page,
+                                        &areas,
+                                        &n_areas))
+        return;
+
+    if (!areas || n_areas == 0)
+        return;
+
+    scale_x = (gdouble)real_page_area->width /
+              document_width;
+
+    scale_y = (gdouble)real_page_area->height /
+              document_height;
+
+    result = g_string_new ("");
+
+    for (i = 0; i < (gint)n_areas; i++) {
+        EvRectangle *a = &areas[i];
+
+        gdouble cx;
+        gdouble cy;
+
+        if (a->x1 == a->x2 &&
+            a->y1 == a->y2)
+            continue;
+
+        /*
+         * Titik tengah karakter dalam koordinat Cairo.
+         */
+        cx = real_page_area->x +
+             ((a->x1 + a->x2) / 2.0) * scale_x;
+
+        cy = real_page_area->y +
+             ((a->y1 + a->y2) / 2.0) * scale_y;
+
+        if (cx >= overlay_rect->x1 &&
+            cx <= overlay_rect->x2 &&
+            cy >= overlay_rect->y1 &&
+            cy <= overlay_rect->y2) {
+
+            const gchar *p;
+            gunichar c;
+
+            p = g_utf8_offset_to_pointer (text, i);
+            c = g_utf8_get_char (p);
+
+            g_string_append_unichar (result, c);
+        }
+    }
+
+    g_print ("\n");
+    g_print ("========== OVERLAY TEXT ==========\n");
+    g_print ("PAGE: %d\n", page);
+    g_print ("%s\n", result->str);
+    g_print ("==================================\n");
+
+    g_string_free (result, TRUE);
+}
+
 gboolean
 ev_view_point_in_translate_resize_handle (EvView  *view,
                                           gdouble  x,
@@ -383,6 +466,21 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 			}
         }
     }
+
+	if (view->overlay_text_print_pending &&
+	    view->translate_page == page) {
+
+	    ev_debug_print_text_in_rect (cache,
+	                                 view,
+	                                 page,
+	                                 &view->translate_rect,
+	                                 document_width,
+	                                 document_height,
+	                                 real_page_area);
+
+	    view->overlay_text_print_pending = FALSE;
+	}
+
     cairo_restore (cr);
 }
 

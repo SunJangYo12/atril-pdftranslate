@@ -5032,6 +5032,9 @@ ev_view_button_release_event (GtkWidget      *widget,
 
 	if (view->overlay_in_resize) {
 	    view->overlay_in_resize = FALSE;
+
+		view->overlay_text_print_pending = TRUE;
+
 	    view->pressed_button = -1;
 
 	    gtk_widget_queue_draw (widget);
