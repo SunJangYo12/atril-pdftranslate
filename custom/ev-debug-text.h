@@ -6,6 +6,11 @@
 #include "ev-page-cache.h"
 
 gboolean
+ev_view_point_in_translate_resize_handle (EvView  *view,
+                                          gdouble  x,
+                                          gdouble  y);
+
+gboolean
 ev_view_point_in_translate_overlay (EvView *view,
                                     gdouble x,
                                     gdouble y);

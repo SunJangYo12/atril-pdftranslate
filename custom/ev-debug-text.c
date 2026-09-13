@@ -13,18 +13,26 @@
 #include <pango/pango.h>
 
 gboolean
+ev_view_point_in_translate_resize_handle (EvView  *view,
+                                          gdouble  x,
+                                          gdouble  y)
+{
+    gdouble handle_size = 12.0;
+
+    if (view->translate_page < 0)
+        return FALSE;
+
+    return x >= view->translate_rect.x2 - handle_size &&
+           x <= view->translate_rect.x2 + handle_size &&
+           y >= view->translate_rect.y2 - handle_size &&
+           y <= view->translate_rect.y2 + handle_size;
+}
+
+gboolean
 ev_view_point_in_translate_overlay (EvView  *view,
                                     gdouble  x,
                                     gdouble  y)
 {
-    g_print ("OVERLAY TEST: mouse=%f,%f rect=%f,%f - %f,%f page=%d\n",
-             x, y,
-             view->translate_rect.x1,
-             view->translate_rect.y1,
-             view->translate_rect.x2,
-             view->translate_rect.y2,
-             view->translate_page);
-
 	if (view->translate_page < 0)
 		return FALSE;
 
@@ -215,18 +223,7 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 
 				    view->translate_page = page;
 				    view->translate_index = block_no;
-
-					g_print ("BLOCK RECT: page=%d block=%d rect=%f,%f - %f,%f mouse=%f,%f\n",
-				         page,
-				         block_no,
-				         x, y,
-				         x + width,
-				         y + height,
-				         view->mouse_x,
-				         view->mouse_y);
 				}
-
-
                 /*
                  * Rectangle block.
                  */
@@ -237,6 +234,19 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
                                  height);
 
                 cairo_stroke (cr);
+
+				// resize view
+				if (view->translate_page == page &&
+				    view->translate_index == block_no) {
+
+				    cairo_rectangle (cr,
+				                     x + width - 6.0,
+				                     y + height - 6.0,
+				                     12.0,
+				                     12.0);
+
+				    cairo_fill (cr);
+				}
 
                 /*
                  * Nomor block.
@@ -253,11 +263,6 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 
 				    cairo_show_text (cr, label);
 				}
-                /*cairo_move_to (cr,
-                               x + 2.0,
-                               y + 12.0);
-
-                cairo_show_text (cr, g_strdup_printf ("B%d", block_no));*/
             }
 
             block_no++;
@@ -343,15 +348,6 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 
 			    view->translate_page = page;
 			    view->translate_index = block_no;
-
-				g_print ("BLOCK RECT: page=%d block=%d rect=%f,%f - %f,%f mouse=%f,%f\n",
-				         page,
-				         block_no,
-				         x, y,
-				         x + width,
-				         y + height,
-				         view->mouse_x,
-				         view->mouse_y);
 			}
 
             cairo_rectangle (cr,
@@ -362,6 +358,18 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 
             cairo_stroke (cr);
 
+			//resize view
+			if (view->translate_page == page &&
+			    view->translate_index == block_no) {
+
+			    cairo_rectangle (cr,
+			                     x + width - 6.0,
+			                     y + height - 6.0,
+			                     12.0,
+			                     12.0);
+
+			    cairo_fill (cr);
+			}
 			{
 			    gchar label[32];
 			    g_snprintf (label, sizeof (label),
@@ -373,15 +381,8 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 
 			    cairo_show_text (cr, label);
 			}
-            /*cairo_move_to (cr,
-                           x + 2.0,
-                           y + 12.0);
-
-            cairo_show_text (cr, g_strdup_printf ("B%d", block_no));*/
         }
     }
-
-
     cairo_restore (cr);
 }
 

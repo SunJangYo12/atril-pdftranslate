@@ -244,6 +244,10 @@ struct _EvView {
 	guint        translate_index;
 	gdouble mouse_x;
 	gdouble mouse_y;
+	gboolean overlay_in_resize;
+	gdouble overlay_resize_start_x;
+	gdouble overlay_resize_start_y;
+	EvRectangle overlay_resize_rect;
 };
 
 struct _EvViewClass {

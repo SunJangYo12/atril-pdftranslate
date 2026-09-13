@@ -4479,19 +4479,28 @@ ev_view_button_press_event (GtkWidget      *widget,
 			EvMapping *link;
 			gint page;
 
-			if (ev_view_point_in_translate_overlay (view, event->x, event->y)) {
-			   g_print ("START DRAG: page=%d block=%u\n",
-			             view->translate_page,
-			             view->translate_index);
+			if (ev_view_point_in_translate_resize_handle (view,
+			                                              event->x,
+			                                              event->y)) {
+			    view->overlay_in_resize = TRUE;
 
+			    view->overlay_resize_start_x = event->x;
+			    view->overlay_resize_start_y = event->y;
+
+			    view->overlay_resize_rect = view->translate_rect;
+
+			    printf ("START RESIZE\n");
+
+			    return TRUE;
+			}
+
+			if (ev_view_point_in_translate_overlay (view, event->x, event->y)) {
 			    view->overlay_in_drag = TRUE;
 
 			    view->overlay_drag_start_x = event->x;
 			    view->overlay_drag_start_y = event->y;
 
 			    view->overlay_drag_rect = view->translate_rect;
-
-				printf("press\n");
 
 			    return TRUE;
 			}
@@ -4812,8 +4821,44 @@ ev_view_motion_notify_event (GtkWidget      *widget,
 	view->mouse_x = x;
 	view->mouse_y = y;
 
+	if (view->overlay_in_resize) {
+	    gdouble dx;
+	    gdouble dy;
+
+	    dx = x - view->overlay_resize_start_x;
+	    dy = y - view->overlay_resize_start_y;
+
+	    view->translate_rect.x1 =
+	        view->overlay_resize_rect.x1;
+
+	    view->translate_rect.y1 =
+	        view->overlay_resize_rect.y1;
+
+	    view->translate_rect.x2 =
+	        view->overlay_resize_rect.x2 + dx;
+
+	    view->translate_rect.y2 =
+	        view->overlay_resize_rect.y2 + dy;
+
+	    /*
+	     * Jangan sampai width/height menjadi negatif.
+	     */
+	    if (view->translate_rect.x2 <
+	        view->translate_rect.x1 + 20.0)
+	        view->translate_rect.x2 =
+	            view->translate_rect.x1 + 20.0;
+
+	    if (view->translate_rect.y2 <
+	        view->translate_rect.y1 + 20.0)
+	        view->translate_rect.y2 =
+	            view->translate_rect.y1 + 20.0;
+
+	    gtk_widget_queue_draw (widget);
+
+	    return TRUE;
+	}
+
 	if (view->overlay_in_drag) {
-		g_print("DRAGGING\n");
 		gdouble dx;
 		gdouble dy;
 
@@ -4985,9 +5030,16 @@ ev_view_button_release_event (GtkWidget      *widget,
 	EvView *view = EV_VIEW (widget);
 	EvLink *link = NULL;
 
-	if (view->overlay_in_drag) {
-		printf("release\n");
+	if (view->overlay_in_resize) {
+	    view->overlay_in_resize = FALSE;
+	    view->pressed_button = -1;
 
+	    gtk_widget_queue_draw (widget);
+
+	    return TRUE;
+	}
+
+	if (view->overlay_in_drag) {
 	    view->overlay_in_drag = FALSE;
 	    view->pressed_button = -1;
 
