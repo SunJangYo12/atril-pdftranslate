@@ -310,7 +310,7 @@ job_page_data_finished_cb (EvJob       *job,
 	data->dirty = FALSE;
 
 	//if (job_data->page == 0)
-		ev_debug_dump_blocks (cache, job_data->page);
+		//ev_debug_dump_blocks (cache, job_data->page);
 
 
 	g_object_unref (data->job);

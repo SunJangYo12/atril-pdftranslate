@@ -5,6 +5,13 @@
 #include <gdk/gdk.h>
 #include "ev-page-cache.h"
 
+void
+ev_debug_overlay_show_cb (GtkButton *button,
+                          gpointer   data);
+
+void
+ev_debug_show_overlay_menu (EvView *view);
+
 gboolean
 ev_view_point_in_translate_resize_handle (EvView  *view,
                                           gdouble  x,

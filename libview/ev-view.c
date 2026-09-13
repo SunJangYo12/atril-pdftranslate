@@ -4578,6 +4578,19 @@ ev_view_button_press_event (GtkWidget      *widget,
 			ev_view_set_focused_element_at_location (view, event->x, event->y);
 			return TRUE;
 		case 3:
+			if (ev_view_point_in_translate_overlay (view,
+			                                        event->x,
+			                                        event->y)) {
+
+			    g_print ("RIGHT CLICK OVERLAY: page=%d block=%u\n",
+			             view->translate_page,
+			             view->translate_index);
+
+			    ev_debug_show_overlay_menu (view);
+
+			    return TRUE;
+			}
+
 			view->scroll_info.start_y = event->y;
 			ev_view_set_focused_element_at_location (view, event->x, event->y);
 			return ev_view_do_popup_menu (view, event->x, event->y);
@@ -6595,6 +6608,7 @@ ev_view_init (EvView *view)
 	GtkStyleContext *context;
 
 	view->overlay_save_pending = FALSE;
+	view->overlay_hidden = FALSE;
 
 	gtk_widget_set_can_focus (GTK_WIDGET (view), TRUE);
 	gtk_widget_set_has_window (GTK_WIDGET (view), TRUE);
