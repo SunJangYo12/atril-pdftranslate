@@ -13,6 +13,134 @@
 #include <pango/pango.h>
 #include <glib/gstdio.h>
 #include <stdio.h>
+#include <math.h>
+
+static gchar *
+ev_debug_get_text_in_rect (EvPageCache      *cache,
+                           gint              page,
+                           EvRectangle      *screen_rect,
+                           GdkRectangle     *real_page_area,
+                           gdouble           scale_x,
+                           gdouble           scale_y)
+{
+    const gchar *text;
+    EvRectangle *areas = NULL;
+    PangoLogAttr *log_attrs = NULL;
+    guint n_areas = 0;
+    gulong n_log_attrs = 0;
+
+    gint n_chars = 0;
+    gint i;
+    const gchar *p;
+
+    GString *result;
+    gboolean have_previous = FALSE;
+    gdouble previous_y = 0.0;
+
+    text = ev_page_cache_get_text (cache, page);
+
+    if (!text)
+        return g_strdup ("");
+
+    if (!ev_page_cache_get_text_layout (cache,
+                                        page,
+                                        &areas,
+                                        &n_areas))
+        return g_strdup ("");
+
+    if (!ev_page_cache_get_text_log_attrs (cache,
+                                           page,
+                                           &log_attrs,
+                                           &n_log_attrs))
+        return g_strdup ("");
+
+    for (p = text; *p; p = g_utf8_next_char (p))
+        n_chars++;
+
+    if (n_chars > (gint)n_areas)
+        n_chars = n_areas;
+
+    if (n_chars > (gint)n_log_attrs)
+        n_chars = n_log_attrs;
+
+    result = g_string_new ("");
+
+    for (i = 0; i < n_chars; i++) {
+        EvRectangle *a;
+        gdouble x;
+        gdouble y;
+        gdouble width;
+        gdouble height;
+        gdouble cx;
+        gdouble cy;
+        gunichar c;
+        const gchar *char_ptr;
+
+        a = &areas[i];
+
+        if (a->x1 == a->x2 &&
+            a->y1 == a->y2)
+            continue;
+
+        /*
+         * PDF/document coordinate -> screen coordinate.
+         */
+        x = real_page_area->x + a->x1 * scale_x;
+        y = real_page_area->y + a->y1 * scale_y;
+
+        width = (a->x2 - a->x1) * scale_x;
+        height = (a->y2 - a->y1) * scale_y;
+
+        cx = x + width / 2.0;
+        cy = y + height / 2.0;
+
+        /*
+         * Karakter harus berada di dalam overlay.
+         */
+        if (cx < screen_rect->x1 ||
+            cx > screen_rect->x2 ||
+            cy < screen_rect->y1 ||
+            cy > screen_rect->y2)
+            continue;
+
+        /*
+         * Jika pindah ke baris berikutnya,
+         * masukkan newline.
+         */
+        if (have_previous &&
+            fabs (cy - previous_y) > 3.0) {
+
+            if (result->len > 0 &&
+                result->str[result->len - 1] != '\n')
+                g_string_append_c (result, '\n');
+        }
+
+        char_ptr = g_utf8_offset_to_pointer (text, i);
+        c = g_utf8_get_char (char_ptr);
+
+        if (c == '\n') {
+            if (result->len > 0 &&
+                result->str[result->len - 1] != '\n')
+                g_string_append_c (result, '\n');
+        } else {
+            g_string_append_unichar (result, c);
+        }
+
+        previous_y = cy;
+        have_previous = TRUE;
+    }
+
+    /*
+     * Buang newline di akhir.
+     */
+    while (result->len > 0 &&
+           result->str[result->len - 1] == '\n') {
+
+        g_string_truncate (result, result->len - 1);
+    }
+
+    return g_string_free (result, FALSE);
+}
 
 static gchar *
 ev_debug_get_translate_dir (EvView *view)
@@ -58,6 +186,29 @@ ev_debug_get_page_dir (EvView *view,
     return page_dir;
 }
 
+static gchar *
+ev_debug_escape_text (const gchar *text)
+{
+    GString *s;
+    const gchar *p;
+
+    s = g_string_new ("");
+
+    for (p = text; p && *p; p = g_utf8_next_char (p)) {
+        gunichar c = g_utf8_get_char (p);
+
+        if (c == '\\')
+            g_string_append (s, "\\\\");
+        else if (c == '"')
+            g_string_append (s, "\\\"");
+        else if (c == '\n')
+            g_string_append (s, "\\n");
+        else
+            g_string_append_unichar (s, c);
+    }
+
+    return g_string_free (s, FALSE);
+}
 
 static void
 ev_debug_save_block_position (EvView       *view,
@@ -69,6 +220,7 @@ ev_debug_save_block_position (EvView       *view,
                               gdouble       scale_y,
                               gdouble       document_width,
                               gdouble       document_height,
+							  const gchar  *text_original,
 							  gboolean	    overwrite)
 {
     gchar *page_dir;
@@ -112,9 +264,17 @@ ev_debug_save_block_position (EvView       *view,
     x2 /= document_width;
     y2 /= document_height;
 
-    content = g_strdup_printf (
-        "posisi_overlay=\"%.10f,%.10f,%.10f,%.10f\"\n",
-        x1, y1, x2, y2);
+	gchar *escaped_text;
+	escaped_text = ev_debug_escape_text (text_original);
+
+	content = g_strdup_printf (
+	    "posisi_overlay=\"%.10f,%.10f,%.10f,%.10f\"\n"
+	    "text_original=\"%s\"\n"
+	    "text_translate=\"\"\n",
+	    x1, y1, x2, y2,
+	    escaped_text);
+
+	g_free (escaped_text);
 
 	if (!overwrite &&
 	    g_file_test (filename, G_FILE_TEST_EXISTS)) {
@@ -557,6 +717,40 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 
 				    cairo_show_text (cr, label);
 				}
+
+				EvRectangle initial_screen_rect;
+
+				initial_screen_rect.x1 =
+				    real_page_area->x + rect.x1 * scale_x;
+				initial_screen_rect.y1 =
+				    real_page_area->y + rect.y1 * scale_y;
+				initial_screen_rect.x2 =
+				    real_page_area->x + rect.x2 * scale_x;
+				initial_screen_rect.y2 =
+				    real_page_area->y + rect.y2 * scale_y;
+
+				gchar *text_original;
+
+				text_original = ev_debug_get_text_in_rect (
+				    cache,
+				    page,
+				    &initial_screen_rect,
+				    real_page_area,
+				    scale_x,
+				    scale_y);
+				ev_debug_save_block_position (
+				    view,
+				    page,
+				    block_no,
+				    &initial_screen_rect,
+				    real_page_area,
+				    scale_x,
+				    scale_y,
+				    document_width,
+				    document_height,
+				    text_original,
+				    FALSE);
+				g_free (text_original);
             }
 
             block_no++;
@@ -709,10 +903,76 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
                 save_rect.x2 = rect.x2;
                 save_rect.y2 = rect.y2;
             }
+
+			EvRectangle initial_screen_rect;
+
+			initial_screen_rect.x1 =
+			    real_page_area->x + rect.x1 * scale_x;
+			initial_screen_rect.y1 =
+			    real_page_area->y + rect.y1 * scale_y;
+			initial_screen_rect.x2 =
+			    real_page_area->x + rect.x2 * scale_x;
+			initial_screen_rect.y2 =
+			    real_page_area->y + rect.y2 * scale_y;
+
+			gchar *text_original;
+
+			text_original = ev_debug_get_text_in_rect (
+			    cache,
+			    page,
+			    &initial_screen_rect,
+			    real_page_area,
+			    scale_x,
+			    scale_y);
+			ev_debug_save_block_position (
+			    view,
+			    page,
+			    block_no,
+			    &initial_screen_rect,
+			    real_page_area,
+			    scale_x,
+			    scale_y,
+			    document_width,
+			    document_height,
+			    text_original,
+			    FALSE);
+			g_free (text_original);
   		}
     }
 
 	if (view->overlay_save_pending &&
+	    view->translate_page == page) {
+
+	    gchar *text_original;
+
+	    text_original = ev_debug_get_text_in_rect (
+	        view->page_cache,
+	        page,
+	        &view->translate_rect,
+	        real_page_area,
+	        scale_x,
+	        scale_y);
+
+	    ev_debug_save_block_position (
+	        view,
+	        page,
+	        view->translate_index,
+	        &view->translate_rect,
+	        real_page_area,
+	        scale_x,
+	        scale_y,
+	        document_width,
+	        document_height,
+	        text_original,
+	        TRUE);
+
+	    g_print ("SAVED TEXT:\n%s\n", text_original);
+
+	    g_free (text_original);
+
+	    view->overlay_save_pending = FALSE;
+	}
+	/*if (view->overlay_save_pending &&
 	    view->translate_page == page) {
 
 	    ev_debug_save_block_position (
@@ -728,7 +988,7 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 	        TRUE);
 
 	    view->overlay_save_pending = FALSE;
-	}
+	}*/
 
 	if (view->overlay_text_print_pending &&
 	    view->translate_page == page) {
