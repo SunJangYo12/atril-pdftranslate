@@ -103,7 +103,7 @@ ev_debug_overlay_hide_cb (GtkMenuItem *item,
 	view->hidden_overlay_page = view->translate_page;
     view->hidden_overlay_index = view->translate_index;
 
-	gint x = (gint)view->translate_rect.x1;
+	gint x = (gint)view->translate_rect.x2;
 	gint y = (gint)view->translate_rect.y1;
 	show_button(view, x, y);
 
@@ -341,7 +341,8 @@ ev_debug_escape_text (const gchar *text)
         else if (c == '"')
             g_string_append (s, "\\\"");
         else if (c == '\n')
-            g_string_append (s, "\\n");
+            //g_string_append (s, "\\n");
+            g_string_append (s, " ");
         else
             g_string_append_unichar (s, c);
     }
@@ -609,6 +610,161 @@ ev_view_point_in_translate_overlay (EvView  *view,
 	       y <= view->translate_rect.y2;
 }
 
+static gchar *
+ev_debug_load_block_original_text (EvView *view,
+                                   gint    page,
+                                   gint    block_no)
+{
+    gchar *page_dir;
+    gchar *filename;
+    gchar *contents = NULL;
+    gsize length = 0;
+    gchar *text = NULL;
+    gchar *p;
+    gchar *end;
+
+    page_dir = ev_debug_get_page_dir (view, page);
+    if (!page_dir)
+        return NULL;
+
+    filename = g_strdup_printf ("%s/block%d.txt",
+                                page_dir,
+                                block_no + 1);
+
+    if (!g_file_get_contents (filename,
+                               &contents,
+                               &length,
+                               NULL)) {
+        g_free (filename);
+        g_free (page_dir);
+        return NULL;
+    }
+
+    /*
+     * Cari:
+     * text_original="..."
+     */
+    p = strstr (contents, "text_original=\"");
+
+    if (p) {
+        p += strlen ("text_original=\"");
+
+        end = strchr (p, '"');
+
+        if (end) {
+            text = g_strndup (p, end - p);
+        }
+    }
+
+    g_free (contents);
+    g_free (filename);
+    g_free (page_dir);
+
+    return text;
+}
+
+static void
+ev_debug_draw_wrapped_text (cairo_t       *cr,
+                            const gchar   *text,
+                            gdouble        x,
+                            gdouble        y,
+                            gdouble        width,
+                            gdouble        height)
+{
+    gchar **words;
+    gchar *line;
+    gint i;
+    gdouble line_height;
+    gdouble cursor_y;
+
+    if (!text || !*text)
+        return;
+
+    /*
+     * Font text overlay.
+     */
+    cairo_select_font_face (
+        cr,
+        "Sans",
+        CAIRO_FONT_SLANT_NORMAL,
+        CAIRO_FONT_WEIGHT_NORMAL);
+
+    cairo_set_font_size (cr, 13.0);
+
+    line_height = 17.0;
+    cursor_y = y + line_height;
+
+    words = g_strsplit_set (text, " \t\r\n", -1);
+
+    line = g_strdup ("");
+
+    for (i = 0; words[i] != NULL; i++) {
+
+        gchar *candidate;
+        cairo_text_extents_t extents;
+
+        if (!words[i][0])
+            continue;
+
+        if (line[0])
+            candidate =
+                g_strdup_printf ("%s %s",
+                                 line,
+                                 words[i]);
+        else
+            candidate =
+                g_strdup (words[i]);
+
+        cairo_text_extents (cr, candidate, &extents);
+
+        /*
+         * Kalau baris sudah melebihi lebar overlay,
+         * gambar baris lama lalu mulai baris baru.
+         */
+        if (extents.width > width - 10.0 &&
+            line[0]) {
+
+            cairo_move_to (cr,
+                           x + 5.0,
+                           cursor_y);
+
+            cairo_show_text (cr, line);
+
+            cursor_y += line_height;
+
+            g_free (line);
+            line = g_strdup (words[i]);
+
+        } else {
+
+            g_free (line);
+            line = candidate;
+        }
+
+        /*
+         * Jangan menggambar keluar dari tinggi overlay.
+         */
+        if (cursor_y > y + height - 2.0)
+            break;
+    }
+
+    /*
+     * Gambar baris terakhir.
+     */
+    if (line[0] &&
+        cursor_y <= y + height - 2.0) {
+
+        cairo_move_to (cr,
+                       x + 5.0,
+                       cursor_y);
+
+        cairo_show_text (cr, line);
+    }
+
+    g_free (line);
+    g_strfreev (words);
+}
+
 void
 ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
                    cairo_t         *cr,
@@ -858,18 +1014,20 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
                  * Rectangle block.
                  */
 				if (!hidden) {
+					cairo_set_source_rgb(cr, 1.0, 1.0, 1.0);
 	                cairo_rectangle (cr,
 	                                 x,
 	                                 y,
 	                                 width,
 	                                 height);
 
-	                cairo_stroke (cr);
+	                cairo_fill (cr);
 
 					// resize view
 					if (view->translate_page == page &&
 					    view->translate_index == block_no) {
 
+						cairo_set_source_rgb(cr, 0.4, 0.2, 1.0);
 					    cairo_rectangle (cr,
 					                     x + width - 6.0,
 					                     y + height - 6.0,
@@ -878,20 +1036,23 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 
 					    cairo_fill (cr);
 					}
-	                /*
-	                 * Nomor block.
-	                 */
 					{
-					    gchar label[32];
+					    gchar *text_original;
 
-					    g_snprintf (label, sizeof (label),
-					                "B%d", block_no);
+					    text_original =
+					        ev_debug_load_block_original_text (
+					            view,
+					            page,
+					            block_no);
 
-					    cairo_move_to (cr,
-					                   x + 2.0,
-					                   y + 12.0);
+					    if (text_original && *text_original) {
 
-					    cairo_show_text (cr, label);
+					        cairo_set_source_rgb (cr, 0.0, 0.0, 0.0);
+							ev_debug_draw_wrapped_text(
+								cr, text_original, x, y, width, height);
+					    }
+
+					    g_free (text_original);
 					}
 				}
 
@@ -1039,6 +1200,7 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 			}
 
 			if (!hidden) {
+				cairo_set_source_rgb(cr, 1.0, 1.0, 1.0);
 	            cairo_rectangle (cr,
 	                             x,
 	                             y,
@@ -1051,6 +1213,7 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 			if (!hidden && view->translate_page == page &&
 			    view->translate_index == block_no) {
 
+				cairo_set_source_rgb(cr, 0.4, 0.2, 1.0);
 			    cairo_rectangle (cr,
 			                     x + width - 6.0,
 			                     y + height - 6.0,
@@ -1060,15 +1223,22 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 			    cairo_fill (cr);
 			}
 			if (!hidden) {
-			    gchar label[32];
-			    g_snprintf (label, sizeof (label),
-			                "B%d", block_no);
+			    gchar *text_original;
 
-			    cairo_move_to (cr,
-			                   x + 2.0,
-			                   y + 12.0);
+			    text_original =
+			        ev_debug_load_block_original_text (
+			            view,
+			            page,
+			            block_no);
 
-			    cairo_show_text (cr, label);
+			    if (text_original && *text_original) {
+
+			        cairo_set_source_rgb (cr, 0.0, 0.0, 0.0);
+					ev_debug_draw_wrapped_text(
+                                cr, text_original, x, y, width, height);
+			    }
+
+			    g_free (text_original);
 			}
 			{
                 EvRectangle save_rect;
