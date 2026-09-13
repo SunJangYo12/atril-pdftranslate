@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <math.h>
 
+
 void
 ev_debug_overlay_show_cb (GtkButton *button,
                           gpointer   data)
@@ -23,7 +24,68 @@ ev_debug_overlay_show_cb (GtkButton *button,
 
     view->overlay_hidden = FALSE;
 
+	gtk_widget_hide(view->btn_window);
+
     gtk_widget_queue_draw (GTK_WIDGET (view));
+}
+
+static void
+show_button (EvView *view,
+                       gint x,
+                       gint y)
+{
+    GtkWidget *toplevel;
+    gint root_x;
+    gint root_y;
+
+    if (!view->btn_window) {
+
+        GtkWidget *button;
+
+        toplevel =
+            gtk_widget_get_toplevel (GTK_WIDGET (view));
+
+
+        view->btn_window =
+            gtk_window_new (GTK_WINDOW_POPUP);
+
+        gtk_window_set_decorated (
+			GTK_WINDOW (view->btn_window),
+            FALSE);
+
+        gtk_window_set_resizable (
+            GTK_WINDOW (view->btn_window),
+            FALSE);
+        button = gtk_button_new_with_label ("Show");
+
+        view->overlay_show_button = button;
+
+        gtk_container_add (
+            GTK_CONTAINER (view->btn_window),
+            button);
+
+        g_signal_connect (
+            button,
+            "clicked",
+            G_CALLBACK (ev_debug_overlay_show_cb),
+            view);
+        gtk_widget_show (button);
+    }
+    /*
+     * Koordinat x,y relatif terhadap EvView.
+     *
+     * Ubah ke koordinat root window.
+     */
+    gdk_window_get_origin (
+        gtk_widget_get_window (GTK_WIDGET (view)),
+        &root_x,
+        &root_y);
+
+    gtk_window_move (
+        GTK_WINDOW (view->btn_window),
+        root_x + x,
+        root_y + y);
+    gtk_widget_show (view->btn_window);
 }
 
 static void
@@ -38,7 +100,12 @@ ev_debug_overlay_hide_cb (GtkMenuItem *item,
              view->translate_page,
              view->translate_index);
 
-	view->overlay_hidden = TRUE;
+	view->hidden_overlay_page = view->translate_page;
+    view->hidden_overlay_index = view->translate_index;
+
+	gint x = (gint)view->translate_rect.x1;
+	gint y = (gint)view->translate_rect.y1;
+	show_button(view, x, y);
 
 	gtk_widget_queue_draw (GTK_WIDGET (view));
 }
@@ -718,6 +785,7 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
                 gdouble y;
                 gdouble width;
                 gdouble height;
+				gboolean hidden;
 
 				if (view->translate_page == page &&
 				    view->translate_index == block_no &&
@@ -762,9 +830,14 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
                     y = real_page_area->y + rect.y1 * scale_y;
                     width = (rect.x2 - rect.x1) * scale_x;
                     height = (rect.y2 - rect.y1) * scale_y;
+
+	                hidden =
+	                    view->overlay_hidden &&
+	                    view->hidden_overlay_page == page &&
+	                    view->hidden_overlay_index == block_no;
 				}
 
-				if (view->mouse_x >= x &&
+				if (!hidden && view->mouse_x >= x &&
 				    view->mouse_x <= x + width &&
 				    view->mouse_y >= y &&
 				    view->mouse_y <= y + height) {
@@ -784,41 +857,42 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
                 /*
                  * Rectangle block.
                  */
-                cairo_rectangle (cr,
-                                 x,
-                                 y,
-                                 width,
-                                 height);
+				if (!hidden) {
+	                cairo_rectangle (cr,
+	                                 x,
+	                                 y,
+	                                 width,
+	                                 height);
 
-                cairo_stroke (cr);
+	                cairo_stroke (cr);
 
-				// resize view
-				if (view->translate_page == page &&
-				    view->translate_index == block_no) {
+					// resize view
+					if (view->translate_page == page &&
+					    view->translate_index == block_no) {
 
-				    cairo_rectangle (cr,
-				                     x + width - 6.0,
-				                     y + height - 6.0,
-				                     12.0,
-				                     12.0);
+					    cairo_rectangle (cr,
+					                     x + width - 6.0,
+					                     y + height - 6.0,
+					                     12.0,
+					                     12.0);
 
-				    cairo_fill (cr);
-				}
+					    cairo_fill (cr);
+					}
+	                /*
+	                 * Nomor block.
+	                 */
+					{
+					    gchar label[32];
 
-                /*
-                 * Nomor block.
-                 */
-				{
-				    gchar label[32];
+					    g_snprintf (label, sizeof (label),
+					                "B%d", block_no);
 
-				    g_snprintf (label, sizeof (label),
-				                "B%d", block_no);
+					    cairo_move_to (cr,
+					                   x + 2.0,
+					                   y + 12.0);
 
-				    cairo_move_to (cr,
-				                   x + 2.0,
-				                   y + 12.0);
-
-				    cairo_show_text (cr, label);
+					    cairo_show_text (cr, label);
+					}
 				}
 
 				EvRectangle initial_screen_rect;
@@ -902,6 +976,7 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
             gdouble y;
             gdouble width;
             gdouble height;
+			gboolean hidden;
 
 			if (view->translate_page == page &&
 			    view->translate_index == block_no &&
@@ -932,24 +1007,20 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
                      * Gunakan posisi dari file.
                      */
                     rect = saved_rect;
-
-                    /*g_print ("LOAD OVERLAY: page=%d block=%d "
-                             "rect=%f,%f - %f,%f\n",
-                             page,
-                             block_no + 1,
-                             rect.x1,
-                             rect.y1,
-                             rect.x2,
-                             rect.y2);*/
                 }
 
                 x = real_page_area->x + rect.x1 * scale_x;
                 y = real_page_area->y + rect.y1 * scale_y;
                 width = (rect.x2 - rect.x1) * scale_x;
                 height = (rect.y2 - rect.y1) * scale_y;
+
+				hidden =
+				    view->overlay_hidden &&
+				    view->hidden_overlay_page == page &&
+				    view->hidden_overlay_index == block_no;
 			}
 
-			if (view->mouse_x >= x &&
+			if (!hidden && view->mouse_x >= x &&
 			    view->mouse_x <= x + width &&
 			    view->mouse_y >= y &&
 			    view->mouse_y <= y + height) {
@@ -966,16 +1037,18 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 			        view->translate_index = block_no;
 			    }
 			}
-            cairo_rectangle (cr,
-                             x,
-                             y,
-                             width,
-                             height);
 
-            cairo_stroke (cr);
+			if (!hidden) {
+	            cairo_rectangle (cr,
+	                             x,
+	                             y,
+	                             width,
+	                             height);
+	            cairo_stroke (cr);
+			}
 
 			//resize view
-			if (view->translate_page == page &&
+			if (!hidden && view->translate_page == page &&
 			    view->translate_index == block_no) {
 
 			    cairo_rectangle (cr,
@@ -986,7 +1059,7 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 
 			    cairo_fill (cr);
 			}
-			{
+			if (!hidden) {
 			    gchar label[32];
 			    g_snprintf (label, sizeof (label),
 			                "B%d", block_no);

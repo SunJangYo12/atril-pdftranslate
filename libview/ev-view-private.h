@@ -250,6 +250,12 @@ struct _EvView {
 	EvRectangle overlay_resize_rect;
 	gboolean overlay_text_print_pending;
 	gboolean overlay_save_pending;
+	gboolean overlay_menu_open;
+	gboolean overlay_hidden;
+	gint     hidden_overlay_page;
+	guint    hidden_overlay_index;
+	GtkWidget *btn_window;
+	GtkWidget *overlay_show_button;
 };
 
 struct _EvViewClass {
