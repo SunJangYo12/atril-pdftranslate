@@ -249,6 +249,7 @@ struct _EvView {
 	gdouble overlay_resize_start_y;
 	EvRectangle overlay_resize_rect;
 	gboolean overlay_text_print_pending;
+	gboolean overlay_save_pending;
 };
 
 struct _EvViewClass {

@@ -5034,6 +5034,7 @@ ev_view_button_release_event (GtkWidget      *widget,
 	    view->overlay_in_resize = FALSE;
 
 		view->overlay_text_print_pending = TRUE;
+		view->overlay_save_pending = TRUE;
 
 	    view->pressed_button = -1;
 
@@ -6592,6 +6593,8 @@ static void
 ev_view_init (EvView *view)
 {
 	GtkStyleContext *context;
+
+	view->overlay_save_pending = FALSE;
 
 	gtk_widget_set_can_focus (GTK_WIDGET (view), TRUE);
 	gtk_widget_set_has_window (GTK_WIDGET (view), TRUE);

@@ -11,6 +11,191 @@
 
 #include <glib.h>
 #include <pango/pango.h>
+#include <glib/gstdio.h>
+#include <stdio.h>
+
+static gchar *
+ev_debug_get_translate_dir (EvView *view)
+{
+    gchar *pdf_path;
+    gchar *dir;
+
+    if (!view->document)
+        return NULL;
+
+    pdf_path = g_filename_from_uri (ev_document_get_uri (view->document),
+                                    NULL,
+                                    NULL);
+
+    if (!pdf_path)
+        return NULL;
+
+    dir = g_strdup_printf ("%s_translate", pdf_path);
+
+    g_free (pdf_path);
+
+    return dir;
+}
+
+static gchar *
+ev_debug_get_page_dir (EvView *view,
+                       gint    page)
+{
+    gchar *base_dir;
+    gchar *page_dir;
+
+    base_dir = ev_debug_get_translate_dir (view);
+
+    if (!base_dir)
+        return NULL;
+
+    page_dir = g_strdup_printf ("%s/page%d",
+                                base_dir,
+                                page + 1);
+
+    g_free (base_dir);
+
+    return page_dir;
+}
+
+
+static void
+ev_debug_save_block_position (EvView       *view,
+                              gint          page,
+                              gint          block_no,
+                              EvRectangle  *screen_rect,
+                              GdkRectangle *real_page_area,
+                              gdouble       scale_x,
+                              gdouble       scale_y,
+                              gdouble       document_width,
+                              gdouble       document_height,
+							  gboolean	    overwrite)
+{
+    gchar *page_dir;
+    gchar *filename;
+    gchar *content;
+
+    gdouble x1;
+    gdouble y1;
+    gdouble x2;
+    gdouble y2;
+
+    page_dir = ev_debug_get_page_dir (view, page);
+
+    if (!page_dir)
+        return;
+
+    if (g_mkdir_with_parents (page_dir, 0755) != 0) {
+        g_warning ("Cannot create directory: %s", page_dir);
+        g_free (page_dir);
+        return;
+    }
+
+    filename = g_strdup_printf ("%s/block%d.txt",
+                                page_dir,
+                                block_no + 1);
+
+    /*
+     * screen coordinate -> document coordinate
+     */
+    x1 = (screen_rect->x1 - real_page_area->x) / scale_x;
+    y1 = (screen_rect->y1 - real_page_area->y) / scale_y;
+
+    x2 = (screen_rect->x2 - real_page_area->x) / scale_x;
+    y2 = (screen_rect->y2 - real_page_area->y) / scale_y;
+
+    /*
+     * Normalisasi terhadap ukuran halaman.
+     */
+    x1 /= document_width;
+    y1 /= document_height;
+    x2 /= document_width;
+    y2 /= document_height;
+
+    content = g_strdup_printf (
+        "posisi_overlay=\"%.10f,%.10f,%.10f,%.10f\"\n",
+        x1, y1, x2, y2);
+
+	if (!overwrite &&
+	    g_file_test (filename, G_FILE_TEST_EXISTS)) {
+
+	    g_free (filename);
+	    g_free (page_dir);
+	    return;
+	}
+
+    /*
+     * g_file_set_contents() otomatis overwrite.
+     */
+    if (!g_file_set_contents (filename,
+                              content,
+                              -1,
+                              NULL)) {
+
+        g_warning ("Cannot save overlay: %s", filename);
+    } else {
+        g_print ("SAVE OVERLAY: page=%d block=%d "
+                 "pos=%f,%f - %f,%f\n",
+                 page,
+                 block_no + 1,
+                 x1, y1, x2, y2);
+    }
+
+    g_free (content);
+    g_free (filename);
+    g_free (page_dir);
+}
+
+static gboolean
+ev_debug_load_block_position (EvView       *view,
+                              gint          page,
+                              gint          block_no,
+                              EvRectangle  *rect,
+                              gdouble       document_width,
+                              gdouble       document_height)
+{
+    gchar *page_dir;
+    gchar *filename;
+    gchar *content;
+    gdouble x1, y1, x2, y2;
+    gboolean result = FALSE;
+
+    page_dir = ev_debug_get_page_dir (view, page);
+
+    if (!page_dir)
+        return FALSE;
+
+    filename = g_strdup_printf ("%s/block%d.txt",
+                                page_dir,
+                                block_no + 1);
+
+    if (!g_file_get_contents (filename, &content, NULL, NULL))
+        goto out;
+
+    if (sscanf (content,
+                "posisi_overlay=\"%lf,%lf,%lf,%lf\"",
+                &x1, &y1, &x2, &y2) != 4)
+        goto out;
+
+    /*
+     * File menggunakan koordinat relatif 0.0 - 1.0.
+     * Kembalikan ke koordinat dokumen.
+     */
+    rect->x1 = x1 * document_width;
+    rect->y1 = y1 * document_height;
+    rect->x2 = x2 * document_width;
+    rect->y2 = y2 * document_height;
+
+    result = TRUE;
+
+out:
+    g_free (content);
+    g_free (filename);
+    g_free (page_dir);
+
+    return result;
+}
+
 
 static void
 ev_debug_print_text_in_rect (EvPageCache  *cache,
@@ -282,30 +467,56 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 				             view->translate_rect.y1;
 
 				} else {
+					{
+	                    EvRectangle saved_rect;
 
-				    x = real_page_area->x +
-				        rect.x1 * scale_x;
+	                    if (ev_debug_load_block_position (
+	                            view,
+	                            page,
+	                            block_no,
+	                            &saved_rect,
+	                            document_width,
+	                            document_height)) {
 
-				    y = real_page_area->y +
-				        rect.y1 * scale_y;
+	                        /*
+	                         * Ada posisi tersimpan.
+	                         * Gunakan posisi dari file.
+	                         */
+	                        rect = saved_rect;
 
-				    width = (rect.x2 - rect.x1) * scale_x;
-				    height = (rect.y2 - rect.y1) * scale_y;
+	                        g_print ("LOAD OVERLAY: page=%d block=%d "
+	                                 "rect=%f,%f - %f,%f\n",
+	                                 page,
+	                                 block_no + 1,
+	                                 rect.x1,
+	                                 rect.y1,
+	                                 rect.x2,
+	                                 rect.y2);
+	                    }
+
+	                    x = real_page_area->x + rect.x1 * scale_x;
+	                    y = real_page_area->y + rect.y1 * scale_y;
+	                    width = (rect.x2 - rect.x1) * scale_x;
+	                    height = (rect.y2 - rect.y1) * scale_y;
+	                }
 				}
-
 
 				if (view->mouse_x >= x &&
 				    view->mouse_x <= x + width &&
 				    view->mouse_y >= y &&
 				    view->mouse_y <= y + height) {
 
-				    view->translate_rect.x1 = x;
-				    view->translate_rect.y1 = y;
-				    view->translate_rect.x2 = x + width;
-				    view->translate_rect.y2 = y + height;
+				    if (!view->overlay_in_drag &&
+				        !view->overlay_in_resize) {
 
-				    view->translate_page = page;
-				    view->translate_index = block_no;
+				        view->translate_rect.x1 = x;
+				        view->translate_rect.y1 = y;
+				        view->translate_rect.x2 = x + width;
+				        view->translate_rect.y2 = y + height;
+
+				        view->translate_page = page;
+				        view->translate_index = block_no;
+				    }
 				}
                 /*
                  * Rectangle block.
@@ -408,15 +619,38 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 			             view->translate_rect.y1;
 
 			} else {
+				{
+                    EvRectangle saved_rect;
 
-			    x = real_page_area->x +
-			        rect.x1 * scale_x;
+                    if (ev_debug_load_block_position (
+                            view,
+                            page,
+                            block_no,
+                            &saved_rect,
+                            document_width,
+                            document_height)) {
 
-			    y = real_page_area->y +
-			        rect.y1 * scale_y;
+                        /*
+                         * Ada posisi tersimpan.
+                         * Gunakan posisi dari file.
+                         */
+                        rect = saved_rect;
 
-			    width = (rect.x2 - rect.x1) * scale_x;
-			    height = (rect.y2 - rect.y1) * scale_y;
+                        g_print ("LOAD OVERLAY: page=%d block=%d "
+                                 "rect=%f,%f - %f,%f\n",
+                                 page,
+                                 block_no + 1,
+                                 rect.x1,
+                                 rect.y1,
+                                 rect.x2,
+                                 rect.y2);
+                    }
+
+                    x = real_page_area->x + rect.x1 * scale_x;
+                    y = real_page_area->y + rect.y1 * scale_y;
+                    width = (rect.x2 - rect.x1) * scale_x;
+                    height = (rect.y2 - rect.y1) * scale_y;
+                }
 			}
 
 			if (view->mouse_x >= x &&
@@ -424,15 +658,18 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 			    view->mouse_y >= y &&
 			    view->mouse_y <= y + height) {
 
-			    view->translate_rect.x1 = x;
-			    view->translate_rect.y1 = y;
-			    view->translate_rect.x2 = x + width;
-			    view->translate_rect.y2 = y + height;
+			    if (!view->overlay_in_drag &&
+			        !view->overlay_in_resize) {
 
-			    view->translate_page = page;
-			    view->translate_index = block_no;
+			        view->translate_rect.x1 = x;
+			        view->translate_rect.y1 = y;
+			        view->translate_rect.x2 = x + width;
+			        view->translate_rect.y2 = y + height;
+
+			        view->translate_page = page;
+			        view->translate_index = block_no;
+			    }
 			}
-
             cairo_rectangle (cr,
                              x,
                              y,
@@ -464,8 +701,34 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 
 			    cairo_show_text (cr, label);
 			}
-        }
+			{
+                EvRectangle save_rect;
+
+                save_rect.x1 = rect.x1;
+                save_rect.y1 = rect.y1;
+                save_rect.x2 = rect.x2;
+                save_rect.y2 = rect.y2;
+            }
+  		}
     }
+
+	if (view->overlay_save_pending &&
+	    view->translate_page == page) {
+
+	    ev_debug_save_block_position (
+	        view,
+	        page,
+	        view->translate_index,
+	        &view->translate_rect,
+	        real_page_area,
+	        scale_x,
+	        scale_y,
+	        document_width,
+	        document_height,
+	        TRUE);
+
+	    view->overlay_save_pending = FALSE;
+	}
 
 	if (view->overlay_text_print_pending &&
 	    view->translate_page == page) {
