@@ -252,7 +252,11 @@ struct _EvView {
 	gboolean overlay_save_pending;
 	gboolean overlay_menu_open;
 	gboolean overlay_hidden;
+	gboolean overlay_add_pending;
 	gboolean border_hidden;
+	gint 	 custom_overlay_index;
+	gboolean custom_overlay_active;
+
 	gint     hidden_overlay_page;
 	guint    hidden_overlay_index;
 	GtkWidget *btn_window;

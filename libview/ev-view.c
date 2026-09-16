@@ -4494,6 +4494,18 @@ ev_view_button_press_event (GtkWidget      *widget,
 			    return TRUE;
 			}
 
+
+			if (ev_debug_custom_overlay_hit_test (view, event->x, event->y)) {
+			    view->overlay_in_drag = TRUE;
+
+			    view->overlay_drag_start_x = event->x;
+			    view->overlay_drag_start_y = event->y;
+
+			    view->overlay_drag_rect = view->translate_rect;
+
+			    return TRUE;
+			}
+
 			if (ev_view_point_in_translate_overlay (view, event->x, event->y)) {
 			    view->overlay_in_drag = TRUE;
 
