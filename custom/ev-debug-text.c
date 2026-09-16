@@ -15,6 +15,235 @@
 #include <stdio.h>
 #include <math.h>
 
+/* ============== utils ======================== */
+static gchar *
+ev_debug_get_translate_dir (EvView *view)
+{
+    gchar *pdf_path;
+    gchar *dir;
+
+    if (!view->document)
+        return NULL;
+
+    pdf_path = g_filename_from_uri (ev_document_get_uri (view->document),
+                                    NULL,
+                                    NULL);
+
+    if (!pdf_path)
+        return NULL;
+
+    dir = g_strdup_printf ("%s_translate", pdf_path);
+
+    g_free (pdf_path);
+
+    return dir;
+}
+
+static gchar *
+ev_debug_get_page_dir (EvView *view,
+                       gint    page)
+{
+    gchar *base_dir;
+    gchar *page_dir;
+
+    base_dir = ev_debug_get_translate_dir (view);
+
+    if (!base_dir)
+        return NULL;
+
+    page_dir = g_strdup_printf ("%s/page%d",
+                                base_dir,
+                                page + 1);
+
+    g_free (base_dir);
+
+    return page_dir;
+}
+
+static gchar *
+ev_debug_escape_text (const gchar *text)
+{
+    GString *s;
+    const gchar *p;
+
+    s = g_string_new ("");
+
+    for (p = text; p && *p; p = g_utf8_next_char (p)) {
+        gunichar c = g_utf8_get_char (p);
+
+        if (c == '\\')
+            g_string_append (s, "\\\\");
+        else if (c == '"')
+            g_string_append (s, "\\\"");
+        else if (c == '\n')
+            //g_string_append (s, "\\n");
+            g_string_append (s, " ");
+        else
+            g_string_append_unichar (s, c);
+    }
+
+    return g_string_free (s, FALSE);
+}
+/* ============== utils ======================== */
+
+
+static gboolean
+ev_debug_is_block_deleted (EvView *view,
+                           gint    page,
+                           gint    block_no)
+{
+    gchar *page_dir;
+    gchar *filename;
+    gchar *content;
+    gchar *p;
+    gchar **list;
+    gint block_id;
+    gint i;
+    gboolean result = FALSE;
+
+    page_dir = ev_debug_get_page_dir (view, page);
+
+    if (!page_dir)
+        return FALSE;
+
+    filename = g_strdup_printf ("%s/meta.txt", page_dir);
+
+    /*
+     * Tidak ada meta.txt.
+     */
+    if (!g_file_get_contents (filename, &content, NULL, NULL))
+        goto out;
+
+    /*
+     * Cari deleted="..."
+     */
+    p = strstr (content, "deleted=\"");
+
+    if (!p)
+        goto out;
+
+    p += strlen ("deleted=\"");
+
+    /*
+     * Ambil isi sampai tanda ".
+     */
+    {
+        gchar *end;
+        gchar *deleted;
+
+        end = strchr (p, '"');
+
+        if (!end)
+            goto out;
+
+        deleted = g_strndup (p, end - p);
+
+        /*
+         * Pecah:
+         *
+         * "3,5,8"
+         *
+         * menjadi:
+         *
+         * 3
+         * 5
+         * 8
+         */
+        list = g_strsplit (deleted, ",", -1);
+
+        block_id = block_no + 1;
+
+        for (i = 0; list[i] != NULL; i++) {
+            gint value;
+
+            value = atoi (list[i]);
+
+            if (value == block_id) {
+                result = TRUE;
+                break;
+            }
+        }
+
+        g_strfreev (list);
+        g_free (deleted);
+    }
+
+out:
+    g_free (content);
+    g_free (filename);
+    g_free (page_dir);
+
+    return result;
+}
+
+static void
+ev_debug_add_deleted_block (EvView *view,
+                            gint    page,
+                            gint    block_no)
+{
+    gchar *page_dir;
+    gchar *filename;
+    gchar *content;
+    gchar *new_content;
+    gchar *quote;
+    gint block_id;
+
+    page_dir = ev_debug_get_page_dir (view, page);
+
+    if (!page_dir)
+        return;
+
+    if (g_mkdir_with_parents (page_dir, 0755) != 0) {
+        g_warning ("Cannot create directory: %s", page_dir);
+        g_free (page_dir);
+        return;
+    }
+
+    filename = g_strdup_printf ("%s/meta.txt", page_dir);
+
+    block_id = block_no + 1;
+
+    if (!g_file_get_contents (filename, &content, NULL, NULL)) {
+
+        content = g_strdup_printf (
+            "deleted=\"%d\"\n",
+            block_id);
+
+    } else {
+
+        quote = strrchr (content, '"');
+
+        if (quote) {
+            *quote = '\0';
+
+            new_content = g_strdup_printf (
+                "%s,%d\"\n",
+                content,
+                block_id);
+
+            g_free (content);
+            content = new_content;
+        }
+    }
+
+    if (!g_file_set_contents (filename,
+                              content,
+                              -1,
+                              NULL)) {
+
+        g_warning ("Cannot save meta: %s", filename);
+
+    } else {
+
+        g_print ("ADD DELETED: page=%d block=%d\n",
+                 page,
+                 block_id);
+    }
+
+    g_free (content);
+    g_free (filename);
+    g_free (page_dir);
+}
 
 void
 ev_debug_overlay_show_cb (GtkButton *button,
@@ -88,6 +317,20 @@ show_button (EvView *view,
     gtk_widget_show (view->btn_window);
 }
 
+
+
+static void
+ev_debug_overlay_delete_block_cb (GtkMenuItem *item,
+                          gpointer     data)
+{
+    EvView *view = EV_VIEW (data);
+
+	ev_debug_add_deleted_block (view, view->translate_page, view->translate_index);
+
+	gtk_widget_queue_draw (GTK_WIDGET (view));
+}
+
+
 static void
 ev_debug_overlay_hide_cb (GtkMenuItem *item,
                           gpointer     data)
@@ -106,6 +349,21 @@ ev_debug_overlay_hide_cb (GtkMenuItem *item,
 	gint x = (gint)view->translate_rect.x2;
 	gint y = (gint)view->translate_rect.y1;
 	show_button(view, x, y);
+
+	gtk_widget_queue_draw (GTK_WIDGET (view));
+}
+
+static void
+ev_debug_overlay_border_cb (GtkMenuItem *item,
+                          gpointer     data)
+{
+    EvView *view = EV_VIEW (data);
+
+	if (view->border_hidden) {
+		view->border_hidden = FALSE;
+	} else {
+		view->border_hidden = TRUE;
+	}
 
 	gtk_widget_queue_draw (GTK_WIDGET (view));
 }
@@ -136,10 +394,31 @@ ev_debug_show_overlay_menu (EvView *view)
                       view);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 
-    item = gtk_menu_item_new_with_label ("Hapus");
+    /*item = gtk_menu_item_new_with_label ("Hide All");
     g_signal_connect (item,
                       "activate",
-                      G_CALLBACK (ev_debug_overlay_delete_cb),
+                      G_CALLBACK (ev_debug_overlay_hide_cb),
+                      view);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);*/
+
+    item = gtk_menu_item_new_with_label ("Show border");
+    g_signal_connect (item,
+                      "activate",
+                      G_CALLBACK (ev_debug_overlay_border_cb),
+                      view);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+
+    item = gtk_menu_item_new_with_label ("Add overlay");
+    g_signal_connect (item,
+                      "activate",
+                      G_CALLBACK (ev_debug_overlay_hide_cb),
+                      view);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+
+    item = gtk_menu_item_new_with_label ("Delete overlay");
+    g_signal_connect (item,
+                      "activate",
+                      G_CALLBACK (ev_debug_overlay_delete_block_cb),
                       view);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 
@@ -279,75 +558,6 @@ ev_debug_get_text_in_rect (EvPageCache      *cache,
     }
 
     return g_string_free (result, FALSE);
-}
-
-static gchar *
-ev_debug_get_translate_dir (EvView *view)
-{
-    gchar *pdf_path;
-    gchar *dir;
-
-    if (!view->document)
-        return NULL;
-
-    pdf_path = g_filename_from_uri (ev_document_get_uri (view->document),
-                                    NULL,
-                                    NULL);
-
-    if (!pdf_path)
-        return NULL;
-
-    dir = g_strdup_printf ("%s_translate", pdf_path);
-
-    g_free (pdf_path);
-
-    return dir;
-}
-
-static gchar *
-ev_debug_get_page_dir (EvView *view,
-                       gint    page)
-{
-    gchar *base_dir;
-    gchar *page_dir;
-
-    base_dir = ev_debug_get_translate_dir (view);
-
-    if (!base_dir)
-        return NULL;
-
-    page_dir = g_strdup_printf ("%s/page%d",
-                                base_dir,
-                                page + 1);
-
-    g_free (base_dir);
-
-    return page_dir;
-}
-
-static gchar *
-ev_debug_escape_text (const gchar *text)
-{
-    GString *s;
-    const gchar *p;
-
-    s = g_string_new ("");
-
-    for (p = text; p && *p; p = g_utf8_next_char (p)) {
-        gunichar c = g_utf8_get_char (p);
-
-        if (c == '\\')
-            g_string_append (s, "\\\\");
-        else if (c == '"')
-            g_string_append (s, "\\\"");
-        else if (c == '\n')
-            //g_string_append (s, "\\n");
-            g_string_append (s, " ");
-        else
-            g_string_append_unichar (s, c);
-    }
-
-    return g_string_free (s, FALSE);
 }
 
 static void
@@ -936,7 +1146,7 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
                 }
             }
 
-            if (have_rect) {
+            if (have_rect && !ev_debug_is_block_deleted(view, page, block_no)) {
                 gdouble x;
                 gdouble y;
                 gdouble width;
@@ -1020,8 +1230,19 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 	                                 y,
 	                                 width,
 	                                 height);
-
 	                cairo_fill (cr);
+
+					if (view->border_hidden) {
+					    /* Garis border hijau */
+					    cairo_set_source_rgb(cr, 0.0, 1.0, 0.0);
+					    cairo_set_line_width(cr, 2.0);
+					    cairo_rectangle(cr,
+					                    x,
+					                    y,
+					                    width,
+					                    height);
+					    cairo_stroke(cr);
+					}
 
 					// resize view
 					if (view->translate_page == page &&
@@ -1132,7 +1353,7 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
             }
         }
 
-        if (have_rect) {
+        if (have_rect && !ev_debug_is_block_deleted(view, page, block_no) ) {
             gdouble x;
             gdouble y;
             gdouble width;
@@ -1207,6 +1428,18 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 	                             width,
 	                             height);
 	            cairo_stroke (cr);
+
+				if (view->border_hidden) {
+				    /* Garis border hijau */
+				    cairo_set_source_rgb(cr, 0.0, 1.0, 0.0);
+				    cairo_set_line_width(cr, 2.0);
+				    cairo_rectangle(cr,
+				                    x,
+				                    y,
+				                    width,
+				                    height);
+				    cairo_stroke(cr);
+				}
 			}
 
 			//resize view

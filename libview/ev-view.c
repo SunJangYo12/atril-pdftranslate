@@ -6609,6 +6609,7 @@ ev_view_init (EvView *view)
 
 	view->overlay_save_pending = FALSE;
 	view->overlay_hidden = FALSE;
+	view->border_hidden = FALSE;
 
 	gtk_widget_set_can_focus (GTK_WIDGET (view), TRUE);
 	gtk_widget_set_has_window (GTK_WIDGET (view), TRUE);
