@@ -87,6 +87,71 @@ ev_debug_escape_text (const gchar *text)
 /* ============== utils ======================== */
 
 
+gboolean
+ev_debug_custom_overlay_hit_test (EvView *view,
+                                  gdouble  x,
+                                  gdouble  y)
+{
+    if (!view->custom_overlay_active)
+        return FALSE;
+
+    return x >= view->translate_rect.x1 &&
+           x <= view->translate_rect.x2 &&
+           y >= view->translate_rect.y1 &&
+           y <= view->translate_rect.y2;
+}
+
+
+static guint
+ev_debug_get_new_overlay_index (EvView *view,
+                                gint page,
+                                guint block_count)
+{
+    guint index;
+
+    index = block_count;
+
+    while (ev_debug_added_overlay_exists (view, page, index))
+        index++;
+
+    return index;
+}
+static void
+ev_debug_add_overlay (EvView *view,
+                      gint    page,
+                      gdouble document_width,
+                      gdouble document_height)
+{
+    gdouble width;
+    gdouble height;
+
+    width = document_width * 0.30;
+    height = document_height * 0.10;
+
+    view->translate_page = page;
+
+    view->custom_overlay_index++;
+
+    view->translate_index = view->custom_overlay_index;
+	//view->translate_index = ev_debug_get_new_overlay_index (view, page, block_count);
+
+    view->translate_rect.x1 =
+        (document_width - width) / 2.0;
+
+    view->translate_rect.y1 =
+        (document_height - height) / 2.0;
+
+    view->translate_rect.x2 =
+        view->translate_rect.x1 + width;
+
+    view->translate_rect.y2 =
+        view->translate_rect.y1 + height;
+
+    view->overlay_add_pending = TRUE;
+
+    gtk_widget_queue_draw (GTK_WIDGET (view));
+}
+
 static gboolean
 ev_debug_is_block_deleted (EvView *view,
                            gint    page,
@@ -318,6 +383,16 @@ show_button (EvView *view,
 }
 
 
+static void
+ev_debug_overlay_add_block_cb (GtkMenuItem *item,
+                          gpointer     data)
+{
+    EvView *view = EV_VIEW (data);
+
+	ev_debug_add_overlay(view, view->translate_page, 100, 100);
+
+	gtk_widget_queue_draw (GTK_WIDGET (view));
+}
 
 static void
 ev_debug_overlay_delete_block_cb (GtkMenuItem *item,
@@ -411,7 +486,7 @@ ev_debug_show_overlay_menu (EvView *view)
     item = gtk_menu_item_new_with_label ("Add overlay");
     g_signal_connect (item,
                       "activate",
-                      G_CALLBACK (ev_debug_overlay_hide_cb),
+                      G_CALLBACK (ev_debug_overlay_add_block_cb),
                       view);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 
@@ -975,6 +1050,215 @@ ev_debug_draw_wrapped_text (cairo_t       *cr,
     g_strfreev (words);
 }
 
+static void
+ev_debug_draw_one_block (EvPageCache  *cache,
+                         EvView       *view,
+                         cairo_t      *cr,
+                         gint          page,
+                         EvRectangle  *areas,
+                         gint          n_areas,
+                         gint          start,
+                         gint          end,
+                         gint          block_no,
+                         GdkRectangle *real_page_area,
+                         gdouble       scale_x,
+                         gdouble       scale_y,
+                         gdouble       document_width,
+                         gdouble       document_height)
+{
+    EvRectangle rect;
+    gboolean have_rect = FALSE;
+    gint j;
+
+    /*
+     * Gabungkan semua text area menjadi satu rectangle.
+     */
+    for (j = start; j < end && j < n_areas; j++) {
+
+        EvRectangle *a = &areas[j];
+
+        if (a->x1 == a->x2 &&
+            a->y1 == a->y2)
+            continue;
+
+        if (!have_rect) {
+            rect = *a;
+            have_rect = TRUE;
+        } else {
+            if (a->x1 < rect.x1)
+                rect.x1 = a->x1;
+
+            if (a->y1 < rect.y1)
+                rect.y1 = a->y1;
+
+            if (a->x2 > rect.x2)
+                rect.x2 = a->x2;
+
+            if (a->y2 > rect.y2)
+                rect.y2 = a->y2;
+        }
+    }
+
+    if (!have_rect)
+        return;
+
+    if (ev_debug_is_block_deleted(view, page, block_no))
+        return;
+
+	gdouble x;
+    gdouble y;
+    gdouble width;
+    gdouble height;
+	gboolean hidden;
+
+	if (view->translate_page == page &&
+	    view->translate_index == block_no &&
+		(view->overlay_in_drag || view->overlay_in_resize)) {
+
+	    x = view->translate_rect.x1;
+	    y = view->translate_rect.y1;
+
+	    width = view->translate_rect.x2 -
+	            view->translate_rect.x1;
+
+	    height = view->translate_rect.y2 -
+	             view->translate_rect.y1;
+	} else {
+        EvRectangle saved_rect;
+
+        if (ev_debug_load_block_position (
+                view,
+                page,
+                block_no,
+                &saved_rect,
+                document_width,
+                document_height)) {
+
+            /*
+             * Ada posisi tersimpan.
+             * Gunakan posisi dari file.
+             */
+            rect = saved_rect;
+        }
+
+        x = real_page_area->x + rect.x1 * scale_x;
+        y = real_page_area->y + rect.y1 * scale_y;
+        width = (rect.x2 - rect.x1) * scale_x;
+        height = (rect.y2 - rect.y1) * scale_y;
+
+        hidden =
+            view->overlay_hidden &&
+            view->hidden_overlay_page == page &&
+            view->hidden_overlay_index == block_no;
+	}
+
+	if (!hidden && view->mouse_x >= x &&
+	    view->mouse_x <= x + width &&
+	    view->mouse_y >= y &&
+	    view->mouse_y <= y + height) {
+
+	    if (!view->overlay_in_drag &&
+	        !view->overlay_in_resize) {
+
+	        view->translate_rect.x1 = x;
+	        view->translate_rect.y1 = y;
+	        view->translate_rect.x2 = x + width;
+	        view->translate_rect.y2 = y + height;
+
+	        view->translate_page = page;
+	        view->translate_index = block_no;
+	    }
+	}
+    /*
+     * Rectangle block.
+     */
+	if (!hidden) {
+		cairo_set_source_rgb(cr, 1.0, 1.0, 1.0);
+        cairo_rectangle (cr,
+                         x,
+                         y,
+                         width,
+                         height);
+        cairo_fill (cr);
+
+		if (view->border_hidden) {
+		    /* Garis border hijau */
+		    cairo_set_source_rgb(cr, 0.0, 1.0, 0.0);
+		    cairo_set_line_width(cr, 2.0);
+		    cairo_rectangle(cr,
+		                    x,
+		                    y,
+		                    width,
+		                    height);
+		    cairo_stroke(cr);
+		}
+
+		// resize view
+		if (view->translate_page == page &&
+		    view->translate_index == block_no) {
+
+			cairo_set_source_rgb(cr, 0.4, 0.2, 1.0);
+		    cairo_rectangle (cr,
+		                     x + width - 6.0,
+		                     y + height - 6.0,
+		                     12.0,
+		                     12.0);
+
+		    cairo_fill (cr);
+		}
+
+	    gchar *text_original;
+	    text_original =
+	        ev_debug_load_block_original_text (
+	            view,
+	            page,
+	            block_no);
+
+	    if (text_original && *text_original) {
+
+	        cairo_set_source_rgb (cr, 0.0, 0.0, 0.0);
+			ev_debug_draw_wrapped_text(
+				cr, text_original, x, y, width, height);
+	    }
+
+	    g_free (text_original);
+	}
+
+	EvRectangle initial_screen_rect;
+
+	initial_screen_rect.x1 =
+	    real_page_area->x + rect.x1 * scale_x;
+	initial_screen_rect.y1 =
+	    real_page_area->y + rect.y1 * scale_y;
+	initial_screen_rect.x2 =
+	    real_page_area->x + rect.x2 * scale_x;
+	initial_screen_rect.y2 =
+	    real_page_area->y + rect.y2 * scale_y;
+
+	gchar *text_original;
+
+	text_original = ev_debug_get_text_in_rect (
+	    cache,
+	    page,
+	    &initial_screen_rect,
+	    real_page_area,
+	    scale_x,
+	    scale_y);
+	ev_debug_save_block_position (
+	    view,
+	    page,
+	    block_no,
+	    &initial_screen_rect,
+	    real_page_area,
+	    scale_x,
+	    scale_y,
+	    document_width,
+	    document_height,
+	    text_original,
+	    FALSE);
+	g_free (text_original);
+}
+
 void
 ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
                    cairo_t         *cr,
@@ -1047,6 +1331,40 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
     scale_y = (gdouble)real_page_area->height /
 				document_height;
 
+/*
+	if (view->overlay_add_pending &&
+	    view->translate_page == page) {
+
+	    gdouble x;
+	    gdouble y;
+	    gdouble width;
+	    gdouble height;
+
+	    x = real_page_area->x +
+	        view->translate_rect.x1 * scale_x;
+
+	    y = real_page_area->y +
+	        view->translate_rect.y1 * scale_y;
+
+	    width =
+	        (view->translate_rect.x2 -
+	         view->translate_rect.x1) * scale_x;
+
+	    height =
+	        (view->translate_rect.y2 -
+	         view->translate_rect.y1) * scale_y;
+
+	    cairo_set_source_rgb (cr, 1.0, 1.0, 1.0);
+	    cairo_rectangle (cr, x, y, width, height);
+	    cairo_fill (cr);
+
+	    cairo_set_source_rgb (cr, 0.0, 0.8, 0.0);
+	    cairo_set_line_width (cr, 2.0);
+	    cairo_rectangle (cr, x, y, width, height);
+	    cairo_stroke (cr);
+	}
+*/
+
 	if (view->overlay_save_pending &&
 	    view->translate_page == page) {
 
@@ -1090,7 +1408,7 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
     /*
      * Cari HARD RETURN dan gambar setiap block.
      */
-    for (i = 0; i < n_chars; i++) {
+    for (i=0; i<n_chars; i++) {
         gunichar c;
 
         p = g_utf8_offset_to_pointer (text, i);
@@ -1113,409 +1431,47 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
          * HARD RETURN:
          * gambar block [start, i).
          */
-        {
-            EvRectangle rect;
-            gboolean have_rect = FALSE;
-            gint j;
+		ev_debug_draw_one_block (
+		    cache,
+		    view,
+		    cr,
+		    page,
+		    areas,
+		    n_areas,
+		    start,
+		    i,
+		    block_no,
+		    real_page_area,
+		    scale_x,
+		    scale_y,
+		    document_width,
+		    document_height);
 
-            for (j = start;
-                 j < i && j < (gint)n_areas;
-                 j++) {
-
-                EvRectangle *a = &areas[j];
-
-                if (a->x1 == a->x2 &&
-                    a->y1 == a->y2)
-                    continue;
-
-                if (!have_rect) {
-                    rect = *a;
-                    have_rect = TRUE;
-                } else {
-                    if (a->x1 < rect.x1)
-                        rect.x1 = a->x1;
-
-                    if (a->y1 < rect.y1)
-                        rect.y1 = a->y1;
-
-                    if (a->x2 > rect.x2)
-                        rect.x2 = a->x2;
-
-                    if (a->y2 > rect.y2)
-                        rect.y2 = a->y2;
-                }
-            }
-
-            if (have_rect && !ev_debug_is_block_deleted(view, page, block_no)) {
-                gdouble x;
-                gdouble y;
-                gdouble width;
-                gdouble height;
-				gboolean hidden;
-
-				if (view->translate_page == page &&
-				    view->translate_index == block_no &&
-					(view->overlay_in_drag || view->overlay_in_resize)) {
-
-				    x = view->translate_rect.x1;
-				    y = view->translate_rect.y1;
-
-				    width = view->translate_rect.x2 -
-				            view->translate_rect.x1;
-
-				    height = view->translate_rect.y2 -
-				             view->translate_rect.y1;
-				} else {
-                    EvRectangle saved_rect;
-
-                    if (ev_debug_load_block_position (
-                            view,
-                            page,
-                            block_no,
-                            &saved_rect,
-                            document_width,
-                            document_height)) {
-
-                        /*
-                         * Ada posisi tersimpan.
-                         * Gunakan posisi dari file.
-                         */
-                        rect = saved_rect;
-
-                        /*g_print ("LOAD OVERLAY: page=%d block=%d "
-                                 "rect=%f,%f - %f,%f\n",
-                                 page,
-                                 block_no + 1,
-                                 rect.x1,
-                                 rect.y1,
-                                 rect.x2,
-                                 rect.y2);*/
-                    }
-
-                    x = real_page_area->x + rect.x1 * scale_x;
-                    y = real_page_area->y + rect.y1 * scale_y;
-                    width = (rect.x2 - rect.x1) * scale_x;
-                    height = (rect.y2 - rect.y1) * scale_y;
-
-	                hidden =
-	                    view->overlay_hidden &&
-	                    view->hidden_overlay_page == page &&
-	                    view->hidden_overlay_index == block_no;
-				}
-
-				if (!hidden && view->mouse_x >= x &&
-				    view->mouse_x <= x + width &&
-				    view->mouse_y >= y &&
-				    view->mouse_y <= y + height) {
-
-				    if (!view->overlay_in_drag &&
-				        !view->overlay_in_resize) {
-
-				        view->translate_rect.x1 = x;
-				        view->translate_rect.y1 = y;
-				        view->translate_rect.x2 = x + width;
-				        view->translate_rect.y2 = y + height;
-
-				        view->translate_page = page;
-				        view->translate_index = block_no;
-				    }
-				}
-                /*
-                 * Rectangle block.
-                 */
-				if (!hidden) {
-					cairo_set_source_rgb(cr, 1.0, 1.0, 1.0);
-	                cairo_rectangle (cr,
-	                                 x,
-	                                 y,
-	                                 width,
-	                                 height);
-	                cairo_fill (cr);
-
-					if (view->border_hidden) {
-					    /* Garis border hijau */
-					    cairo_set_source_rgb(cr, 0.0, 1.0, 0.0);
-					    cairo_set_line_width(cr, 2.0);
-					    cairo_rectangle(cr,
-					                    x,
-					                    y,
-					                    width,
-					                    height);
-					    cairo_stroke(cr);
-					}
-
-					// resize view
-					if (view->translate_page == page &&
-					    view->translate_index == block_no) {
-
-						cairo_set_source_rgb(cr, 0.4, 0.2, 1.0);
-					    cairo_rectangle (cr,
-					                     x + width - 6.0,
-					                     y + height - 6.0,
-					                     12.0,
-					                     12.0);
-
-					    cairo_fill (cr);
-					}
-					{
-					    gchar *text_original;
-
-					    text_original =
-					        ev_debug_load_block_original_text (
-					            view,
-					            page,
-					            block_no);
-
-					    if (text_original && *text_original) {
-
-					        cairo_set_source_rgb (cr, 0.0, 0.0, 0.0);
-							ev_debug_draw_wrapped_text(
-								cr, text_original, x, y, width, height);
-					    }
-
-					    g_free (text_original);
-					}
-				}
-
-				EvRectangle initial_screen_rect;
-
-				initial_screen_rect.x1 =
-				    real_page_area->x + rect.x1 * scale_x;
-				initial_screen_rect.y1 =
-				    real_page_area->y + rect.y1 * scale_y;
-				initial_screen_rect.x2 =
-				    real_page_area->x + rect.x2 * scale_x;
-				initial_screen_rect.y2 =
-				    real_page_area->y + rect.y2 * scale_y;
-
-				gchar *text_original;
-
-				text_original = ev_debug_get_text_in_rect (
-				    cache,
-				    page,
-				    &initial_screen_rect,
-				    real_page_area,
-				    scale_x,
-				    scale_y);
-				ev_debug_save_block_position (
-				    view,
-				    page,
-				    block_no,
-				    &initial_screen_rect,
-				    real_page_area,
-				    scale_x,
-				    scale_y,
-				    document_width,
-				    document_height,
-				    text_original,
-				    FALSE);
-				g_free (text_original);
-            }
-
-            block_no++;
-            start = i + 1;
-        }
+        block_no++;
+        start = i + 1;
     }
 
     /*
      * Block terakhir setelah HARD RETURN terakhir.
      */
     if (start < n_chars) {
-        EvRectangle rect;
-        gboolean have_rect = FALSE;
-        gint j;
+	   ev_debug_draw_one_block (
+	        cache,
+	        view,
+	        cr,
+	        page,
+	        areas,
+	        n_areas,
+	        start,
+	        n_chars,
+	        block_no,
+	        real_page_area,
+	        scale_x,
+	        scale_y,
+	        document_width,
+	        document_height);
 
-        for (j = start;
-             j < n_chars && j < (gint)n_areas;
-             j++) {
-
-            EvRectangle *a = &areas[j];
-
-            if (a->x1 == a->x2 &&
-                a->y1 == a->y2)
-                continue;
-
-            if (!have_rect) {
-                rect = *a;
-                have_rect = TRUE;
-            } else {
-                if (a->x1 < rect.x1)
-                    rect.x1 = a->x1;
-
-                if (a->y1 < rect.y1)
-                    rect.y1 = a->y1;
-
-                if (a->x2 > rect.x2)
-                    rect.x2 = a->x2;
-
-                if (a->y2 > rect.y2)
-                    rect.y2 = a->y2;
-            }
-        }
-
-        if (have_rect && !ev_debug_is_block_deleted(view, page, block_no) ) {
-            gdouble x;
-            gdouble y;
-            gdouble width;
-            gdouble height;
-			gboolean hidden;
-
-			if (view->translate_page == page &&
-			    view->translate_index == block_no &&
-		        (view->overlay_in_drag || view->overlay_in_resize)) {
-
-			    x = view->translate_rect.x1;
-			    y = view->translate_rect.y1;
-
-			    width = view->translate_rect.x2 -
-			            view->translate_rect.x1;
-
-			    height = view->translate_rect.y2 -
-			             view->translate_rect.y1;
-
-			} else {
-                EvRectangle saved_rect;
-
-                if (ev_debug_load_block_position (
-                        view,
-                        page,
-                        block_no,
-                        &saved_rect,
-                        document_width,
-                        document_height)) {
-
-                    /*
-                     * Ada posisi tersimpan.
-                     * Gunakan posisi dari file.
-                     */
-                    rect = saved_rect;
-                }
-
-                x = real_page_area->x + rect.x1 * scale_x;
-                y = real_page_area->y + rect.y1 * scale_y;
-                width = (rect.x2 - rect.x1) * scale_x;
-                height = (rect.y2 - rect.y1) * scale_y;
-
-				hidden =
-				    view->overlay_hidden &&
-				    view->hidden_overlay_page == page &&
-				    view->hidden_overlay_index == block_no;
-			}
-
-			if (!hidden && view->mouse_x >= x &&
-			    view->mouse_x <= x + width &&
-			    view->mouse_y >= y &&
-			    view->mouse_y <= y + height) {
-
-			    if (!view->overlay_in_drag &&
-			        !view->overlay_in_resize) {
-
-			        view->translate_rect.x1 = x;
-			        view->translate_rect.y1 = y;
-			        view->translate_rect.x2 = x + width;
-			        view->translate_rect.y2 = y + height;
-
-			        view->translate_page = page;
-			        view->translate_index = block_no;
-			    }
-			}
-
-			if (!hidden) {
-				cairo_set_source_rgb(cr, 1.0, 1.0, 1.0);
-	            cairo_rectangle (cr,
-	                             x,
-	                             y,
-	                             width,
-	                             height);
-	            cairo_stroke (cr);
-
-				if (view->border_hidden) {
-				    /* Garis border hijau */
-				    cairo_set_source_rgb(cr, 0.0, 1.0, 0.0);
-				    cairo_set_line_width(cr, 2.0);
-				    cairo_rectangle(cr,
-				                    x,
-				                    y,
-				                    width,
-				                    height);
-				    cairo_stroke(cr);
-				}
-			}
-
-			//resize view
-			if (!hidden && view->translate_page == page &&
-			    view->translate_index == block_no) {
-
-				cairo_set_source_rgb(cr, 0.4, 0.2, 1.0);
-			    cairo_rectangle (cr,
-			                     x + width - 6.0,
-			                     y + height - 6.0,
-			                     12.0,
-			                     12.0);
-
-			    cairo_fill (cr);
-			}
-			if (!hidden) {
-			    gchar *text_original;
-
-			    text_original =
-			        ev_debug_load_block_original_text (
-			            view,
-			            page,
-			            block_no);
-
-			    if (text_original && *text_original) {
-
-			        cairo_set_source_rgb (cr, 0.0, 0.0, 0.0);
-					ev_debug_draw_wrapped_text(
-                                cr, text_original, x, y, width, height);
-			    }
-
-			    g_free (text_original);
-			}
-			{
-                EvRectangle save_rect;
-
-                save_rect.x1 = rect.x1;
-                save_rect.y1 = rect.y1;
-                save_rect.x2 = rect.x2;
-                save_rect.y2 = rect.y2;
-            }
-
-			EvRectangle initial_screen_rect;
-
-			initial_screen_rect.x1 =
-			    real_page_area->x + rect.x1 * scale_x;
-			initial_screen_rect.y1 =
-			    real_page_area->y + rect.y1 * scale_y;
-			initial_screen_rect.x2 =
-			    real_page_area->x + rect.x2 * scale_x;
-			initial_screen_rect.y2 =
-			    real_page_area->y + rect.y2 * scale_y;
-
-			gchar *text_original;
-
-			text_original = ev_debug_get_text_in_rect (
-			    cache,
-			    page,
-			    &initial_screen_rect,
-			    real_page_area,
-			    scale_x,
-			    scale_y);
-			ev_debug_save_block_position (
-			    view,
-			    page,
-			    block_no,
-			    &initial_screen_rect,
-			    real_page_area,
-			    scale_x,
-			    scale_y,
-			    document_width,
-			    document_height,
-			    text_original,
-			    FALSE);
-			g_free (text_original);
-  		}
+	    block_no++;
     }
 
 	if (view->overlay_text_print_pending &&
