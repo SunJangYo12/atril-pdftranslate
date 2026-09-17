@@ -86,70 +86,31 @@ ev_debug_escape_text (const gchar *text)
 }
 /* ============== utils ======================== */
 
-
-gboolean
-ev_debug_custom_overlay_hit_test (EvView *view,
-                                  gdouble  x,
-                                  gdouble  y)
-{
-    if (!view->custom_overlay_active)
-        return FALSE;
-
-    return x >= view->translate_rect.x1 &&
-           x <= view->translate_rect.x2 &&
-           y >= view->translate_rect.y1 &&
-           y <= view->translate_rect.y2;
-}
-
-
-static guint
-ev_debug_get_new_overlay_index (EvView *view,
-                                gint page,
-                                guint block_count)
-{
-    guint index;
-
-    index = block_count;
-
-    while (ev_debug_added_overlay_exists (view, page, index))
-        index++;
-
-    return index;
-}
 static void
-ev_debug_add_overlay (EvView *view,
-                      gint    page,
-                      gdouble document_width,
-                      gdouble document_height)
+ev_debug_update_total_block_from_meta (EvView *view,
+                                       gint page)
 {
-    gdouble width;
-    gdouble height;
+    gchar *page_dir;
+    gchar *meta_path;
+    gchar *contents = NULL;
+    gchar *p;
+    gint add_value;
 
-    width = document_width * 0.30;
-    height = document_height * 0.10;
+    page_dir = ev_debug_get_page_dir (view, page);
+    meta_path = g_build_filename (page_dir, "meta.txt", NULL);
 
-    view->translate_page = page;
+    if (g_file_get_contents (meta_path, &contents, NULL, NULL)) {
+        p = g_strstr_len (contents, -1, "add=");
 
-    view->custom_overlay_index++;
+        if (p && sscanf (p, "add=\"%d\"", &add_value) == 1)
+            view->total_block = add_value;
+    }
 
-    view->translate_index = view->custom_overlay_index;
-	//view->translate_index = ev_debug_get_new_overlay_index (view, page, block_count);
+    view->total_block++;
 
-    view->translate_rect.x1 =
-        (document_width - width) / 2.0;
-
-    view->translate_rect.y1 =
-        (document_height - height) / 2.0;
-
-    view->translate_rect.x2 =
-        view->translate_rect.x1 + width;
-
-    view->translate_rect.y2 =
-        view->translate_rect.y1 + height;
-
-    view->overlay_add_pending = TRUE;
-
-    gtk_widget_queue_draw (GTK_WIDGET (view));
+    g_free (contents);
+    g_free (meta_path);
+    g_free (page_dir);
 }
 
 static gboolean
@@ -389,7 +350,9 @@ ev_debug_overlay_add_block_cb (GtkMenuItem *item,
 {
     EvView *view = EV_VIEW (data);
 
-	ev_debug_add_overlay(view, view->translate_page, 100, 100);
+	//ev_debug_update_total_block_from_meta (view, view->translate_page);
+
+	view->saved_total_block += 1;
 
 	gtk_widget_queue_draw (GTK_WIDGET (view));
 }
@@ -1060,44 +1023,50 @@ ev_debug_draw_one_block (EvPageCache  *cache,
                          gint          start,
                          gint          end,
                          gint          block_no,
+						 EvRectangle  *override_rect,
                          GdkRectangle *real_page_area,
                          gdouble       scale_x,
                          gdouble       scale_y,
                          gdouble       document_width,
                          gdouble       document_height)
 {
-    EvRectangle rect;
-    gboolean have_rect = FALSE;
-    gint j;
+	EvRectangle rect;
+	gboolean have_rect = FALSE;
+	gint j;
 
-    /*
-     * Gabungkan semua text area menjadi satu rectangle.
-     */
-    for (j = start; j < end && j < n_areas; j++) {
+	if (override_rect) {
 
-        EvRectangle *a = &areas[j];
+	    rect = *override_rect;
+	    have_rect = TRUE;
 
-        if (a->x1 == a->x2 &&
-            a->y1 == a->y2)
-            continue;
+	} else {
 
-        if (!have_rect) {
-            rect = *a;
-            have_rect = TRUE;
-        } else {
-            if (a->x1 < rect.x1)
-                rect.x1 = a->x1;
+	    for (j = start; j < end && j < n_areas; j++) {
 
-            if (a->y1 < rect.y1)
-                rect.y1 = a->y1;
+	        EvRectangle *a = &areas[j];
 
-            if (a->x2 > rect.x2)
-                rect.x2 = a->x2;
+	        if (a->x1 == a->x2 &&
+	            a->y1 == a->y2)
+	            continue;
 
-            if (a->y2 > rect.y2)
-                rect.y2 = a->y2;
-        }
-    }
+	        if (!have_rect) {
+	            rect = *a;
+	            have_rect = TRUE;
+	        } else {
+	            if (a->x1 < rect.x1)
+	                rect.x1 = a->x1;
+
+	            if (a->y1 < rect.y1)
+	                rect.y1 = a->y1;
+
+	            if (a->x2 > rect.x2)
+	                rect.x2 = a->x2;
+
+	            if (a->y2 > rect.y2)
+	                rect.y2 = a->y2;
+	        }
+	    }
+	}
 
     if (!have_rect)
         return;
@@ -1331,40 +1300,6 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
     scale_y = (gdouble)real_page_area->height /
 				document_height;
 
-/*
-	if (view->overlay_add_pending &&
-	    view->translate_page == page) {
-
-	    gdouble x;
-	    gdouble y;
-	    gdouble width;
-	    gdouble height;
-
-	    x = real_page_area->x +
-	        view->translate_rect.x1 * scale_x;
-
-	    y = real_page_area->y +
-	        view->translate_rect.y1 * scale_y;
-
-	    width =
-	        (view->translate_rect.x2 -
-	         view->translate_rect.x1) * scale_x;
-
-	    height =
-	        (view->translate_rect.y2 -
-	         view->translate_rect.y1) * scale_y;
-
-	    cairo_set_source_rgb (cr, 1.0, 1.0, 1.0);
-	    cairo_rectangle (cr, x, y, width, height);
-	    cairo_fill (cr);
-
-	    cairo_set_source_rgb (cr, 0.0, 0.8, 0.0);
-	    cairo_set_line_width (cr, 2.0);
-	    cairo_rectangle (cr, x, y, width, height);
-	    cairo_stroke (cr);
-	}
-*/
-
 	if (view->overlay_save_pending &&
 	    view->translate_page == page) {
 
@@ -1441,6 +1376,7 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 		    start,
 		    i,
 		    block_no,
+			NULL,
 		    real_page_area,
 		    scale_x,
 		    scale_y,
@@ -1465,6 +1401,7 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 	        start,
 	        n_chars,
 	        block_no,
+			NULL,
 	        real_page_area,
 	        scale_x,
 	        scale_y,
@@ -1472,7 +1409,40 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 	        document_height);
 
 	    block_no++;
+		view->total_block = block_no;
     }
+
+	/*
+	 * CUSTOM OVERLAY
+	 */
+	for (gint x=0; x<view->saved_total_block; x++) {
+		EvRectangle custom_rect;
+
+		custom_rect.x1 = document_width * 0.25;
+		custom_rect.y1 = document_height * 0.25;
+		custom_rect.x2 = document_width * 0.55;
+		custom_rect.y2 = document_height * 0.35;
+
+		ev_debug_draw_one_block (
+		    cache,
+		    view,
+		    cr,
+		    page,
+		    areas,
+		    n_areas,
+		    0,
+		    0,
+		    block_no,
+		    &custom_rect,
+		    real_page_area,
+		    scale_x,
+		    scale_y,
+		    document_width,
+		    document_height);
+
+		block_no++;
+	}
+
 
 	if (view->overlay_text_print_pending &&
 	    view->translate_page == page) {

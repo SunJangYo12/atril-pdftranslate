@@ -5,11 +5,6 @@
 #include <gdk/gdk.h>
 #include "ev-page-cache.h"
 
-gboolean
-ev_debug_custom_overlay_hit_test (EvView *view,
-                                  gdouble  x,
-                                  gdouble  y);
-
 void
 ev_debug_overlay_show_cb (GtkButton *button,
                           gpointer   data);

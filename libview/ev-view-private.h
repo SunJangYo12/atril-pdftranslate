@@ -252,10 +252,9 @@ struct _EvView {
 	gboolean overlay_save_pending;
 	gboolean overlay_menu_open;
 	gboolean overlay_hidden;
-	gboolean overlay_add_pending;
 	gboolean border_hidden;
-	gint 	 custom_overlay_index;
-	gboolean custom_overlay_active;
+	gint 	 total_block;
+	gint 	 saved_total_block;
 
 	gint     hidden_overlay_page;
 	guint    hidden_overlay_index;
