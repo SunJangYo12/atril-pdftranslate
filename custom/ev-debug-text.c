@@ -1374,17 +1374,47 @@ ev_debug_draw_one_block (EvPageCache  *cache,
 
 	    g_free (text_original);
 	}
-
 	EvRectangle initial_screen_rect;
 
-	initial_screen_rect.x1 =
-	    real_page_area->x + rect.x1 * scale_x;
-	initial_screen_rect.y1 =
-	    real_page_area->y + rect.y1 * scale_y;
-	initial_screen_rect.x2 =
-	    real_page_area->x + rect.x2 * scale_x;
-	initial_screen_rect.y2 =
-	    real_page_area->y + rect.y2 * scale_y;
+	if (view->translate_page == page &&
+	    view->translate_index == block_no &&
+	    (view->overlay_in_drag || view->overlay_in_resize)) {
+
+	    /*
+	     * Sedang drag/resize:
+	     * gunakan posisi terbaru dari translate_rect.
+	     */
+	    initial_screen_rect.x1 =
+	        view->translate_rect.x1;
+
+	    initial_screen_rect.y1 =
+	        view->translate_rect.y1;
+
+	    initial_screen_rect.x2 =
+	        view->translate_rect.x2;
+
+	    initial_screen_rect.y2 =
+	        view->translate_rect.y2;
+
+	} else {
+
+	    /*
+	     * Tidak sedang drag/resize:
+	     * gunakan posisi rect yang sudah dimuat dari blockN.txt
+	     * atau posisi default custom overlay.
+	     */
+	    initial_screen_rect.x1 =
+	        real_page_area->x + rect.x1 * scale_x;
+
+	    initial_screen_rect.y1 =
+	        real_page_area->y + rect.y1 * scale_y;
+
+	    initial_screen_rect.x2 =
+	        real_page_area->x + rect.x2 * scale_x;
+
+	    initial_screen_rect.y2 =
+	        real_page_area->y + rect.y2 * scale_y;
+	}
 
 	gchar *text_original;
 
