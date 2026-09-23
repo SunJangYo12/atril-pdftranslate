@@ -1365,12 +1365,55 @@ ev_debug_draw_one_block (EvPageCache  *cache,
 	            page,
 	            block_no);
 
-	    if (text_original && *text_original) {
+		if (text_original && *text_original) {
+
+		    cairo_save (cr);
+
+		    /*
+		     * Clip text agar tetap berada di dalam overlay.
+		     */
+		    cairo_rectangle (cr,
+		                     x,
+		                     y,
+		                     width,
+		                     height);
+
+		    cairo_clip (cr);
+
+		    cairo_set_source_rgb (cr, 0.0, 0.0, 0.0);
+
+			gdouble scroll_y = 0.0;
+
+			if (view->translate_page == page &&
+			    view->translate_index == block_no) {
+
+			    scroll_y = view->overlay_scroll_y;
+			}
+
+			ev_debug_draw_wrapped_text (
+			    cr,
+			    text_original,
+			    x,
+			    y - scroll_y,
+			    width,
+			    height);
+			/*
+		    ev_debug_draw_wrapped_text (
+		        cr,
+		        text_original,
+		        x,
+		        y - view->overlay_scroll_y,
+		        width,
+		        height);*/
+
+		    cairo_restore (cr);
+		}
+	    /*if (text_original && *text_original) {
 
 	        cairo_set_source_rgb (cr, 0.0, 0.0, 0.0);
 			ev_debug_draw_wrapped_text(
 				cr, text_original, x, y, width, height);
-	    }
+	    }*/
 
 	    g_free (text_original);
 	}

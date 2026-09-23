@@ -260,6 +260,7 @@ struct _EvView {
 	guint    hidden_overlay_index;
 	GtkWidget *btn_window;
 	GtkWidget *overlay_show_button;
+	gdouble overlay_scroll_y;
 };
 
 struct _EvViewClass {

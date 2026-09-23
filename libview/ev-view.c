@@ -3855,6 +3855,46 @@ ev_view_scroll_event (GtkWidget *widget, GdkEventScroll *event)
 		state &= ~GDK_SHIFT_MASK;
 	}
 
+	/* custom overlay scroll */
+	if (state == 0 &&
+	    view->translate_page >= 0 &&
+	    view->translate_index >= 0) {
+
+	    gdouble mx;
+	    gdouble my;
+
+	    mx = event->x;
+	    my = event->y;
+
+	    if (mx >= view->translate_rect.x1 &&
+	        mx <= view->translate_rect.x2 &&
+	        my >= view->translate_rect.y1 &&
+	        my <= view->translate_rect.y2) {
+
+	        if (event->direction == GDK_SCROLL_DOWN) {
+
+	            view->overlay_scroll_y += 5.0;
+	        } else if (event->direction == GDK_SCROLL_UP) {
+
+	            view->overlay_scroll_y -= 5.0;
+
+	            if (view->overlay_scroll_y < 0)
+	                view->overlay_scroll_y = 0;
+
+	        } else if (event->direction == GDK_SCROLL_SMOOTH) {
+
+	            view->overlay_scroll_y += event->delta_y * 5.0;
+
+	            if (view->overlay_scroll_y < 0)
+	                view->overlay_scroll_y = 0;
+	        }
+
+	        gtk_widget_queue_draw (widget);
+
+	        return TRUE;
+	    }
+	}
+
 	fit_width = ev_view_page_fits (view, GTK_ORIENTATION_HORIZONTAL);
 	fit_height = ev_view_page_fits (view, GTK_ORIENTATION_VERTICAL);
 	if (state == 0 && !view->continuous && (fit_width || fit_height)) {
@@ -5058,6 +5098,10 @@ ev_view_button_release_event (GtkWidget      *widget,
 
 	if (view->overlay_in_drag) {
 	    view->overlay_in_drag = FALSE;
+
+		view->overlay_text_print_pending = TRUE;
+		view->overlay_save_pending = TRUE;
+
 	    view->pressed_button = -1;
 
 	    gtk_widget_queue_draw (widget);
