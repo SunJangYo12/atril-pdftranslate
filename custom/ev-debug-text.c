@@ -1440,6 +1440,81 @@ ev_debug_draw_one_block (EvPageCache  *cache,
 	g_free (text_original);
 }
 
+
+static GArray *
+ev_debug_get_added_blocks (EvView *view,
+                           gint    page)
+{
+    gchar *page_dir;
+    gchar *filename;
+    gchar *content = NULL;
+    gchar *added;
+    gchar *quote;
+    gchar *list;
+    gchar **ids;
+    GArray *blocks;
+    gint i;
+
+    blocks = g_array_new (FALSE, FALSE, sizeof (gint));
+
+    page_dir = ev_debug_get_page_dir (view, page);
+
+    if (!page_dir)
+        return blocks;
+
+    filename = g_strdup_printf ("%s/meta.txt", page_dir);
+
+    if (!g_file_get_contents (filename, &content, NULL, NULL))
+        goto out;
+
+    added = strstr (content, "added=\"");
+
+    if (!added)
+        goto out;
+
+    added += strlen ("added=\"");
+
+    quote = strchr (added, '"');
+
+    if (!quote)
+        goto out;
+
+    list = g_strndup (added, quote - added);
+
+    ids = g_strsplit (list, ",", -1);
+
+    for (i = 0; ids[i] != NULL; i++) {
+        gint block_id;
+        gint block_no;
+
+        if (*ids[i] == '\0')
+            continue;
+
+        block_id = atoi (ids[i]);
+
+        if (block_id <= 0)
+            continue;
+
+        /*
+         * meta.txt memakai ID 1-based,
+         * sedangkan block_no di program 0-based.
+         */
+        block_no = block_id - 1;
+
+        g_array_append_val (blocks, block_no);
+    }
+
+    g_strfreev (ids);
+    g_free (list);
+
+out:
+    g_free (content);
+    g_free (filename);
+    g_free (page_dir);
+
+    return blocks;
+}
+
 void
 ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
                    cairo_t         *cr,
@@ -1626,35 +1701,63 @@ ev_debug_draw_blocks (EvPageCache  *cache, EvView *view,
 
 	/*
 	 * CUSTOM OVERLAY
+	 *
+	 * meta.txt:
+	 *
+	 * added="9,10"
+	 *
+	 * berarti:
+	 *
+	 * block9.txt
+	 * block10.txt
 	 */
-	for (gint x=0; x<view->saved_total_block; x++) {
-		EvRectangle custom_rect;
+	GArray *added_blocks;
 
-		custom_rect.x1 = document_width * 0.25;
-		custom_rect.y1 = document_height * 0.25;
-		custom_rect.x2 = document_width * 0.55;
-		custom_rect.y2 = document_height * 0.35;
+	added_blocks = ev_debug_get_added_blocks (view, page);
+	for (gint i = 0; i < added_blocks->len; i++) {
 
-		ev_debug_draw_one_block (
-		    cache,
-		    view,
-		    cr,
-		    page,
-		    areas,
-		    n_areas,
-		    0,
-		    0,
-		    block_no,
-		    &custom_rect,
-		    real_page_area,
-		    scale_x,
-		    scale_y,
-		    document_width,
-		    document_height);
+	    gint custom_block_no;
+	    EvRectangle custom_rect;
 
+	    custom_block_no =
+	        g_array_index (added_blocks, gint, i);
+
+	    /*
+	     * Posisi default.
+	     *
+	     * Kalau blockN.txt sudah ada dan mempunyai
+	     * posisi_overlay, ev_debug_draw_one_block()
+	     * akan menggantinya dengan posisi dari file.
+	     */
+	    custom_rect.x1 = document_width * 0.25;
+	    custom_rect.y1 = document_height * 0.25;
+	    custom_rect.x2 = document_width * 0.55;
+	    custom_rect.y2 = document_height * 0.35;
+
+	    g_print ("DRAW CUSTOM: page=%d block_no=%d block_id=%d\n",
+	             page,
+	             custom_block_no,
+	             custom_block_no + 1);
+
+	    ev_debug_draw_one_block (
+	        cache,
+	        view,
+	        cr,
+	        page,
+	        areas,
+	        n_areas,
+	        0,
+	        0,
+	        custom_block_no,
+	        &custom_rect,
+	        real_page_area,
+	        scale_x,
+	        scale_y,
+	        document_width,
+	        document_height);
 		block_no++;
 	}
-
+	g_array_free (added_blocks, TRUE);
 
 	if (view->overlay_text_print_pending &&
 	    view->translate_page == page) {
