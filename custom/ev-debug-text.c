@@ -86,33 +86,6 @@ ev_debug_escape_text (const gchar *text)
 }
 /* ============== utils ======================== */
 
-static void
-ev_debug_update_total_block_from_meta (EvView *view,
-                                       gint page)
-{
-    gchar *page_dir;
-    gchar *meta_path;
-    gchar *contents = NULL;
-    gchar *p;
-    gint add_value;
-
-    page_dir = ev_debug_get_page_dir (view, page);
-    meta_path = g_build_filename (page_dir, "meta.txt", NULL);
-
-    if (g_file_get_contents (meta_path, &contents, NULL, NULL)) {
-        p = g_strstr_len (contents, -1, "add=");
-
-        if (p && sscanf (p, "add=\"%d\"", &add_value) == 1)
-            view->total_block = add_value;
-    }
-
-    view->total_block++;
-
-    g_free (contents);
-    g_free (meta_path);
-    g_free (page_dir);
-}
-
 static gboolean
 ev_debug_is_block_deleted (EvView *view,
                            gint    page,
@@ -202,8 +175,215 @@ out:
     return result;
 }
 
+
+static void
+ev_debug_add_added_block (EvView *view,
+                          gint    page,
+                          gint    block_no)
+{
+    gchar *page_dir;
+    gchar *filename;
+    gchar *content;
+    gchar *new_content;
+    gchar *added;
+    gchar *quote;
+    gint block_id;
+
+    page_dir = ev_debug_get_page_dir (view, page);
+
+    if (!page_dir)
+        return;
+
+    if (g_mkdir_with_parents (page_dir, 0755) != 0) {
+        g_warning ("Cannot create directory: %s", page_dir);
+        g_free (page_dir);
+        return;
+    }
+
+    filename = g_strdup_printf ("%s/meta.txt", page_dir);
+
+    block_id = block_no + 1;
+
+    /*
+     * meta.txt belum ada
+     */
+    if (!g_file_get_contents (filename, &content, NULL, NULL)) {
+
+        content = g_strdup_printf (
+            "added=\"%d\"\n",
+            block_id);
+
+    } else {
+
+        /*
+         * Cari baris:
+         *
+         * added="..."
+         */
+        added = strstr (content, "added=\"");
+
+        if (added) {
+
+            /*
+             * Cari tanda '"' terakhir dari value added.
+             */
+            quote = strchr (added + strlen ("added=\""), '"');
+
+            if (quote) {
+                *quote = '\0';
+
+                new_content = g_strdup_printf (
+                    "%s,%d\"%s",
+                    content,
+                    block_id,
+                    quote + 1);
+
+                g_free (content);
+                content = new_content;
+            }
+
+        } else {
+
+            /*
+             * Belum ada added.
+             * Tambahkan baris baru di akhir meta.txt.
+             */
+            new_content = g_strdup_printf (
+                "%s%sadded=\"%d\"\n",
+                content,
+                (content[0] != '\0' &&
+                 content[strlen (content) - 1] != '\n') ? "\n" : "",
+                block_id);
+
+            g_free (content);
+            content = new_content;
+        }
+    }
+
+    if (!g_file_set_contents (filename,
+                              content,
+                              -1,
+                              NULL)) {
+
+        g_warning ("Cannot save meta: %s", filename);
+
+    } else {
+
+        g_print ("ADD ADDED: page=%d block=%d\n",
+                 page,
+                 block_id);
+    }
+
+    g_free (content);
+    g_free (filename);
+    g_free (page_dir);
+}
+
 static void
 ev_debug_add_deleted_block (EvView *view,
+                            gint    page,
+                            gint    block_no)
+{
+    gchar *page_dir;
+    gchar *filename;
+    gchar *content;
+    gchar *new_content;
+    gchar *deleted;
+    gchar *quote;
+    gint block_id;
+
+    page_dir = ev_debug_get_page_dir (view, page);
+
+    if (!page_dir)
+        return;
+
+    if (g_mkdir_with_parents (page_dir, 0755) != 0) {
+        g_warning ("Cannot create directory: %s", page_dir);
+        g_free (page_dir);
+        return;
+    }
+
+    filename = g_strdup_printf ("%s/meta.txt", page_dir);
+
+    block_id = block_no + 1;
+
+    /*
+     * meta.txt belum ada
+     */
+    if (!g_file_get_contents (filename, &content, NULL, NULL)) {
+
+        content = g_strdup_printf (
+            "deleted=\"%d\"\n",
+            block_id);
+
+    } else {
+
+        /*
+         * Cari:
+         *
+         * deleted="..."
+         */
+        deleted = strstr (content, "deleted=\"");
+
+        if (deleted) {
+
+            /*
+             * Cari tanda '"' yang menutup value deleted.
+             */
+            quote = strchr (deleted + strlen ("deleted=\""), '"');
+
+            if (quote) {
+                *quote = '\0';
+
+                new_content = g_strdup_printf (
+                    "%s,%d\"%s",
+                    content,
+                    block_id,
+                    quote + 1);
+
+                g_free (content);
+                content = new_content;
+            }
+
+        } else {
+
+            /*
+             * Belum ada deleted.
+             * Tambahkan field baru di akhir file.
+             */
+            new_content = g_strdup_printf (
+                "%s%sdeleted=\"%d\"\n",
+                content,
+                (content[0] != '\0' &&
+                 content[strlen (content) - 1] != '\n') ? "\n" : "",
+                block_id);
+
+            g_free (content);
+            content = new_content;
+        }
+    }
+
+    if (!g_file_set_contents (filename,
+                              content,
+                              -1,
+                              NULL)) {
+
+        g_warning ("Cannot save meta: %s", filename);
+
+    } else {
+
+        g_print ("ADD DELETED: page=%d block=%d\n",
+                 page,
+                 block_id);
+    }
+
+    g_free (content);
+    g_free (filename);
+    g_free (page_dir);
+}
+
+static void
+zzev_debug_add_deleted_block (EvView *view,
                             gint    page,
                             gint    block_no)
 {
@@ -349,10 +529,12 @@ ev_debug_overlay_add_block_cb (GtkMenuItem *item,
                           gpointer     data)
 {
     EvView *view = EV_VIEW (data);
+	gint new_block_no;
 
-	//ev_debug_update_total_block_from_meta (view, view->translate_page);
+	new_block_no = view->total_block + view->saved_total_block;
 
-	view->saved_total_block += 1;
+	ev_debug_add_added_block(view, view->translate_page, new_block_no);
+	view->saved_total_block++;
 
 	gtk_widget_queue_draw (GTK_WIDGET (view));
 }
