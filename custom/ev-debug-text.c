@@ -1074,17 +1074,26 @@ ev_debug_load_block_original_text (EvView *view,
      * Cari:
      * text_original="..."
      */
-    p = strstr (contents, "text_original=\"");
+	p = strstr (contents, "text_translate=\"");
 
-    if (p) {
-        p += strlen ("text_original=\"");
+	if (p) {
+	    p += strlen ("text_translate=\"");
 
-        end = strchr (p, '"');
+	    /* akhir isi: newline pertama setelah p, atau akhir string */
+	    const char *eol = strchr (p, '\n');
+	    if (!eol)
+	        eol = p + strlen (p);
 
-        if (end) {
-            text = g_strndup (p, end - p);
-        }
-    }
+	    /* mundur dari eol sampai ketemu kutip penutup */
+	    end = eol;
+	    while (end > p && end[-1] != '"')
+	        end--;
+
+	    if (end > p) {
+	        /* end[-1] adalah kutip penutup, jadi panjang isi = (end - 1) - p */
+	        text = g_strndup (p, (end - 1) - p);
+	    }
+	}
 
     g_free (contents);
     g_free (filename);
