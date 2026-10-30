@@ -1,3 +1,9 @@
+
+![](sc1.png)
+
+![](sc2.png)
+
+
 build from xubuntu 22 and version of atril-1.26.0
 
 # usage
@@ -15,6 +21,3 @@ python3 translate.py
 NOTE: server google translate harus udah jalan dan bisa diakses dengan
 telnet <ip> 9090 lalu atur ROOT_PATH dan ip di translate.py
 ```
-![](sc1.png)
-
-![](sc2.png)
