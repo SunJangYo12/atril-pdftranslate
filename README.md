@@ -1,10 +1,8 @@
-
-![](sc1.png)
-
-![](sc2.png)
-
-
 build from xubuntu 22 and version of atril-1.26.0
+
+![Translate process](sc1.png)
+![Result](sc2.png)
+
 
 # usage
 ```bash
